@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Catalog — PT Fortis Prima Solusi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#0E3BAA;--blue-dk:#0a2e87;--blue-xdk:#060e38;--blue-lt:#E6EAF2;--orange:#F7612A;--orange-dk:#d94e1a;--black:#0A0A0A;--gray-bg:#F7F8FA;--g1:#E6EAF2;--g2:#D9DEE8;--g3:#6B7280;--white:#FFFFFF;--fh:'Manrope',sans-serif;--fb:'IBM Plex Sans',sans-serif;--mw:1180px;--r:10px;--spy:80px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);font-size:16px;line-height:1.75;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
+.wrap{width:100%;max-width:var(--mw);margin:0 auto;padding:0 40px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--fh);font-size:14px;font-weight:600;letter-spacing:.03em;padding:13px 26px;border-radius:7px;transition:background .2s,border-color .2s,transform .15s;cursor:pointer;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-orange{background:var(--orange);color:#fff}.btn-orange:hover{background:var(--orange-dk)}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blue-dk)}
+.btn-ghost-b{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}.btn-ghost-b:hover{background:var(--blue);color:#fff}
+.btn-sm{padding:9px 18px;font-size:13px}
+
+/* TOP BAR */
+.top-bar{background:var(--blue-xdk);height:36px}
+.top-bar-inner{display:flex;align-items:center;justify-content:space-between;height:36px;gap:16px}
+.tb-contact{display:flex;align-items:center;gap:16px}
+.tb-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--fh);font-size:11.5px;font-weight:500;color:rgba(255,255,255,.58);transition:color .2s;white-space:nowrap}
+.tb-link:hover{color:#fff}
+.tb-link svg{flex-shrink:0}
+.tb-sep{width:1px;height:11px;background:rgba(255,255,255,.16);flex-shrink:0}
+.tb-right{display:flex;align-items:center;gap:10px}
+.tb-social{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:4px;color:rgba(255,255,255,.4);transition:color .2s,background .2s}
+.tb-social:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.08)}
+.tb-catalog{display:inline-flex;align-items:center;gap:6px;font-family:var(--fh);font-size:11.5px;font-weight:600;color:rgba(255,255,255,.72);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,.18);transition:color .2s,border-color .2s,background .2s;white-space:nowrap}
+.tb-catalog:hover{color:#fff;border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.07)}
+
+/* HEADER */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:200}
+.main-bar{background:#fff;border-bottom:1px solid var(--g2)}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:inline-flex;align-items:center;padding:4px 0;transition:opacity .2s}
+.logo:hover{opacity:.82}
+.logo-img{height:36px;width:auto;display:block}
+.hdr-nav{display:flex;align-items:center;gap:4px}
+.nav-item{position:relative}
+.nav-link{display:flex;align-items:center;gap:4px;font-family:var(--fh);font-size:13.5px;font-weight:500;color:var(--g3);padding:8px 12px;border-radius:6px;transition:color .2s,background .2s;letter-spacing:.02em;cursor:pointer;white-space:nowrap}
+.nav-link:hover,.nav-link.active{color:var(--blue);background:var(--gray-bg)}
+.nav-link svg{flex-shrink:0;opacity:.6;transition:transform .2s}
+.nav-item:hover .nav-link svg{transform:rotate(180deg)}
+.subnav{position:absolute;top:calc(100% + 10px);left:0;background:#fff;border:1px solid var(--g1);border-radius:10px;padding:8px 0;min-width:210px;box-shadow:0 8px 32px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s ease,transform .2s ease;z-index:300}
+.subnav::before{content:'';position:absolute;top:-12px;left:0;right:0;height:12px}
+.nav-item:hover .subnav{opacity:1;pointer-events:auto;transform:translateY(0)}
+.subnav a{display:block;padding:9px 18px;font-size:13.5px;color:var(--g3);transition:color .15s,background .15s;font-family:var(--fb)}
+.subnav a:hover{color:var(--blue);background:var(--gray-bg)}
+.subnav-divider{height:1px;background:var(--g1);margin:6px 0}
+/* Services mega menu */
+.subnav-svc{min-width:440px;padding:16px 12px 12px}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.svc-card{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;transition:background .15s;text-decoration:none}
+.svc-card:hover{background:var(--gray-bg)}
+.svc-card:hover .svc-name{color:var(--blue)}
+.svc-icon{width:30px;height:30px;border-radius:6px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:background .15s}
+.svc-card:hover .svc-icon{background:var(--blue)}
+.svc-icon svg{color:var(--blue);transition:color .15s}
+.svc-card:hover .svc-icon svg{color:#fff}
+.svc-body{display:flex;flex-direction:column;gap:1px}
+.svc-name{font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--black);line-height:1.3;transition:color .15s}
+.svc-desc{font-size:11px;color:var(--g3);line-height:1.4}
+.svc-footer{margin-top:10px;padding-top:10px;border-top:1px solid var(--g1);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.svc-footer-text{font-size:12px;color:var(--g3)}
+.svc-footer-link{font-family:var(--fh);font-size:12px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px;transition:gap .18s}
+.svc-footer-link:hover{gap:7px}
+/* Catalog flyout menu */
+.cat-menu{min-width:190px;padding:8px 0}
+.cat-menu-item{position:relative}
+.cat-menu-row{display:flex;align-items:center;gap:10px;padding:9px 16px;cursor:default;transition:background .15s,color .15s;-webkit-tap-highlight-color:transparent}
+.cat-menu-row:hover{background:var(--gray-bg)}
+.cat-menu-row:hover .cat-menu-icon{background:var(--blue)}
+.cat-menu-row:hover .cat-menu-icon svg{color:#fff}
+.cat-menu-row:hover .cat-menu-label{color:var(--blue)}
+.cat-menu-icon{width:28px;height:28px;border-radius:6px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.cat-menu-icon svg{color:var(--blue);transition:color .15s}
+.cat-menu-label{flex:1;font-family:var(--fh);font-size:13px;font-weight:600;color:var(--black);transition:color .15s}
+.cat-menu-arr{opacity:.35;flex-shrink:0}
+.cat-flyout{position:absolute;left:calc(100% + 6px);top:-8px;background:#fff;border:1px solid var(--g1);border-radius:10px;min-width:210px;padding:8px 0;box-shadow:0 8px 32px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);opacity:0;pointer-events:none;transform:translateX(-6px);transition:opacity .18s ease,transform .18s ease;z-index:400}
+.cat-flyout::before{content:'';position:absolute;left:-8px;top:0;bottom:0;width:8px}
+.cat-menu-item:hover .cat-flyout{opacity:1;pointer-events:auto;transform:translateX(0)}
+.cat-flyout a{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;color:var(--g3);transition:color .15s,background .15s}
+.cat-flyout a:hover{color:var(--blue);background:var(--gray-bg)}
+.cat-flyout-icon{width:26px;height:26px;border-radius:5px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.cat-flyout a:hover .cat-flyout-icon{background:var(--blue)}
+.cat-flyout-icon svg{color:var(--blue);transition:color .15s}
+.cat-flyout a:hover .cat-flyout-icon svg{color:#fff}
+.cat-flyout-label{font-family:var(--fh);font-size:13px;font-weight:600;color:var(--black);transition:color .15s;line-height:1.3}
+.cat-flyout a:hover .cat-flyout-label{color:var(--blue)}
+.cat-flyout-sub{font-size:11px;color:var(--g3);line-height:1.3}
+.cat-flyout-body{display:flex;flex-direction:column;gap:1px}
+.cat-flyout-divider{height:1px;background:var(--g1);margin:4px 0}
+.hdr-cta{font-family:var(--fh);font-size:13px;font-weight:600;letter-spacing:.04em;padding:9px 20px;background:var(--orange);color:#fff;border-radius:6px;transition:background .2s;margin-left:8px}
+.hdr-cta:hover{background:var(--orange-dk)}
+.cart-icon-wrap{position:relative;display:inline-flex;align-items:center;margin-left:4px}
+.cart-icon-btn{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:6px;color:var(--g3);transition:color .2s,background .2s}
+.cart-icon-btn:hover{color:var(--blue);background:var(--gray-bg)}
+.cart-badge{position:absolute;top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--fh);font-size:10px;font-weight:700;line-height:16px;text-align:center;display:none;pointer-events:none}
+.cart-badge.has-items{display:block}
+.nav-tog{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:6px;position:relative;flex-shrink:0;transition:background .2s}
+.nav-tog:hover{background:var(--gray-bg)}
+.nav-tog-bar{position:absolute;left:50%;top:50%;margin-left:-11px;margin-top:-1px;width:22px;height:2px;border-radius:2px;background:var(--black);transition:transform 280ms cubic-bezier(.4,0,.2,1),opacity 200ms ease}
+.nav-tog-bar:nth-child(1){transform:translateY(-6px)}
+.nav-tog-bar:nth-child(2){transform:translateY(0)}
+.nav-tog-bar:nth-child(3){transform:translateY(6px)}
+.nav-tog.is-open .nav-tog-bar:nth-child(1){transform:translateY(0) rotate(45deg)}
+.nav-tog.is-open .nav-tog-bar:nth-child(2){transform:translateY(0) scaleX(0);opacity:0}
+.nav-tog.is-open .nav-tog-bar:nth-child(3){transform:translateY(0) rotate(-45deg)}
+.mnav-backdrop{position:fixed;inset:0;background:rgba(10,10,10,.3);z-index:185;opacity:0;pointer-events:none;visibility:hidden;transition:opacity 300ms ease,visibility 0s linear 300ms}
+.mnav-backdrop.is-open{opacity:1;pointer-events:auto;visibility:visible;transition:opacity 300ms ease,visibility 0s linear 0s}
+.mobile-nav{position:fixed;top:104px;left:0;right:0;bottom:0;background:#fff;z-index:190;overflow-y:auto;padding:0 0 56px;opacity:0;transform:translateY(-14px);pointer-events:none;visibility:hidden;transition:opacity 300ms cubic-bezier(.25,.1,.25,1),transform 300ms cubic-bezier(.25,.1,.25,1),visibility 0s linear 300ms}
+.mobile-nav.is-open{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible;transition:opacity 300ms cubic-bezier(.25,.1,.25,1),transform 300ms cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s}
+.mnav-item{border-bottom:1px solid var(--g1)}
+.mnav-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 24px;min-height:54px;font-family:var(--fh);font-size:15px;font-weight:600;color:var(--black);cursor:pointer;transition:color .18s;-webkit-tap-highlight-color:transparent;user-select:none}
+.mnav-link:hover{color:var(--blue)}
+a.mnav-link{display:flex}
+.mnav-chevron{flex-shrink:0;opacity:.38;transition:transform 280ms cubic-bezier(.4,0,.2,1),opacity 200ms ease}
+.mnav-link.is-open .mnav-chevron{transform:rotate(180deg);opacity:.6}
+.mnav-sub{display:grid;grid-template-rows:0fr;transition:grid-template-rows 280ms cubic-bezier(.4,0,.2,1);background:var(--gray-bg)}
+.mnav-sub.is-open{grid-template-rows:1fr}
+.mnav-sub-inner{overflow:hidden;min-height:0}
+.mnav-sub a{display:flex;align-items:center;min-height:44px;padding:0 24px 0 34px;font-size:13.5px;font-family:var(--fb);color:var(--g3);border-bottom:1px solid rgba(230,234,242,.7);transition:color .18s,background .18s}
+.mnav-sub a:last-child{border-bottom:none}
+.mnav-sub a:hover{color:var(--blue);background:rgba(14,59,170,.04)}
+/* Mobile: service rows */
+.mnav-sub a.mnav-svc-row{align-items:flex-start;min-height:auto;padding:10px 24px;gap:10px}
+.mnav-svc-icon{width:28px;height:28px;border-radius:6px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background .18s}
+.mnav-svc-icon svg{color:var(--blue);transition:color .18s}
+.mnav-svc-body{display:flex;flex-direction:column;gap:1px}
+.mnav-svc-name{font-family:var(--fh);font-size:13.5px;font-weight:600;color:var(--black);line-height:1.3;transition:color .18s}
+.mnav-svc-desc{font-size:11.5px;color:var(--g3);line-height:1.4}
+.mnav-sub a.mnav-svc-row:hover .mnav-svc-icon{background:var(--blue)}
+.mnav-sub a.mnav-svc-row:hover .mnav-svc-icon svg{color:#fff}
+.mnav-sub a.mnav-svc-row:hover .mnav-svc-name{color:var(--blue)}
+/* Mobile: catalog section labels */
+.mnav-sub-head{padding:6px 24px 4px;font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--g3);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(230,234,242,.5)}
+.mnav-sub-divider{height:1px;background:var(--g2);margin:2px 0}
+/* Mobile: catalog brand/category rows */
+.mnav-sub a.mnav-cat-row{min-height:auto;padding:7px 24px;gap:10px}
+.mnav-cat-icon{width:24px;height:24px;border-radius:5px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .18s}
+.mnav-cat-icon svg{color:var(--blue);transition:color .18s}
+.mnav-sub a.mnav-cat-row:hover .mnav-cat-icon{background:var(--blue)}
+.mnav-sub a.mnav-cat-row:hover .mnav-cat-icon svg{color:#fff}
+.mnav-sub a.mnav-all-link{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--blue);justify-content:center;border-bottom:none;padding:10px 24px}
+.mnav-cta{padding:22px 24px 0}
+.mnav-cta .btn{width:100%;justify-content:center;padding:15px 24px;font-size:14px;border-radius:8px;-webkit-tap-highlight-color:transparent;margin-bottom:10px}
+.mnav-cta .btn:active{transform:scale(.98)}
+
+/* PAGE HERO */
+.page-hero{padding:136px 0 52px;background:var(--blue-xdk);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.ph-inner{position:relative;z-index:1}
+.ph-label{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.ph-label::before{content:'';display:block;width:14px;height:2px;background:var(--orange);border-radius:2px}
+.ph-title{font-family:var(--fh);font-size:clamp(28px,4vw,44px);font-weight:700;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.ph-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:520px;line-height:1.75}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--gray-bg);border-bottom:1px solid var(--g1)}
+.bc-inner{padding:12px 0;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--g3);flex-wrap:wrap}
+.bc-inner a{color:var(--blue);transition:color .18s}
+.bc-inner a:hover{color:var(--blue-dk)}
+.bc-sep{opacity:.4}
+.bc-current{color:var(--black);font-weight:500}
+
+/* CATALOG LAYOUT */
+.catalog-section{padding:40px 0 var(--spy)}
+.catalog-layout{display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:start}
+
+/* SIDEBAR */
+.cat-sidebar{position:sticky;top:112px}
+.sidebar-search{position:relative;margin-bottom:24px}
+.search-input{width:100%;font-family:var(--fb);font-size:13.5px;color:var(--black);border:1.5px solid var(--g2);border-radius:7px;padding:9px 14px 9px 38px;outline:none;transition:border-color .18s,box-shadow .18s;background:#fff}
+.search-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(14,59,170,.08)}
+.search-input::placeholder{color:var(--g3);opacity:.65}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--g3);pointer-events:none}
+.sidebar-box{border:1px solid var(--g1);border-radius:var(--r);overflow:hidden;margin-bottom:16px}
+.sidebar-head{padding:12px 16px;border-bottom:1px solid var(--g1);background:var(--gray-bg);display:flex;align-items:center;justify-content:space-between}
+.sidebar-head-ttl{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--black)}
+.sidebar-clear{font-family:var(--fh);font-size:11px;font-weight:600;color:var(--blue);opacity:0;pointer-events:none;transition:opacity .18s;background:none;border:none;cursor:pointer;padding:0}
+.sidebar-clear.visible{opacity:1;pointer-events:auto}
+.apply-filter-btn{display:block;width:100%;padding:11px 0;background:var(--blue);color:#fff;font-family:var(--fh);font-size:13.5px;font-weight:700;border:none;border-radius:8px;cursor:pointer;transition:background .18s;margin-top:4px}
+.apply-filter-btn:hover{background:var(--blue-dk)}
+.sidebar-body{padding:8px 0}
+.sidebar-opt{display:flex;align-items:center;gap:0;padding:0}
+.sidebar-opt label{display:flex;align-items:center;gap:10px;width:100%;padding:9px 16px;font-size:13.5px;color:var(--g3);cursor:pointer;transition:color .15s,background .15s;-webkit-tap-highlight-color:transparent}
+.sidebar-opt label:hover{color:var(--blue);background:rgba(14,59,170,.03)}
+.sidebar-opt input[type=radio]{appearance:none;-webkit-appearance:none;width:15px;height:15px;border:1.5px solid var(--g2);border-radius:50%;flex-shrink:0;transition:border-color .18s,background .18s;position:relative}
+.sidebar-opt input[type=radio]:checked{border-color:var(--blue);background:var(--blue)}
+.sidebar-opt input[type=radio]:checked::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:#fff}
+.sidebar-opt input[type=radio]:checked + .opt-label-text{color:var(--blue);font-weight:600}
+.opt-label-text{flex:1}
+.opt-count{font-size:11.5px;color:var(--g3);background:var(--g1);padding:1px 7px;border-radius:20px;font-family:var(--fh);font-weight:600}
+.sidebar-opt label:has(input:checked) .opt-count{background:var(--blue-lt);color:var(--blue)}
+
+/* MOBILE FILTER BTN */
+.filter-toggle-row{display:none;align-items:center;justify-content:space-between;margin-bottom:20px}
+.filter-toggle-btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--fh);font-size:13px;font-weight:600;color:var(--blue);border:1.5px solid var(--blue);padding:8px 16px;border-radius:6px;background:#fff;transition:background .18s,color .18s}
+.filter-toggle-btn:hover{background:var(--blue);color:#fff}
+.sidebar-overlay{display:none}
+
+/* CATALOG MAIN */
+.catalog-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.catalog-count{font-family:var(--fh);font-size:13px;font-weight:600;color:var(--g3)}
+.active-filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.af-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 12px;border-radius:20px;background:var(--blue-lt);color:var(--blue);font-family:var(--fh);font-size:12px;font-weight:600}
+.af-chip button{display:flex;align-items:center;color:var(--blue);opacity:.6;transition:opacity .18s}
+.af-chip button:hover{opacity:1}
+
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.prod-card{background:var(--white);border:1px solid var(--g1);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s,transform .25s}
+.prod-card:hover{border-color:var(--blue);box-shadow:0 4px 24px rgba(14,59,170,.08);transform:translateY(-3px)}
+.prod-img{height:180px;overflow:hidden;background:var(--g1);position:relative}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;display:block}
+.prod-card:hover .prod-img img{transform:scale(1.05)}
+.prod-body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.prod-badges{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.prod-brand{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g3);background:var(--g1);padding:3px 8px;border-radius:3px}
+.prod-cat{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+.prod-title{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--black);line-height:1.3;transition:color .18s}
+.prod-title:hover{color:var(--blue)}
+.prod-exc{font-size:12.5px;color:var(--g3);line-height:1.6;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prod-actions{display:flex;align-items:center;gap:8px;margin-top:10px}
+.prod-view{display:inline-flex;align-items:center;gap:4px;font-family:var(--fh);font-size:12px;font-weight:600;color:var(--blue);transition:gap .2s;flex:1;white-space:nowrap}
+.prod-card:hover .prod-view{gap:7px}
+.prod-add{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-family:var(--fh);font-size:12px;font-weight:600;padding:7px 14px;border-radius:6px;background:var(--blue);color:#fff;transition:background .2s;cursor:pointer;border:none;white-space:nowrap;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.prod-add:hover{background:var(--blue-dk)}
+.prod-add.added{background:#16a34a}
+.no-results{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--g3);font-size:15px}
+.no-results strong{display:block;font-family:var(--fh);font-size:18px;font-weight:700;color:var(--black);margin-bottom:10px}
+
+/* FOOTER */
+#ft{background:var(--black);padding:72px 0 0}
+.ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.ft-logo-mark{width:28px;height:28px;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.ft-logo-name{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;letter-spacing:-.2px;line-height:1}
+.ft-logo-sub{font-family:var(--fh);font-size:7.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;line-height:1}
+.ft-logo-img{height:34px;width:auto;display:block;border-radius:6px;padding:5px 10px;background:rgba(255,255,255,.95)}
+.ft-desc{font-size:13.5px;color:rgba(255,255,255,.42);line-height:1.75;max-width:240px;margin-bottom:18px}
+.ft-addr{font-size:13px;color:rgba(255,255,255,.38);line-height:1.7}
+.ft-col-ttl{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px}
+.ft-links{display:flex;flex-direction:column;gap:11px}
+.ft-links a{font-size:13.5px;color:rgba(255,255,255,.52);transition:color .2s}
+.ft-links a:hover{color:#fff}
+.ft-ci{margin-bottom:14px}
+.ft-ci-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:3px}
+.ft-ci-val{font-size:13.5px;color:rgba(255,255,255,.65);line-height:1.55}
+.ft-ci-val a{color:var(--orange);transition:color .2s}
+.ft-ci-val a:hover{color:#ff7a4a}
+.ft-inquiry{display:inline-flex;align-items:center;gap:5px;font-family:var(--fh);font-size:13px;font-weight:600;color:var(--orange);margin-top:8px;transition:gap .2s}
+.ft-inquiry:hover{gap:8px}
+.ft-bot{padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-copy{font-size:12.5px;color:rgba(255,255,255,.2)}
+.ft-legal{font-size:12.5px;color:rgba(255,255,255,.18)}
+
+/* Pagination */
+.cat-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.cat-count{font-family:var(--fh);font-size:13px;font-weight:600;color:var(--g3)}
+.cat-perpage{display:flex;align-items:center;gap:8px;font-family:var(--fb);font-size:13px;color:var(--g3)}
+.cat-perpage select{font-family:var(--fb);font-size:13px;color:var(--black);border:1.5px solid var(--g2);border-radius:6px;padding:5px 28px 5px 10px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 9px center;-webkit-appearance:none;appearance:none;cursor:pointer}
+.cat-perpage select:focus{outline:none;border-color:var(--blue)}
+.pagi{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:32px;flex-wrap:wrap}
+.pagi-btn{display:flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 8px;border-radius:7px;font-family:var(--fh);font-size:13.5px;font-weight:600;color:var(--g3);border:1.5px solid transparent;cursor:pointer;transition:color .15s,background .15s,border-color .15s;background:none;user-select:none}
+.pagi-btn:hover:not(:disabled){color:var(--blue);background:var(--blue-lt)}
+.pagi-btn.active{color:#fff;background:var(--blue);border-color:var(--blue)}
+.pagi-btn:disabled{opacity:.35;cursor:default}
+.pagi-ellipsis{display:flex;align-items:center;justify-content:center;width:36px;height:36px;color:var(--g3);font-size:13.5px}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.product-grid{grid-template-columns:repeat(2,1fr)}.ft-top{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:960px){
+  .tb-contact .tb-sep,.tb-contact .tb-link:last-child,.tb-social,.tb-right .tb-sep{display:none}
+  .mobile-nav{top:104px}
+  .hdr-nav{display:none}.nav-tog{display:flex}
+  .cat-sidebar{position:fixed;top:0;left:0;bottom:0;width:280px;background:#fff;z-index:300;overflow-y:auto;padding:80px 20px 40px;transform:translateX(-100%);transition:transform 300ms cubic-bezier(.25,.1,.25,1);box-shadow:4px 0 32px rgba(0,0,0,.12)}
+  .cat-sidebar.is-open{transform:translateX(0)}
+  .sidebar-overlay{display:block;position:fixed;inset:0;background:rgba(10,10,10,.4);z-index:290;opacity:0;pointer-events:none;visibility:hidden;transition:opacity 300ms ease,visibility 0s linear 300ms}
+  .sidebar-overlay.is-open{opacity:1;pointer-events:auto;visibility:visible;transition:opacity 300ms ease,visibility 0s linear 0s}
+  .filter-toggle-row{display:flex}
+  .catalog-layout{grid-template-columns:1fr}
+}
+@media(max-width:680px){.wrap{padding:0 22px}.product-grid{grid-template-columns:repeat(2,1fr)}.ft-top{grid-template-columns:1fr;gap:32px}.ft-bot{flex-direction:column;text-align:center}}
+@media(max-width:420px){.product-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr" role="banner">
+  <div class="top-bar" id="topBar">
+    <div class="wrap">
+      <div class="top-bar-inner">
+        <div class="tb-contact">
+          <a href="tel:+622129704002" class="tb-link">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.4 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +62 21 29704002
+          </a>
+          <span class="tb-sep"></span>
+          <a href="mailto:sales@fortisprima.com" class="tb-link">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            sales@fortisprima.com
+          </a>
+        </div>
+        <div class="tb-right">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="tb-social" aria-label="LinkedIn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="tb-social" aria-label="Instagram">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <span class="tb-sep"></span>
+          <a href="catalog.html" class="tb-catalog">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Browse Catalog
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-bar">
+  <div class="wrap">
+    <div class="hdr-inner">
+      <a href="index.html" class="logo" aria-label="PT Fortis Prima Solusi — Home">
+        <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="logo-img">
+      </a>
+      <nav class="hdr-nav" id="hdrNav" aria-label="Primary navigation">
+
+        <div class="nav-item">
+          <a href="index.html#home" class="nav-link">Home</a>
+        </div>
+
+        <div class="nav-item">
+          <a href="index.html#about" class="nav-link">About</a>
+        </div>
+
+        <div class="nav-item">
+          <span class="nav-link" tabindex="0">
+            Services
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </span>
+          <div class="subnav subnav-svc" role="menu">
+            <div class="svc-grid">
+              <a href="index.html#services" class="svc-card" role="menuitem">
+                <div class="svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+                <div class="svc-body"><span class="svc-name">Global Procurement &amp; Sourcing</span><span class="svc-desc">End-to-end sourcing from global suppliers</span></div>
+              </a>
+              <a href="index.html#services" class="svc-card" role="menuitem">
+                <div class="svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+                <div class="svc-body"><span class="svc-name">Industrial MRO Supply</span><span class="svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
+              </a>
+              <a href="index.html#services" class="svc-card" role="menuitem">
+                <div class="svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div class="svc-body"><span class="svc-name">PPE Supply</span><span class="svc-desc">ANSI / EN certified protective equipment</span></div>
+              </a>
+              <a href="index.html#services" class="svc-card" role="menuitem">
+                <div class="svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                <div class="svc-body"><span class="svc-name">Container Lease &amp; Sale</span><span class="svc-desc">ISO containers for storage &amp; logistics</span></div>
+              </a>
+              <a href="index.html#services" class="svc-card" role="menuitem" style="grid-column:1/-1">
+                <div class="svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+                <div class="svc-body"><span class="svc-name">Consignment Inventory</span><span class="svc-desc">Pay-as-you-use stocking program for plant operations</span></div>
+              </a>
+            </div>
+            <div class="svc-footer">
+              <span class="svc-footer-text">Need a custom quote for bulk orders?</span>
+              <a href="index.html#contact-form" class="svc-footer-link">Request Inquiry &#8594;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <span class="nav-link" tabindex="0">
+            Catalog
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </span>
+          <div class="subnav cat-menu" role="menu">
+
+            <!-- Brand flyout -->
+            <div class="cat-menu-item">
+              <div class="cat-menu-row">
+                <div class="cat-menu-icon">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3m-3.07-7.07-2.12 2.12M7.17 16.83l-2.12 2.12M4.93 4.93l2.12 2.12m9.9 9.9 2.12 2.12"/></svg>
+                </div>
+                <span class="cat-menu-label">Brand</span>
+                <svg class="cat-menu-arr" width="8" height="12" viewBox="0 0 6 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4-4 4"/></svg>
+              </div>
+              <div class="cat-flyout" role="menu">
+                <a href="catalog.html?brand=MSA+Safety" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">MSA Safety</span><span class="cat-flyout-sub">Head &amp; face protection</span></div>
+                </a>
+                <a href="catalog.html?brand=Ansell" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8H10C6.8 22 4 19 4 16v-1"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Ansell</span><span class="cat-flyout-sub">Cut-resistant gloves</span></div>
+                </a>
+                <a href="catalog.html?brand=Honeywell" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Honeywell</span><span class="cat-flyout-sub">Hi-vis &amp; safety vests</span></div>
+                </a>
+                <a href="catalog.html?brand=3M" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">3M</span><span class="cat-flyout-sub">Chemical safety goggles</span></div>
+                </a>
+                <div class="cat-flyout-divider"></div>
+                <a href="catalog.html?brand=SKF" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="10"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">SKF</span><span class="cat-flyout-sub">Industrial bearings</span></div>
+                </a>
+                <a href="catalog.html?brand=Parker" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Parker</span><span class="cat-flyout-sub">Hydraulic seal kits</span></div>
+                </a>
+                <a href="catalog.html?brand=Kitz" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1"/><path d="M16 3h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/><path d="M12 3v18"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Kitz</span><span class="cat-flyout-sub">Ball valves &amp; flow control</span></div>
+                </a>
+                <div class="cat-flyout-divider"></div>
+                <a href="catalog.html?brand=Schneider+Electric" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Schneider Electric</span><span class="cat-flyout-sub">Motor contactors</span></div>
+                </a>
+                <a href="catalog.html?brand=Legrand" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Legrand</span><span class="cat-flyout-sub">Perforated cable trays</span></div>
+                </a>
+                <a href="catalog.html?brand=Siemens" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Siemens</span><span class="cat-flyout-sub">MCB circuit breakers</span></div>
+                </a>
+                <div class="cat-flyout-divider"></div>
+                <a href="catalog.html?brand=WIX+Filters" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">WIX Filters</span><span class="cat-flyout-sub">Engine oil filters</span></div>
+                </a>
+                <a href="catalog.html?brand=Gates" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Gates</span><span class="cat-flyout-sub">V-ribbed drive belts</span></div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Category flyout -->
+            <div class="cat-menu-item">
+              <div class="cat-menu-row">
+                <div class="cat-menu-icon">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                </div>
+                <span class="cat-menu-label">Category</span>
+                <svg class="cat-menu-arr" width="8" height="12" viewBox="0 0 6 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4-4 4"/></svg>
+              </div>
+              <div class="cat-flyout" role="menu">
+                <a href="catalog.html?cat=ppe" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">PPE &amp; Safety Equipment</span><span class="cat-flyout-sub">Helmets, gloves, goggles, vests</span></div>
+                </a>
+                <a href="catalog.html?cat=mro" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">MRO &amp; Mechanical Parts</span><span class="cat-flyout-sub">Bearings, seals, valves</span></div>
+                </a>
+                <a href="catalog.html?cat=electrical" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Electrical &amp; Instrumentation</span><span class="cat-flyout-sub">Contactors, breakers, cable trays</span></div>
+                </a>
+                <a href="catalog.html?cat=automotive" role="menuitem">
+                  <div class="cat-flyout-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+                  <div class="cat-flyout-body"><span class="cat-flyout-label">Automotive &amp; Fleet Parts</span><span class="cat-flyout-sub">Oil filters, drive belts</span></div>
+                </a>
+              </div>
+            </div>
+
+            <!-- All products link -->
+            <div class="cat-flyout-divider" style="margin:4px 0"></div>
+            <a href="catalog.html" style="display:flex;align-items:center;gap:6px;padding:9px 16px;font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--blue);transition:background .15s" onmouseover="this.style.background='var(--gray-bg)'" onmouseout="this.style.background=''">
+              View All Products &#8594;
+            </a>
+
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="index.html#blog" class="nav-link">Blog</a>
+        </div>
+
+        <div class="nav-item">
+          <a href="index.html#contact" class="nav-link">Contact</a>
+        </div>
+
+        <div class="cart-icon-wrap">
+          <a href="cart.html" class="cart-icon-btn" id="cartNavIcon" aria-label="View cart">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </a>
+          <span class="cart-badge" id="cartBadge"></span>
+        </div>
+        <a href="index.html#contact-form" class="hdr-cta">Send Inquiry &rarr;</a>
+      </nav>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false">
+        <span class="nav-tog-bar"></span><span class="nav-tog-bar"></span><span class="nav-tog-bar"></span>
+      </button>
+    </div>
+  </div>
+  </div><!-- /main-bar -->
+</header>
+
+<div class="mnav-backdrop" id="mnavBackdrop" aria-hidden="true"></div>
+<div class="mobile-nav" id="mobileNav" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+  <nav>
+    <div class="mnav-item"><a href="index.html#home" class="mnav-link">Home</a></div>
+    <div class="mnav-item"><a href="index.html#about" class="mnav-link">About</a></div>
+    <div class="mnav-item">
+      <div class="mnav-link" data-expand="m-svc" tabindex="0" role="button" aria-expanded="false" aria-controls="m-svc">
+        <span>Services</span>
+        <svg class="mnav-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+      </div>
+      <div class="mnav-sub" id="m-svc"><div class="mnav-sub-inner">
+  <a href="index.html#services" class="mnav-svc-row">
+    <div class="mnav-svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+    <div class="mnav-svc-body"><span class="mnav-svc-name">Global Procurement &amp; Sourcing</span><span class="mnav-svc-desc">End-to-end sourcing from global suppliers</span></div>
+  </a>
+  <a href="index.html#services" class="mnav-svc-row">
+    <div class="mnav-svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+    <div class="mnav-svc-body"><span class="mnav-svc-name">Industrial MRO Supply</span><span class="mnav-svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
+  </a>
+  <a href="index.html#services" class="mnav-svc-row">
+    <div class="mnav-svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <div class="mnav-svc-body"><span class="mnav-svc-name">PPE Supply</span><span class="mnav-svc-desc">ANSI / EN certified protective equipment</span></div>
+  </a>
+  <a href="index.html#services" class="mnav-svc-row">
+    <div class="mnav-svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+    <div class="mnav-svc-body"><span class="mnav-svc-name">Container Lease &amp; Sale</span><span class="mnav-svc-desc">ISO containers for storage &amp; logistics</span></div>
+  </a>
+  <a href="index.html#services" class="mnav-svc-row">
+    <div class="mnav-svc-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+    <div class="mnav-svc-body"><span class="mnav-svc-name">Consignment Inventory</span><span class="mnav-svc-desc">Pay-as-you-use stocking program</span></div>
+  </a>
+</div></div>
+    </div>
+    <div class="mnav-item">
+      <div class="mnav-link" data-expand="m-cat" tabindex="0" role="button" aria-expanded="false" aria-controls="m-cat">
+        <span>Catalog</span>
+        <svg class="mnav-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+      </div>
+      <div class="mnav-sub" id="m-cat"><div class="mnav-sub-inner">
+  <div class="mnav-sub-head">Brand</div>
+  <a href="catalog.html?brand=MSA+Safety" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <span>MSA Safety</span>
+  </a>
+  <a href="catalog.html?brand=Ansell" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8H10C6.8 22 4 19 4 16v-1"/></svg></div>
+    <span>Ansell</span>
+  </a>
+  <a href="catalog.html?brand=Honeywell" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <span>Honeywell</span>
+  </a>
+  <a href="catalog.html?brand=3M" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+    <span>3M</span>
+  </a>
+  <div class="mnav-sub-divider"></div>
+  <a href="catalog.html?brand=SKF" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="10"/></svg></div>
+    <span>SKF</span>
+  </a>
+  <a href="catalog.html?brand=Parker" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+    <span>Parker</span>
+  </a>
+  <a href="catalog.html?brand=Kitz" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h1"/><path d="M16 3h1a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-1"/><path d="M12 3v18"/></svg></div>
+    <span>Kitz</span>
+  </a>
+  <div class="mnav-sub-divider"></div>
+  <a href="catalog.html?brand=Schneider+Electric" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+    <span>Schneider Electric</span>
+  </a>
+  <a href="catalog.html?brand=Legrand" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+    <span>Legrand</span>
+  </a>
+  <a href="catalog.html?brand=Siemens" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+    <span>Siemens</span>
+  </a>
+  <div class="mnav-sub-divider"></div>
+  <a href="catalog.html?brand=WIX+Filters" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+    <span>WIX Filters</span>
+  </a>
+  <a href="catalog.html?brand=Gates" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+    <span>Gates</span>
+  </a>
+  <div class="mnav-sub-divider"></div>
+  <div class="mnav-sub-head">Category</div>
+  <a href="catalog.html?cat=ppe" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <span>PPE &amp; Safety Equipment</span>
+  </a>
+  <a href="catalog.html?cat=mro" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+    <span>MRO &amp; Mechanical Parts</span>
+  </a>
+  <a href="catalog.html?cat=electrical" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+    <span>Electrical &amp; Instrumentation</span>
+  </a>
+  <a href="catalog.html?cat=automotive" class="mnav-cat-row">
+    <div class="mnav-cat-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+    <span>Automotive &amp; Fleet Parts</span>
+  </a>
+  <div class="mnav-sub-divider"></div>
+  <a href="catalog.html" class="mnav-all-link">View All Products &rarr;</a>
+</div></div>
+    </div>
+    <div class="mnav-item"><a href="index.html#blog" class="mnav-link">Blog</a></div>
+    <div class="mnav-item"><a href="index.html#contact" class="mnav-link">Contact</a></div>
+  </nav>
+  <div class="mnav-cta">
+    <a href="cart.html" class="btn btn-ghost-b">View Cart</a>
+    <a href="index.html#contact-form" class="btn btn-orange">Send Inquiry</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="ph-inner">
+      <div class="ph-label">Industrial Supply</div>
+      <h1 class="ph-title">Product Catalog</h1>
+      <p class="ph-sub">Browse our industrial supply range — MRO, PPE, Electrical, and Automotive. Add items to your inquiry cart and submit via WhatsApp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="wrap">
+    <div class="bc-inner">
+      <a href="index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <span class="bc-current">Catalog</span>
+    </div>
+  </div>
+</div>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+<!-- CATALOG -->
+<section class="catalog-section">
+  <div class="wrap">
+
+    <!-- Mobile filter row -->
+    <div class="filter-toggle-row">
+      <button class="filter-toggle-btn" id="filterToggleBtn" aria-expanded="false">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+        Filter Products
+      </button>
+      <p class="catalog-count" id="catalogCountMobile"></p>
+    </div>
+
+    <div class="catalog-layout">
+
+      <!-- SIDEBAR -->
+      <aside class="cat-sidebar" id="catSidebar" aria-label="Product filters">
+
+        <!-- Search -->
+        <div class="sidebar-search">
+          <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" class="search-input" id="searchInput" placeholder="Search products…" aria-label="Search products">
+        </div>
+
+        <!-- Category filter -->
+        <div class="sidebar-box">
+          <div class="sidebar-head">
+            <span class="sidebar-head-ttl">Category</span>
+            <button class="sidebar-clear" id="clearCat" aria-label="Clear category filter">Clear</button>
+          </div>
+          <div class="sidebar-body" id="catFilterList"></div>
+        </div>
+
+        <!-- Brand filter -->
+        <div class="sidebar-box">
+          <div class="sidebar-head">
+            <span class="sidebar-head-ttl">Brand</span>
+            <button class="sidebar-clear" id="clearBrand" aria-label="Clear brand filter">Clear</button>
+          </div>
+          <div class="sidebar-body" id="brandFilterList"></div>
+        </div>
+
+        <button class="apply-filter-btn" id="applyFilters">Apply Filters</button>
+
+      </aside>
+
+      <!-- MAIN -->
+      <div class="catalog-main">
+        <div class="cat-toolbar">
+          <div>
+            <span class="catalog-count" id="catalogCount">Showing 0 products</span>
+            <div class="cat-chips" id="catChips" style="margin-top:6px"></div>
+          </div>
+          <div class="cat-perpage">
+            <label for="perPageSel">Show:</label>
+            <select id="perPageSel">
+              <option value="6" selected>6 per page</option>
+              <option value="12">12 per page</option>
+              <option value="24">24 per page</option>
+            </select>
+          </div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+        <div class="pagi" id="pagination"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="ft" aria-label="Footer and contact information">
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <div class="ft-logo">
+          <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="ft-logo-img">
+        </div>
+        <p class="ft-desc">PT Fortis Prima Solusi — End-to-End Procurement Partner for Global-Grade Industrial Supply.</p>
+        <p class="ft-addr">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta Pusat</p>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Navigation</div>
+        <div class="ft-links">
+          <a href="index.html#home">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="catalog.html">Catalog</a>
+          <a href="index.html#blog">Blog</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Services</div>
+        <div class="ft-links">
+          <a href="index.html#services">Global Procurement &amp; Sourcing</a>
+          <a href="index.html#services">Industrial MRO Supply</a>
+          <a href="index.html#services">PPE Supply</a>
+          <a href="index.html#services">Container Lease &amp; Sale</a>
+          <a href="index.html#services">Consignment Inventory</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Contact</div>
+        <div class="ft-ci"><div class="ft-ci-lbl">Email</div><div class="ft-ci-val"><a href="mailto:sales@fortisprima.com">sales@fortisprima.com</a></div></div>
+        <div class="ft-ci"><div class="ft-ci-lbl">Phone</div><div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div></div>
+        <a href="index.html#contact-form" class="ft-inquiry">Send Inquiry &#8594;</a>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p class="ft-copy">&copy; 2026 PT Fortis Prima Solusi. All rights reserved.</p>
+      <p class="ft-legal">Privacy Policy &nbsp;&middot;&nbsp; Terms of Use</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/fortis.js"></script>
+<script>
+(function () {
+  var activeCat   = 'all';
+  var activeBrand = 'all';
+  var searchQ     = '';
+  var currentPage = 1;
+  var perPage     = 6;
+
+  var grid        = document.getElementById('productGrid');
+  var countEl     = document.getElementById('catalogCount');
+  var countMobile = document.getElementById('catalogCountMobile');
+  var catList     = document.getElementById('catFilterList');
+  var brandList   = document.getElementById('brandFilterList');
+  var chipsEl     = document.getElementById('catChips');
+  var clearCatBtn = document.getElementById('clearCat');
+  var clearBrandBtn = document.getElementById('clearBrand');
+
+  /* Check URL params for initial filters */
+  var urlCat = new URLSearchParams(window.location.search).get('cat') || 'all';
+  if (urlCat !== 'all') activeCat = urlCat;
+  var urlBrand = new URLSearchParams(window.location.search).get('brand') || 'all';
+  if (urlBrand !== 'all') activeBrand = urlBrand;
+
+  /* Build category counts */
+  var catMeta = [
+    { key: 'all', label: 'All Products' },
+    { key: 'ppe', label: 'PPE' },
+    { key: 'mro', label: 'MRO' },
+    { key: 'electrical', label: 'Electrical' },
+    { key: 'automotive', label: 'Automotive' }
+  ];
+
+  function getCatCount(key) {
+    if (key === 'all') return FORTIS.PRODUCTS.length;
+    return FORTIS.PRODUCTS.filter(function (p) { return p.category === key; }).length;
+  }
+
+  function getBrandList() {
+    var map = {};
+    FORTIS.PRODUCTS.forEach(function (p) {
+      map[p.brand] = (map[p.brand] || 0) + 1;
+    });
+    return Object.keys(map).sort().map(function (b) { return { key: b, label: b, count: map[b] }; });
+  }
+
+  /* Build sidebar filters */
+  function buildFilters() {
+    /* Category */
+    catList.innerHTML = catMeta.map(function (c) {
+      return '<div class="sidebar-opt">' +
+        '<label>' +
+          '<input type="radio" name="cat" value="' + c.key + '"' + (activeCat === c.key ? ' checked' : '') + '>' +
+          '<span class="opt-label-text">' + c.label + '</span>' +
+          '<span class="opt-count">' + getCatCount(c.key) + '</span>' +
+        '</label>' +
+      '</div>';
+    }).join('');
+
+    /* Brand */
+    var brands = getBrandList();
+    brandList.innerHTML = brands.map(function (b) {
+      return '<div class="sidebar-opt">' +
+        '<label>' +
+          '<input type="radio" name="brand" value="' + b.key + '"' + (activeBrand === b.key ? ' checked' : '') + '>' +
+          '<span class="opt-label-text">' + b.label + '</span>' +
+          '<span class="opt-count">' + b.count + '</span>' +
+        '</label>' +
+      '</div>';
+    }).join('');
+
+    syncClearBtns();
+  }
+
+  function syncClearBtns() {
+    clearCatBtn.classList.toggle('visible', activeCat !== 'all');
+    clearBrandBtn.classList.toggle('visible', activeBrand !== 'all');
+  }
+
+  clearCatBtn.addEventListener('click', function () {
+    activeCat = 'all';
+    currentPage = 1;
+    buildFilters();
+    renderGrid();
+  });
+  clearBrandBtn.addEventListener('click', function () {
+    activeBrand = 'all';
+    currentPage = 1;
+    buildFilters();
+    renderGrid();
+  });
+
+  document.getElementById('applyFilters').addEventListener('click', function () {
+    var checkedCat = catList.querySelector('input[name=cat]:checked');
+    var checkedBrand = brandList.querySelector('input[name=brand]:checked');
+    activeCat   = checkedCat   ? checkedCat.value   : 'all';
+    activeBrand = checkedBrand ? checkedBrand.value : 'all';
+    currentPage = 1;
+    syncClearBtns();
+    renderGrid();
+  });
+
+  function renderCard(p) {
+    return '<div class="prod-card">' +
+      '<div class="prod-img"><img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></div>' +
+      '<div class="prod-body">' +
+        '<div class="prod-badges">' +
+          '<span class="prod-brand">' + p.brand + '</span>' +
+          '<span class="prod-cat">' + p.cat_label + '</span>' +
+        '</div>' +
+        '<a href="product-detail.html?id=' + p.id + '" class="prod-title">' + p.name + '</a>' +
+        '<p class="prod-exc">' + p.excerpt + '</p>' +
+        '<div class="prod-actions">' +
+          '<a href="product-detail.html?id=' + p.id + '" class="prod-view">View Detail &#8594;</a>' +
+          '<button class="prod-add" data-pid="' + p.id + '">+ Cart</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderPagination(total) {
+    var totalPages = Math.ceil(total / perPage) || 1;
+    var pagi = document.getElementById('pagination');
+    if (!pagi) return;
+    if (totalPages <= 1) { pagi.innerHTML = ''; return; }
+    var html = '';
+    html += '<button class="pagi-btn" id="pagiPrev"' + (currentPage === 1 ? ' disabled' : '') + '>&#8592;</button>';
+    var pages = [];
+    for (var i = 1; i <= totalPages; i++) {
+      if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+        pages.push(i);
+      } else if (pages[pages.length - 1] !== '...') {
+        pages.push('...');
+      }
+    }
+    pages.forEach(function(p) {
+      if (p === '...') {
+        html += '<span class="pagi-ellipsis">&hellip;</span>';
+      } else {
+        html += '<button class="pagi-btn' + (p === currentPage ? ' active' : '') + '" data-page="' + p + '">' + p + '</button>';
+      }
+    });
+    html += '<button class="pagi-btn" id="pagiNext"' + (currentPage === totalPages ? ' disabled' : '') + '>&#8594;</button>';
+    pagi.innerHTML = html;
+    pagi.querySelector('#pagiPrev') && pagi.querySelector('#pagiPrev').addEventListener('click', function() {
+      if (currentPage > 1) { currentPage--; renderGrid(); }
+    });
+    pagi.querySelector('#pagiNext') && pagi.querySelector('#pagiNext').addEventListener('click', function() {
+      if (currentPage < totalPages) { currentPage++; renderGrid(); }
+    });
+    pagi.querySelectorAll('[data-page]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        currentPage = parseInt(btn.dataset.page, 10);
+        renderGrid();
+      });
+    });
+  }
+
+  function renderGrid() {
+    perPage = parseInt(document.getElementById('perPageSel').value, 10) || 12;
+    var q = searchQ.trim().toLowerCase();
+    var filtered = FORTIS.PRODUCTS.filter(function (p) {
+      var catOk   = activeCat === 'all' || p.category === activeCat;
+      var brandOk = activeBrand === 'all' || p.brand === activeBrand;
+      var textOk  = !q || p.name.toLowerCase().indexOf(q) !== -1 || p.excerpt.toLowerCase().indexOf(q) !== -1 || p.brand.toLowerCase().indexOf(q) !== -1 || p.cat_label.toLowerCase().indexOf(q) !== -1;
+      return catOk && brandOk && textOk;
+    });
+
+    var total = filtered.length;
+    var totalPages = Math.ceil(total / perPage) || 1;
+    if (currentPage > totalPages) currentPage = 1;
+    var start = (currentPage - 1) * perPage;
+    var pageItems = filtered.slice(start, start + perPage);
+
+    var countText = total + ' product' + (total !== 1 ? 's' : '') + ' found';
+    if (countEl) countEl.textContent = countText;
+    if (countMobile) countMobile.textContent = countText;
+
+    /* Active filter chips */
+    if (chipsEl) {
+      var chips = [];
+      if (activeCat !== 'all') {
+        var catLabel = catMeta.find(function (c) { return c.key === activeCat; });
+        chips.push({ type: 'cat', label: catLabel ? catLabel.label : activeCat });
+      }
+      if (activeBrand !== 'all') chips.push({ type: 'brand', label: activeBrand });
+      chipsEl.innerHTML = chips.map(function (c) {
+        return '<span class="af-chip">' + c.label +
+          '<button data-type="' + c.type + '" aria-label="Remove ' + c.label + ' filter">' +
+            '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+          '</button>' +
+        '</span>';
+      }).join('');
+      chipsEl.querySelectorAll('button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          if (btn.dataset.type === 'cat') { activeCat = 'all'; }
+          else { activeBrand = 'all'; }
+          currentPage = 1;
+          buildFilters();
+          renderGrid();
+        });
+      });
+    }
+
+    if (pageItems.length === 0) {
+      grid.innerHTML = '<div class="no-results"><strong>No products found</strong>Try adjusting your search or filter.</div>';
+      renderPagination(total);
+      return;
+    }
+
+    grid.innerHTML = pageItems.map(function (p) { return renderCard(p); }).join('');
+
+    grid.querySelectorAll('.prod-add').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        FORTIS.addToCart(btn.dataset.pid);
+        btn.textContent = 'Added ✓';
+        btn.classList.add('added');
+        setTimeout(function () {
+          btn.textContent = '+ Cart';
+          btn.classList.remove('added');
+        }, 1400);
+      });
+    });
+
+    renderPagination(total);
+  }
+
+  /* Per-page select */
+  var perPageSel = document.getElementById('perPageSel');
+  if (perPageSel) perPageSel.addEventListener('change', function() { currentPage = 1; renderGrid(); });
+
+  /* Search */
+  document.getElementById('searchInput').addEventListener('input', function (e) {
+    searchQ = e.target.value;
+    currentPage = 1;
+    renderGrid();
+  });
+
+  /* Mobile sidebar toggle */
+  var sidebar = document.getElementById('catSidebar');
+  var overlay = document.getElementById('sidebarOverlay');
+  var filterBtn = document.getElementById('filterToggleBtn');
+
+  function openSidebar() {
+    sidebar.classList.add('is-open');
+    overlay.classList.add('is-open');
+    filterBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    filterBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  filterBtn.addEventListener('click', function () {
+    sidebar.classList.contains('is-open') ? closeSidebar() : openSidebar();
+  });
+  overlay.addEventListener('click', closeSidebar);
+
+  /* Mobile nav */
+  (function () {
+    var tog = document.getElementById('navTog'), mnav = document.getElementById('mobileNav'), bd = document.getElementById('mnavBackdrop'), open = false;
+    function openMenu(){open=true;tog.classList.add('is-open');mnav.classList.add('is-open');bd.classList.add('is-open');tog.setAttribute('aria-expanded','true');mnav.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+    function closeMenu(){open=false;tog.classList.remove('is-open');mnav.classList.remove('is-open');bd.classList.remove('is-open');tog.setAttribute('aria-expanded','false');mnav.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+    tog.addEventListener('click',function(){open?closeMenu():openMenu()});
+    bd.addEventListener('click',closeMenu);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(open)closeMenu();else closeSidebar();}});
+    mnav.querySelectorAll('[data-expand]').forEach(function(el){
+      el.addEventListener('click',function(){
+        var t=document.getElementById(el.dataset.expand);if(!t)return;
+        var was=t.classList.contains('is-open');
+        mnav.querySelectorAll('.mnav-sub.is-open').forEach(function(s){s.classList.remove('is-open')});
+        mnav.querySelectorAll('.mnav-link.is-open').forEach(function(l){l.classList.remove('is-open');l.setAttribute('aria-expanded','false')});
+        if(!was){t.classList.add('is-open');el.classList.add('is-open');el.setAttribute('aria-expanded','true')}
+      });
+    });
+    mnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu)});
+  })();
+
+  buildFilters();
+  renderGrid();
+})();
+</script>
+</body>
+</html>
