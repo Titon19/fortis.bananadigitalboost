@@ -250,11 +250,12 @@ a.mnav-link{display:flex}
 .prod-img{aspect-ratio:4/3;overflow:hidden;background:#f4f6f8;position:relative;flex-shrink:0}
 .prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;display:block}
 .prod-card:hover .prod-img img{transform:scale(1.06)}
-.prod-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1;border-top:1px solid var(--g1);text-align:center;align-items:center}
-.prod-cat-label{display:inline-flex;align-items:center;font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);padding:2px 8px;border-radius:20px;margin-bottom:9px;width:fit-content}
-.prod-title{font-family:var(--fh);font-size:14.5px;font-weight:700;color:var(--black);line-height:1.35;transition:color .18s;flex:1;margin-bottom:5px;display:block}
+.prod-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1;border-top:1px solid var(--g1)}
+.prod-meta-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.prod-cat-label{display:inline-flex;align-items:center;font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);padding:2px 8px;border-radius:20px;width:fit-content}
+.prod-title{font-family:var(--fh);font-size:14.5px;font-weight:700;color:var(--black);line-height:1.35;transition:color .18s;flex:1;margin-bottom:14px;display:block}
 .prod-title:hover{color:var(--blue)}
-.prod-brand-tag{font-family:var(--fh);font-size:11px;font-weight:500;color:var(--g3);margin-bottom:auto;padding-bottom:16px}
+.prod-brand-tag{font-family:var(--fh);font-size:11px;font-weight:500;color:var(--g3)}
 .prod-add{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:11px 14px;border-radius:8px;background:var(--blue);color:#fff;font-family:var(--fh);font-size:13px;font-weight:700;border:none;cursor:pointer;transition:background .18s;-webkit-tap-highlight-color:transparent;margin-bottom:8px}
 .prod-add:hover{background:var(--blue-dk)}
 .prod-add.added{background:#16a34a}
@@ -969,9 +970,8 @@ a.mnav-link{display:flex}
     return '<div class="prod-card">' +
       '<div class="prod-img"><img src="' + p.img + '" alt="' + p.name + '" loading="lazy"></div>' +
       '<div class="prod-body">' +
-        '<span class="prod-cat-label">' + p.cat_label + '</span>' +
+        '<div class="prod-meta-row"><span class="prod-cat-label">' + p.cat_label + '</span><span class="prod-brand-tag">' + p.brand + '</span></div>' +
         '<a href="product-detail.html?id=' + p.id + '" class="prod-title">' + p.name + '</a>' +
-        '<span class="prod-brand-tag">' + p.brand + '</span>' +
 
         '<button class="prod-add" data-pid="' + p.id + '">' + CART_SVG + 'Add to Cart</button>' +
         '<a href="product-detail.html?id=' + p.id + '" class="prod-view">View Detail &#8594;</a>' +
