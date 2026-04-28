@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT Fortis Prima Solusi — End-to-End Procurement Partner</title>
+<!--
+  FORTIS PRIMA SOLUSI — Homepage MVP
+  Design direction for future WordPress custom theme.
+  WordPress template: front-page.php
+  Products: WooCommerce (future)
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN TOKENS — future: WordPress theme.json / ACF
+   ═══════════════════════════════════════════════════ */
+:root {
+  --blue:      #0E3BAA;
+  --blue-dk:   #0a2e87;
+  --blue-xdk:  #071d5c;
+  --blue-lt:   #E6EAF2;
+  --orange:    #F7612A;
+  --orange-dk: #d94e1a;
+  --black:     #0A0A0A;
+  --gray-bg:   #F7F8FA;
+  --g1:        #E6EAF2;
+  --g2:        #D9DEE8;
+  --g3:        #6B7280;
+  --white:     #FFFFFF;
+
+  --fh: 'Manrope', sans-serif;
+  --fb: 'IBM Plex Sans', sans-serif;
+
+  --mw:  1180px;   /* max inner content width */
+  --r:   10px;     /* border radius */
+  --spy: 96px;     /* section padding y */
+}
+
+/* ═══════════════════════════════════════════════════
+   RESET
+   ═══════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--fb);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--black);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; padding: 0; }
+
+/* ═══════════════════════════════════════════════════
+   LAYOUT HELPERS
+   ═══════════════════════════════════════════════════ */
+.wrap {
+  width: 100%;
+  max-width: var(--mw);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.section { padding: var(--spy) 0; }
+.section--gray { background: var(--gray-bg); }
+.section--blue { background: var(--blue); }
+.section--dark { background: var(--black); }
+.section--border-t { border-top: 1px solid var(--g1); }
+
+/* ═══════════════════════════════════════════════════
+   FADE-UP ANIMATION — future: GSAP / AOS in WP
+   ═══════════════════════════════════════════════════ */
+.fu {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fu.on { opacity: 1; transform: none; }
+.fu:nth-child(2) { transition-delay: .08s; }
+.fu:nth-child(3) { transition-delay: .15s; }
+.fu:nth-child(4) { transition-delay: .22s; }
+.fu:nth-child(5) { transition-delay: .29s; }
+.fu:nth-child(6) { transition-delay: .36s; }
+.fu:nth-child(7) { transition-delay: .43s; }
+
+/* ═══════════════════════════════════════════════════
+   TOOLTIP — hover helper on CTAs
+   ═══════════════════════════════════════════════════ */
+.tip-w { position: relative; display: inline-flex; }
+.tip-w .tip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10,10,10,.92);
+  color: #fff;
+  font-family: var(--fb);
+  font-size: 11px;
+  padding: 5px 11px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s;
+  z-index: 50;
+}
+.tip-w .tip::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(10,10,10,.92);
+}
+.tip-w:hover .tip,
+.tip-w:focus-within .tip { opacity: 1; }
+
+/* ═══════════════════════════════════════════════════
+   BUTTONS — reusable design tokens
+   ═══════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  padding: 13px 26px;
+  border-radius: 7px;
+  transition: background .2s, border-color .2s, transform .15s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-orange { background: var(--orange); color: #fff; }
+.btn-orange:hover { background: var(--orange-dk); }
+.btn-ghost-w {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.4);
+}
+.btn-ghost-w:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.75); }
+.btn-blue { background: var(--blue); color: #fff; }
+.btn-blue:hover { background: var(--blue-dk); }
+.btn-ghost-b {
+  background: transparent;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+}
+.btn-ghost-b:hover { background: var(--blue); color: #fff; }
+
+/* ═══════════════════════════════════════════════════
+   SECTION LABELS — reusable pattern
+   ═══════════════════════════════════════════════════ */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fh);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 14px;
+}
+.eyebrow::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.eyebrow--center { justify-content: center; }
+.eyebrow--center::before { display: none; }
+.eyebrow--light { color: rgba(255,255,255,.7); }
+.eyebrow--light::before { background: var(--orange); }
+
+.sec-title {
+  font-family: var(--fh);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.4px;
+  color: var(--black);
+}
+.sec-title--light { color: #fff; }
+.sec-intro {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--g3);
+  max-width: 540px;
+  margin-top: 12px;
+}
+.sec-intro--light { color: rgba(255,255,255,.7); }
+
+/* ═══════════════════════════════════════════════════
+   HEADER — future: header.php
+   ═══════════════════════════════════════════════════ */
+#header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  transition: background .3s, box-shadow .3s;
+}
+#header.scrolled {
+  background: rgba(255,255,255,.97);
+  box-shadow: 0 1px 0 var(--g2);
+  backdrop-filter: blur(8px);
+}
+.hdr-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--fh);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -.2px;
+  color: #fff;
+  transition: color .3s;
+}
+#header.scrolled .logo { color: var(--blue); }
+.logo-box {
+  width: 34px; height: 34px;
+  background: var(--blue);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800; color: #fff;
+  flex-shrink: 0;
+}
+.hdr-nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.hdr-nav a {
+  font-family: var(--fh);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,.82);
+  transition: color .2s;
+  letter-spacing: .02em;
+}
+.hdr-nav a:hover { color: #fff; }
+#header.scrolled .hdr-nav a { color: var(--g3); }
+#header.scrolled .hdr-nav a:hover { color: var(--blue); }
+.hdr-cta-btn {
+  font-family: var(--fh);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: 8px 20px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 6px;
+  transition: background .2s;
+}
+.hdr-cta-btn:hover { background: var(--orange-dk); }
+.nav-tog {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+.nav-tog span {
+  display: block;
+  width: 22px; height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: background .3s;
+}
+#header.scrolled .nav-tog span { background: var(--black); }
+
+/* ═══════════════════════════════════════════════════
+   HERO — FULL-BLEED BANNER
+   future: template-parts/hero.php
+   ═══════════════════════════════════════════════════ */
+#home {
+  position: relative;
+  overflow: hidden;
+  background: var(--blue-xdk);
+}
+
+/* Slider track wraps slides horizontally */
+.hero-track-wrap {
+  overflow: hidden;
+  height: calc(100vh - 88px);
+  min-height: 560px;
+  max-height: 820px;
+  position: relative;
+}
+.hero-track {
+  display: flex;
+  height: 100%;
+  transition: transform .82s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+
+/* Each slide fills full width — background image + overlay */
+.hero-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Full-bleed background image */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Directional overlay: opaque left → transparent right */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(5,14,48,.92) 0%,
+    rgba(7,22,70,.85) 35%,
+    rgba(7,22,70,.65) 55%,
+    rgba(7,22,70,.28) 80%,
+    rgba(7,22,70,.10) 100%
+  );
+}
+
+/* Content positioned over overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--mw);
+  margin: 0 auto;
+  padding: 0 40px;
+  padding-top: 72px; /* clear sticky header */
+}
+.hero-text { max-width: 600px; }
+
+.hero-ey {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fh);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+.hero-ey::before {
+  content: '';
+  display: block;
+  width: 16px; height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+
+.hero-h1 {
+  font-family: var(--fh);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  color: #fff;
+  margin-bottom: 20px;
+  text-wrap: balance;
+}
+
+.hero-p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255,255,255,.76);
+  max-width: 500px;
+  margin-bottom: 36px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Carousel controls — bottom right of track area */
+.hero-ctrl {
+  position: absolute;
+  bottom: 28px;
+  right: 40px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-arr {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.32);
+  color: #fff;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, border-color .2s;
+  cursor: pointer;
+}
+.hero-arr:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.72); }
+.hero-dots { display: flex; gap: 7px; }
+.hero-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  cursor: pointer;
+  border: none;
+  transition: background .3s, transform .3s;
+}
+.hero-dot.on { background: var(--orange); transform: scale(1.4); }
+
+/* Slide counter */
+.hero-counter {
+  position: absolute;
+  bottom: 36px;
+  left: 40px;
+  z-index: 10;
+  font-family: var(--fh);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .08em;
+}
+.hero-counter strong { color: rgba(255,255,255,.8); }
+
+/* ─── Hero Stats Strip ─────────────────────────────── */
+.hero-stats {
+  background: var(--blue-xdk);
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.hero-stats-inner {
+  display: flex;
+  max-width: var(--mw);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.hstat {
+  flex: 1;
+  padding: 22px 0;
+  border-right: 1px solid rgba(255,255,255,.1);
+}
+.hstat:last-child { border-right: none; }
+.hstat-num {
+  font-family: var(--fh);
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -.4px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hstat-lbl {
+  font-size: 12.5px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════
+   ABOUT / COMPANY SNAPSHOT
+   future: template-parts/about-preview.php
+   ═══════════════════════════════════════════════════ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.about-highlights {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--g1);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-top: 32px;
+}
+.ah {
+  display: flex;
+  gap: 14px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--g1);
+  align-items: flex-start;
+  transition: background .2s;
+}
+.ah:last-child { border-bottom: none; }
+.ah:hover { background: var(--gray-bg); }
+.ah-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+.ah-title {
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 2px;
+}
+.ah-body { font-size: 13.5px; color: var(--g3); line-height: 1.65; }
+.about-cta-row { margin-top: 28px; }
+
+.about-right { display: flex; flex-direction: column; gap: 18px; }
+.about-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: var(--r);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,.1);
+}
+.about-img img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.about-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.am {
+  border: 1px solid var(--g1);
+  border-radius: 8px;
+  padding: 18px 20px;
+  transition: border-color .2s;
+}
+.am:hover { border-color: var(--blue); }
+.am-num {
+  font-family: var(--fh);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: -.4px;
+  margin-bottom: 3px;
+}
+.am-lbl { font-size: 13px; color: var(--g3); line-height: 1.4; }
+
+/* ═══════════════════════════════════════════════════
+   CORE CAPABILITIES
+   future: template-parts/capabilities.php
+   ═══════════════════════════════════════════════════ */
+.cap-hdr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.cap-card {
+  background: var(--white);
+  border: 1px solid var(--g1);
+  border-radius: var(--r);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+.cap-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 24px rgba(14,59,170,.08);
+  transform: translateY(-3px);
+}
+.cap-num {
+  font-family: var(--fh);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--orange);
+}
+.cap-title {
+  font-family: var(--fh);
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.3;
+}
+.cap-body { font-size: 13.5px; line-height: 1.7; color: var(--g3); flex: 1; }
+.cap-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--fh);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-top: 4px;
+  transition: gap .2s;
+}
+.cap-card:hover .cap-link { gap: 8px; }
+
+/* ═══════════════════════════════════════════════════
+   FEATURED CATEGORIES — WooCommerce product_cat
+   future: template-parts/product-categories.php
+   WooCommerce: woocommerce/archive-product.php
+   ═══════════════════════════════════════════════════ */
+.cat-hdr {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 44px;
+}
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.cat-tile {
+  background: var(--white);
+  border: 1px solid var(--g1);
+  border-radius: var(--r);
+  padding: 24px 20px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-height: 152px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+.cat-tile:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 20px rgba(14,59,170,.08);
+  transform: translateY(-2px);
+}
+/* Primary highlighted tile */
+.cat-tile--primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  grid-column: span 2;
+}
+.cat-tile--primary:hover { background: var(--blue-dk); border-color: var(--blue-dk); }
+.cat-tile--primary .ct-title { color: #fff; }
+.cat-tile--primary .ct-desc { color: rgba(255,255,255,.6); }
+.cat-tile--primary .ct-arrow {
+  border-color: rgba(255,255,255,.32);
+  color: #fff;
+}
+.cat-tile--primary:hover .ct-arrow {
+  border-color: #fff;
+  background: rgba(255,255,255,.1);
+}
+.ct-icon {
+  width: 28px; height: 28px;
+  margin-bottom: 4px;
+  opacity: .55;
+}
+.cat-tile--primary .ct-icon { opacity: .7; }
+.ct-title {
+  font-family: var(--fh);
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.3;
+}
+.ct-desc { font-size: 12.5px; color: var(--g3); line-height: 1.5; }
+.ct-arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--g2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  color: var(--g3);
+  text-decoration: none;
+  transition: all .2s;
+}
+.cat-tile:hover .ct-arrow { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
+
+/* WooCommerce note strip */
+.woo-note {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--gray-bg);
+  border: 1px solid var(--g1);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--g3);
+  line-height: 1.5;
+}
+.woo-note strong { color: var(--blue); font-weight: 600; }
+.woo-badge {
+  flex-shrink: 0;
+  font-family: var(--fh);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  background: var(--blue-lt);
+  color: var(--blue);
+  border-radius: 4px;
+}
+
+/* ═══════════════════════════════════════════════════
+   FEATURED PRODUCTS PREVIEW
+   future: WooCommerce shortcode / theme template
+   ═══════════════════════════════════════════════════ */
+.fp-hdr {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.fp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.fp-card {
+  border: 1px solid var(--g1);
+  border-radius: var(--r);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+.fp-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 24px rgba(14,59,170,.08);
+  transform: translateY(-3px);
+}
+.fp-img {
+  height: 160px;
+  overflow: hidden;
+  background: var(--gray-bg);
+  position: relative;
+}
+.fp-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.fp-card:hover .fp-img img { transform: scale(1.04); }
+.fp-img-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--gray-bg);
+}
+.fp-img-label span {
+  font-family: var(--fb);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--g3);
+  text-align: center;
+  padding: 0 14px;
+}
+.fp-body { padding: 18px 18px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.fp-cat {
+  font-family: var(--fh);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.fp-name {
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.35;
+  flex: 1;
+}
+.fp-desc { font-size: 12.5px; color: var(--g3); line-height: 1.6; }
+.fp-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--fh);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--g1);
+  transition: gap .2s;
+}
+.fp-card:hover .fp-cta { gap: 8px; }
+
+/* ═══════════════════════════════════════════════════
+   TRUSTED BRANDS
+   ═══════════════════════════════════════════════════ */
+.brands-hdr { text-align: center; margin-bottom: 44px; }
+.brands-hdr .sec-intro { margin: 12px auto 0; text-align: center; }
+.brands-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.brand-chip {
+  padding: 13px 26px;
+  background: var(--white);
+  border: 1px solid var(--g1);
+  border-radius: 8px;
+  font-family: var(--fh);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--g3);
+  letter-spacing: .04em;
+  transition: border-color .2s, color .2s, box-shadow .2s;
+  min-width: 100px;
+  text-align: center;
+}
+.brand-chip:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 2px 12px rgba(14,59,170,.07);
+}
+.brands-note { text-align: center; margin-top: 28px; font-size: 13px; color: var(--g3); }
+
+/* ═══════════════════════════════════════════════════
+   WHY CHOOSE FORTIS
+   ═══════════════════════════════════════════════════ */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.why-reasons {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--g1);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-top: 32px;
+}
+.wr {
+  display: flex;
+  gap: 18px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--g1);
+  align-items: flex-start;
+  transition: background .2s;
+}
+.wr:last-child { border-bottom: none; }
+.wr:hover { background: var(--gray-bg); }
+.wr-n {
+  font-family: var(--fh);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: .1em;
+  min-width: 22px;
+  padding-top: 3px;
+}
+.wr-title {
+  font-family: var(--fh);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 3px;
+}
+.wr-body { font-size: 13.5px; color: var(--g3); line-height: 1.6; }
+
+.why-panel { display: flex; flex-direction: column; gap: 16px; padding-top: 8px; }
+.why-blue-blk {
+  background: var(--blue);
+  border-radius: var(--r);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.why-blue-blk::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.wbb-top { position: relative; z-index: 1; }
+.wbb-stat {
+  font-family: var(--fh);
+  font-size: 48px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.wbb-lbl { font-size: 13px; color: rgba(255,255,255,.58); margin-top: 6px; }
+.wbb-tag {
+  position: relative;
+  z-index: 1;
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.4;
+  max-width: 210px;
+}
+.why-img {
+  border-radius: var(--r);
+  overflow: hidden;
+  height: 196px;
+  border: 1px solid var(--g1);
+  position: relative;
+}
+.why-img img { width: 100%; height: 100%; object-fit: cover; }
+.why-img-cap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 12px 16px;
+  background: linear-gradient(transparent, rgba(10,10,10,.55));
+  font-size: 12px;
+  color: rgba(255,255,255,.8);
+  font-family: var(--fh);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════
+   PROCESS
+   ═══════════════════════════════════════════════════ */
+.proc-hdr { text-align: center; margin-bottom: 60px; }
+.proc-hdr .sec-intro { margin: 12px auto 0; text-align: center; }
+.proc-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+.proc-steps::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: calc(12.5% + 2px);
+  right: calc(12.5% + 2px);
+  height: 1px;
+  background: var(--g2);
+}
+.proc-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+.step-ring {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--g2);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+  flex-shrink: 0;
+  transition: border-color .3s, background .3s;
+}
+.proc-step:hover .step-ring { border-color: var(--blue); background: var(--blue); }
+.step-n {
+  font-family: var(--fh);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--blue);
+  transition: color .3s;
+}
+.proc-step:hover .step-n { color: #fff; }
+.step-title {
+  font-family: var(--fh);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.step-body { font-size: 13.5px; color: var(--g3); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════════════
+   BLOG / INSIGHTS
+   future: template-parts/blog-preview.php
+   WordPress: get_posts() or WP_Query
+   ═══════════════════════════════════════════════════ */
+.blog-hdr {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 44px;
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.blog-card {
+  border: 1px solid var(--g1);
+  border-radius: var(--r);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+.blog-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 6px 28px rgba(14,59,170,.08);
+  transform: translateY(-3px);
+}
+.blog-img {
+  height: 188px;
+  overflow: hidden;
+  background: var(--g1);
+}
+.blog-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+.blog-card:hover .blog-img img { transform: scale(1.04); }
+.blog-body {
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
+.blog-cat {
+  font-family: var(--fh);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.blog-title {
+  font-family: var(--fh);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.4;
+}
+.blog-exc { font-size: 13.5px; color: var(--g3); line-height: 1.7; flex: 1; }
+.blog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--fh);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  margin-top: 8px;
+  transition: gap .2s;
+}
+.blog-card:hover .blog-link { gap: 9px; }
+
+/* ═══════════════════════════════════════════════════
+   FINAL CTA
+   ═══════════════════════════════════════════════════ */
+.cta-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 56px;
+  align-items: center;
+}
+#final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.cta-title {
+  font-family: var(--fh);
+  font-size: clamp(24px, 2.8vw, 34px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.4px;
+  color: #fff;
+  margin-bottom: 14px;
+  max-width: 520px;
+}
+.cta-body { font-size: 15px; color: rgba(255,255,255,.68); line-height: 1.75; }
+.cta-btns { display: flex; flex-direction: column; gap: 10px; min-width: 200px; }
+
+/* ═══════════════════════════════════════════════════
+   FOOTER — future: footer.php
+   ═══════════════════════════════════════════════════ */
+.ft-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 56px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  margin-bottom: 32px;
+}
+.ft-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--fh);
+  font-weight: 800;
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.ft-desc { font-size: 13.5px; color: rgba(255,255,255,.42); line-height: 1.7; max-width: 240px; }
+.ft-col-ttl {
+  font-family: var(--fh);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 18px;
+}
+.ft-links { display: flex; flex-direction: column; gap: 11px; }
+.ft-links a { font-size: 13.5px; color: rgba(255,255,255,.52); transition: color .2s; }
+.ft-links a:hover { color: #fff; }
+.ft-ci { margin-bottom: 14px; }
+.ft-ci-lbl { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 3px; }
+.ft-ci-val { font-size: 13.5px; color: rgba(255,255,255,.65); line-height: 1.55; }
+.ft-ci-val a { color: var(--orange); transition: color .2s; }
+.ft-ci-val a:hover { color: #ff7a4a; }
+.ft-bot { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.ft-copy { font-size: 12.5px; color: rgba(255,255,255,.22); }
+.ft-tag { font-family: var(--fh); font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.18); letter-spacing: .06em; }
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .cat-tile--primary { grid-column: span 2; }
+  .fp-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 960px) {
+  :root { --spy: 68px; }
+  .about-grid, .why-grid { grid-template-columns: 1fr; gap: 48px; }
+  .cap-hdr { grid-template-columns: 1fr; }
+  .cat-hdr { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .fp-hdr { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .blog-hdr { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cta-inner { grid-template-columns: 1fr; gap: 36px; }
+  .ft-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .proc-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .proc-steps::before { display: none; }
+  .hero-h1 { font-size: 38px; }
+}
+
+@media (max-width: 680px) {
+  .wrap { padding: 0 22px; }
+  .hdr-nav { display: none; }
+  .hdr-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: #fff;
+    padding: 22px 22px 30px;
+    gap: 18px;
+    border-bottom: 1px solid var(--g1);
+    z-index: 99;
+    box-shadow: 0 8px 30px rgba(0,0,0,.1);
+  }
+  .hdr-nav.open a { color: var(--g3); font-size: 15px; }
+  .nav-tog { display: flex; }
+  .hero-content { padding: 72px 22px 0; }
+  .hero-h1 { font-size: 32px; letter-spacing: -1px; }
+  .hero-p { font-size: 14.5px; }
+  .hero-stats-inner { padding: 0 22px; flex-wrap: wrap; }
+  .hstat { flex: 0 0 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .hstat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.1); }
+  .hstat:last-child { flex: 0 0 100%; border-bottom: none; }
+  .hero-ctrl { right: 22px; bottom: 20px; }
+  .hero-counter { left: 22px; bottom: 28px; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .cat-grid { grid-template-columns: 1fr; }
+  .cat-tile--primary { grid-column: span 1; }
+  .fp-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .about-metrics { grid-template-columns: 1fr 1fr; }
+  .ft-top { grid-template-columns: 1fr; }
+  .ft-bot { flex-direction: column; text-align: center; }
+  .proc-steps { grid-template-columns: 1fr; gap: 36px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     HEADER — future: header.php (WordPress)
+     ══════════════════════════════════════════════════════ -->
+<header id="header" role="banner">
+  <div class="wrap">
+    <div class="hdr-inner">
+      <a href="#home" class="logo" aria-label="PT Fortis Prima Solusi — Home">
+        <div class="logo-box" aria-hidden="true">F</div>
+        FORTIS
+      </a>
+      <nav class="hdr-nav" id="hdrNav" role="navigation" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#products">Products</a>
+        <a href="#why-fortis">Why Fortis</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="#final-cta" class="hdr-cta-btn">Inquiry</a>
+      </nav>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO — FULL-BLEED BANNER CAROUSEL
+     future: template-parts/hero.php (WordPress)
+     ══════════════════════════════════════════════════════ -->
+<section id="home" aria-label="Hero" role="region">
+
+  <div class="hero-track-wrap" id="heroWrap">
+    <div class="hero-track" id="heroTrack">
+
+      <!-- ── Slide 1: Global Procurement ─────────────── -->
+      <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+        <!-- Replace with approved Fortis photography in final build -->
+        <div class="hero-bg">
+          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1920&q=80"
+               alt="Industrial warehouse with logistics operations" loading="eager" fetchpriority="high">
+        </div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+          <div class="hero-text">
+            <p class="hero-ey">Global Procurement &amp; Industrial Supply</p>
+            <h1 class="hero-h1">Simplify Global Procurement with One Trusted Partner</h1>
+            <p class="hero-p">From sourcing to delivery, Fortis helps businesses reduce procurement complexity, control cost, and secure the right industrial supply with greater confidence.</p>
+            <div class="hero-ctas">
+              <div class="tip-w">
+                <a href="#final-cta" class="btn btn-orange">Request an Inquiry</a>
+                <span class="tip">Jumps to: Inquiry section</span>
+              </div>
+              <div class="tip-w">
+                <a href="#capabilities" class="btn btn-ghost-w">Browse Capability</a>
+                <span class="tip">Jumps to: Core Capabilities</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Slide 2: MRO & PPE ───────────────────────── -->
+      <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
+        <!-- Replace with approved Fortis photography in final build -->
+        <div class="hero-bg">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80"
+               alt="Industrial workers wearing PPE safety equipment" loading="lazy">
+        </div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+          <div class="hero-text">
+            <p class="hero-ey">MRO &amp; PPE Solutions</p>
+            <h1 class="hero-h1">Reliable Supply for Operational Continuity</h1>
+            <p class="hero-p">Access trusted MRO and PPE solutions from global brands, backed by a procurement process built for speed, accuracy, and business continuity.</p>
+            <div class="hero-ctas">
+              <div class="tip-w">
+                <a href="#products" class="btn btn-orange">Explore Products</a>
+                <span class="tip">Jumps to: Supply Categories</span>
+              </div>
+              <div class="tip-w">
+                <a href="#contact" class="btn btn-ghost-w">Talk to Our Team</a>
+                <span class="tip">Jumps to: Contact section</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Slide 3: Container Lease ────────────────── -->
+      <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
+        <!-- Replace with approved Fortis photography in final build -->
+        <div class="hero-bg">
+          <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1920&q=80"
+               alt="Shipping containers at logistics freight yard" loading="lazy">
+        </div>
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+          <div class="hero-text">
+            <p class="hero-ey">Container Lease &amp; Supply Support</p>
+            <h1 class="hero-h1">Flexible Supply Support for Changing Operational Needs</h1>
+            <p class="hero-p">From container lease options to procurement support, Fortis helps companies stay responsive without adding unnecessary operational burden.</p>
+            <div class="hero-ctas">
+              <div class="tip-w">
+                <a href="#capabilities" class="btn btn-orange">View Services</a>
+                <span class="tip">Jumps to: Core Capabilities</span>
+              </div>
+              <div class="tip-w">
+                <a href="#final-cta" class="btn btn-ghost-w">Send Inquiry</a>
+                <span class="tip">Jumps to: Inquiry section</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /hero-track -->
+
+    <!-- Slide counter -->
+    <div class="hero-counter" aria-live="polite">
+      <strong id="slideNum">1</strong> / 3
+    </div>
+
+    <!-- Controls -->
+    <div class="hero-ctrl" aria-label="Carousel controls">
+      <button class="hero-arr" id="heroPrev" aria-label="Previous slide">&#8592;</button>
+      <div class="hero-dots" role="tablist" aria-label="Slide indicators">
+        <button class="hero-dot on" role="tab" aria-selected="true"  aria-label="Go to slide 1" data-idx="0"></button>
+        <button class="hero-dot"    role="tab" aria-selected="false" aria-label="Go to slide 2" data-idx="1"></button>
+        <button class="hero-dot"    role="tab" aria-selected="false" aria-label="Go to slide 3" data-idx="2"></button>
+      </div>
+      <button class="hero-arr" id="heroNext" aria-label="Next slide">&#8594;</button>
+    </div>
+  </div><!-- /hero-track-wrap -->
+
+  <!-- Stats strip — outside slider, zero overlap -->
+  <div class="hero-stats" role="region" aria-label="Key metrics">
+    <div class="hero-stats-inner">
+      <div class="hstat">
+        <div class="hstat-num">1,000+</div>
+        <div class="hstat-lbl">Product Catalog</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">30+</div>
+        <div class="hstat-lbl">Global Brand Principals</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">Multi</div>
+        <div class="hstat-lbl">Industry Segments Served</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ABOUT / COMPANY SNAPSHOT
+     future: template-parts/about-preview.php
+     ══════════════════════════════════════════════════════ -->
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="fu">
+        <p class="eyebrow">About Fortis</p>
+        <h2 class="sec-title" id="about-title">A Procurement Partner Built for Industrial Demands</h2>
+        <p class="sec-intro">Fortis supports procurement and sourcing needs across manufacturing, energy, logistics, automotive, and industrial operations. We help simplify sourcing, reduce hidden cost layers, and improve supply efficiency through a more structured procurement approach.</p>
+        <div class="about-highlights">
+          <div class="ah"><div class="ah-dot"></div><div><div class="ah-title">Strategic Sourcing</div><div class="ah-body">A curated global network focused on quality, accurate timing, and cost efficiency across industrial categories.</div></div></div>
+          <div class="ah"><div class="ah-dot"></div><div><div class="ah-title">Trusted Supply Network</div><div class="ah-body">Relationships with recognized global brands and verified suppliers that meet industrial-grade standards.</div></div></div>
+          <div class="ah"><div class="ah-dot"></div><div><div class="ah-title">Cost Efficiency Focus</div><div class="ah-body">Consolidate fragmented sourcing to reduce total procurement cost through transparent supply processes.</div></div></div>
+        </div>
+        <div class="about-cta-row">
+          <div class="tip-w">
+            <a href="#contact" class="btn btn-blue">Learn More About Fortis</a>
+            <span class="tip">Jumps to: Contact section</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right fu">
+        <div class="about-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+               alt="Industrial warehouse interior operations" loading="lazy">
+        </div>
+        <div class="about-metrics">
+          <div class="am"><div class="am-num">1,000+</div><div class="am-lbl">Product lines across industrial categories</div></div>
+          <div class="am"><div class="am-num">30+</div><div class="am-lbl">Global brand principals in our network</div></div>
+          <div class="am"><div class="am-num">6+</div><div class="am-lbl">Industry sectors actively supported</div></div>
+          <div class="am"><div class="am-num">B2B</div><div class="am-lbl">Enterprise procurement approach</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CORE CAPABILITIES
+     future: template-parts/capabilities.php
+     ══════════════════════════════════════════════════════ -->
+<section id="capabilities" class="section section--gray section--border-t" aria-labelledby="cap-title">
+  <div class="wrap">
+    <div class="cap-hdr">
+      <div class="fu">
+        <p class="eyebrow">Core Capabilities</p>
+        <h2 class="sec-title" id="cap-title">What We Do</h2>
+      </div>
+      <p class="sec-intro fu">Our service scope supports faster, clearer procurement at greater scale and control.</p>
+    </div>
+    <div class="cap-grid">
+
+      <div class="cap-card fu">
+        <div class="cap-num">01</div>
+        <div class="cap-title">Global Procurement &amp; Sourcing</div>
+        <p class="cap-body">We source products, materials, and equipment worldwide through a curated network focused on quality, timing, and cost efficiency.</p>
+        <div class="tip-w">
+          <a href="services.html" class="cap-link">Learn More &#8594;</a>
+          <span class="tip">Opens: future Services page</span>
+        </div>
+      </div>
+
+      <div class="cap-card fu">
+        <div class="cap-num">02</div>
+        <div class="cap-title">Industrial MRO Supply</div>
+        <p class="cap-body">A broad sourcing capability for maintenance, repair, and operating supply requirements across multiple industrial sectors.</p>
+        <div class="tip-w">
+          <a href="/shop/?product_cat=mro" class="cap-link">Learn More &#8594;</a>
+          <span class="tip">Opens: future WooCommerce MRO catalog</span>
+        </div>
+      </div>
+
+      <div class="cap-card fu">
+        <div class="cap-num">03</div>
+        <div class="cap-title">PPE Supply</div>
+        <p class="cap-body">Access workplace safety products from trusted brands with procurement support that prioritizes compliance and reliability.</p>
+        <div class="tip-w">
+          <a href="/shop/?product_cat=ppe" class="cap-link">Learn More &#8594;</a>
+          <span class="tip">Opens: future WooCommerce PPE catalog</span>
+        </div>
+      </div>
+
+      <div class="cap-card fu">
+        <div class="cap-num">04</div>
+        <div class="cap-title">Container Lease &amp; Sale</div>
+        <p class="cap-body">Flexible long-term and short-term options to support changing operational and logistics requirements.</p>
+        <div class="tip-w">
+          <a href="services.html#container-lease" class="cap-link">Learn More &#8594;</a>
+          <span class="tip">Opens: future Services &rsaquo; Container</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FEATURED SUPPLY CATEGORIES
+     future: template-parts/product-categories.php
+     WooCommerce: product category archives
+     ══════════════════════════════════════════════════════ -->
+<section id="products" class="section" aria-labelledby="cat-title">
+  <div class="wrap">
+    <div class="cat-hdr">
+      <div class="fu">
+        <p class="eyebrow">Supply Categories</p>
+        <h2 class="sec-title" id="cat-title">Featured Supply Categories</h2>
+        <p class="sec-intro">Explore key categories representing Fortis' procurement strength across industrial and operational needs.</p>
+      </div>
+      <div class="tip-w fu">
+        <a href="/shop/" class="btn btn-ghost-b">Browse All Categories</a>
+        <span class="tip">Opens: future WooCommerce Shop</span>
+      </div>
+    </div>
+
+    <div class="cat-grid">
+
+      <!-- Primary highlighted tile -->
+      <div class="cat-tile cat-tile--primary fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1.5">
+          <circle cx="16" cy="16" r="4"/><path d="M16 2v4M16 26v4M4.22 4.22l2.83 2.83M24.95 24.95l2.83 2.83M2 16h4M26 16h4M4.22 27.78l2.83-2.83M24.95 7.05l2.83-2.83"/>
+        </svg>
+        <div class="ct-title">MRO Supply</div>
+        <div class="ct-desc">Maintenance, Repair &amp; Operating</div>
+        <div class="tip-w" style="position:absolute;bottom:14px;right:14px;">
+          <a href="/shop/?product_cat=mro" class="ct-arrow" aria-label="Browse MRO Supply">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: WooCommerce &rsaquo; MRO</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <path d="M16 30s10-5 10-12.5V6.25L16 2.5 6 6.25V17.5C6 25 16 30 16 30z"/>
+        </svg>
+        <div class="ct-title">PPE Equipment</div>
+        <div class="ct-desc">Personal Protective Equipment</div>
+        <div class="tip-w" style="position:absolute;bottom:14px;right:14px;">
+          <a href="/shop/?product_cat=ppe" class="ct-arrow" aria-label="Browse PPE Equipment">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: WooCommerce &rsaquo; PPE</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <polygon points="17 2.5 4 18 16 18 15 29.5 28 14 16 14 17 2.5"/>
+        </svg>
+        <div class="ct-title">Electrical &amp; Electro Mechanical</div>
+        <div class="ct-desc">Parts &amp; Components</div>
+        <div class="tip-w" style="position:absolute;bottom:14px;right:14px;">
+          <a href="/shop/?product_cat=electrical-electro-mechanical" class="ct-arrow" aria-label="Browse Electrical">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: WooCommerce &rsaquo; Electrical</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <rect x="1" y="10" width="20" height="14" rx="2"/><polygon points="21 11 26 11 30 15 30 24 21 24 21 11"/><circle cx="7" cy="26" r="3"/><circle cx="24" cy="26" r="3"/>
+        </svg>
+        <div class="ct-title">Automotive Fleet &amp; Parts</div>
+        <div class="ct-desc">Fleet &amp; Vehicle Components</div>
+        <div class="tip-w" style="position:absolute;bottom:14px;right:14px;">
+          <a href="/shop/?product_cat=automotive-fleet-parts" class="ct-arrow" aria-label="Browse Automotive">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: WooCommerce &rsaquo; Automotive</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <path d="M16 2v28M22 6H12a5 5 0 0 0 0 10h8a5 5 0 0 1 0 10H8"/>
+        </svg>
+        <div class="ct-title">Flow Control &amp; Fluid Transfer</div>
+        <div class="ct-desc">Valves, Fittings &amp; Piping</div>
+        <div class="tip-w" style="position:absolute;bottom:14px;right:14px;">
+          <a href="/shop/?product_cat=flow-control-fluid-transfer" class="ct-arrow" aria-label="Browse Flow Control">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: WooCommerce &rsaquo; Flow Control</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <circle cx="16" cy="16" r="13"/><line x1="16" y1="10" x2="16" y2="16"/><line x1="16" y1="21" x2="16.01" y2="21"/>
+        </svg>
+        <div class="ct-title">Safety &amp; Security Equipment</div>
+        <div class="ct-desc">Workplace &amp; Site Safety</div>
+        <div class="tip-w" style="position:absolute;bottom:14px;right:14px;">
+          <a href="/shop/?product_cat=safety-security-equipment" class="ct-arrow" aria-label="Browse Safety">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: WooCommerce &rsaquo; Safety</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <rect x="2" y="9" width="28" height="18" rx="2"/>
+          <path d="M21 9V7a4 4 0 0 0-8 0v2"/>
+        </svg>
+        <div class="ct-title">Container Lease &amp; Sale</div>
+        <div class="ct-desc">Long-term &amp; Short-term Options</div>
+        <div class="tip-w" style="position:absolute;bottom:14px;right:14px;">
+          <a href="/shop/?product_cat=container-lease-sale" class="ct-arrow" aria-label="Browse Container">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: WooCommerce &rsaquo; Container</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- WooCommerce architecture note -->
+    <div class="woo-note fu">
+      <span class="woo-badge">WooCommerce</span>
+      <span>Future product catalog will be managed via <strong>WooCommerce</strong> — enabling scalable product listings, category archives, search &amp; filter, and admin-managed inventory without manual front-end updates.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FEATURED PRODUCTS PREVIEW
+     future: WooCommerce [featured_products] / custom query
+     ══════════════════════════════════════════════════════ -->
+<section id="featured-products" class="section section--gray section--border-t" aria-labelledby="fp-title">
+  <div class="wrap">
+    <div class="fp-hdr">
+      <div class="fu">
+        <p class="eyebrow">Product Preview</p>
+        <h2 class="sec-title" id="fp-title">From Our Supply Catalog</h2>
+        <p class="sec-intro">A preview of representative supply items. Full catalog will be powered by WooCommerce.</p>
+      </div>
+      <div class="tip-w fu">
+        <a href="/shop/" class="btn btn-ghost-b">Browse Full Catalog</a>
+        <span class="tip">Opens: future WooCommerce Shop</span>
+      </div>
+    </div>
+    <div class="fp-grid">
+
+      <div class="fp-card fu">
+        <div class="fp-img">
+          <div class="fp-img-label">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#D9DEE8" stroke-width="1.5"><circle cx="16" cy="16" r="4"/><path d="M16 2v4M16 26v4M4.22 4.22l2.83 2.83M24.95 24.95l2.83 2.83M2 16h4M26 16h4"/></svg>
+            <span>MRO component — product image</span>
+          </div>
+        </div>
+        <div class="fp-body">
+          <span class="fp-cat">MRO Supply</span>
+          <div class="fp-name">Industrial Bearing &amp; Sealing Components</div>
+          <p class="fp-desc">SKF-grade precision bearings for heavy machinery and rotating equipment applications.</p>
+          <div class="tip-w">
+            <a href="/shop/?product_cat=mro" class="fp-cta">View in Catalog &#8594;</a>
+            <span class="tip">Opens: future WooCommerce MRO page</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fp-card fu">
+        <div class="fp-img">
+          <div class="fp-img-label">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#D9DEE8" stroke-width="1.5"><path d="M16 30s10-5 10-12.5V6.25L16 2.5 6 6.25V17.5C6 25 16 30 16 30z"/></svg>
+            <span>PPE equipment — product image</span>
+          </div>
+        </div>
+        <div class="fp-body">
+          <span class="fp-cat">PPE Equipment</span>
+          <div class="fp-name">Industrial Safety Helmet &amp; Harness Set</div>
+          <p class="fp-desc">MSA &amp; Honeywell-branded head and fall-protection PPE for site and operational use.</p>
+          <div class="tip-w">
+            <a href="/shop/?product_cat=ppe" class="fp-cta">View in Catalog &#8594;</a>
+            <span class="tip">Opens: future WooCommerce PPE page</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fp-card fu">
+        <div class="fp-img">
+          <div class="fp-img-label">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#D9DEE8" stroke-width="1.5"><polygon points="17 2.5 4 18 16 18 15 29.5 28 14 16 14 17 2.5"/></svg>
+            <span>Electrical part — product image</span>
+          </div>
+        </div>
+        <div class="fp-body">
+          <span class="fp-cat">Electrical &amp; Electro Mechanical</span>
+          <div class="fp-name">Low-Voltage Switchgear &amp; Control Components</div>
+          <p class="fp-desc">Schneider Electric and ABB-sourced control gear for industrial panel and automation use.</p>
+          <div class="tip-w">
+            <a href="/shop/?product_cat=electrical-electro-mechanical" class="fp-cta">View in Catalog &#8594;</a>
+            <span class="tip">Opens: future WooCommerce Electrical page</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fp-card fu">
+        <div class="fp-img">
+          <div class="fp-img-label">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#D9DEE8" stroke-width="1.5"><path d="M16 2v28M22 6H12a5 5 0 0 0 0 10h8a5 5 0 0 1 0 10H8"/></svg>
+            <span>Flow control — product image</span>
+          </div>
+        </div>
+        <div class="fp-body">
+          <span class="fp-cat">Flow Control</span>
+          <div class="fp-name">Industrial Gate &amp; Ball Valve Assemblies</div>
+          <p class="fp-desc">Process valve solutions for high-pressure fluid and gas handling in industrial operations.</p>
+          <div class="tip-w">
+            <a href="/shop/?product_cat=flow-control-fluid-transfer" class="fp-cta">View in Catalog &#8594;</a>
+            <span class="tip">Opens: future WooCommerce Flow Control page</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TRUSTED BRANDS
+     ══════════════════════════════════════════════════════ -->
+<section id="brands" class="section section--border-t" aria-labelledby="brands-title">
+  <div class="wrap">
+    <div class="brands-hdr fu">
+      <p class="eyebrow eyebrow--center">Brand Principals</p>
+      <h2 class="sec-title" id="brands-title">Trusted Brands Within Our Supply Network</h2>
+      <p class="sec-intro">Fortis works across recognized industrial and safety brands to help clients source the products they need with greater assurance and efficiency.</p>
+    </div>
+    <div class="brands-row fu">
+      <div class="brand-chip">SKF</div>
+      <div class="brand-chip">3M</div>
+      <div class="brand-chip">Honeywell</div>
+      <div class="brand-chip">Ansell</div>
+      <div class="brand-chip">MSA Safety</div>
+      <div class="brand-chip">Schneider</div>
+      <div class="brand-chip">Siemens</div>
+      <div class="brand-chip">ABB</div>
+    </div>
+    <p class="brands-note fu">Our brand principal network continues to grow across industrial and safety categories.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     WHY CHOOSE FORTIS
+     ══════════════════════════════════════════════════════ -->
+<section id="why-fortis" class="section section--gray section--border-t" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="why-grid">
+
+      <div class="fu">
+        <p class="eyebrow">Why Fortis</p>
+        <h2 class="sec-title" id="why-title">Why Companies Choose Fortis</h2>
+        <p class="sec-intro">A structured, reliable procurement partner for businesses that need more than a transactional supplier relationship.</p>
+        <div class="why-reasons">
+          <div class="wr"><div class="wr-n">01</div><div><div class="wr-title">Extensive Supplier Network</div><div class="wr-body">Access to a broad network of quality-assured suppliers across industrial and safety categories.</div></div></div>
+          <div class="wr"><div class="wr-n">02</div><div><div class="wr-title">Performance-Driven Procurement</div><div class="wr-body">A structured approach that improves efficiency and purchasing control from inquiry to delivery.</div></div></div>
+          <div class="wr"><div class="wr-n">03</div><div><div class="wr-title">Reduced Complexity</div><div class="wr-body">Fortis consolidates fragmented sourcing into a more manageable and transparent flow.</div></div></div>
+          <div class="wr"><div class="wr-n">04</div><div><div class="wr-title">Cost &amp; Capital Optimisation</div><div class="wr-body">Lower overhead, balance inventory, and support better cost control across procurement cycles.</div></div></div>
+          <div class="wr"><div class="wr-n">05</div><div><div class="wr-title">Flexibility &amp; Responsiveness</div><div class="wr-body">A responsive partner for changing timelines and evolving operational requirements.</div></div></div>
+        </div>
+      </div>
+
+      <div class="why-panel fu">
+        <div class="why-blue-blk">
+          <div class="wbb-top">
+            <div class="wbb-stat">End&#8209;to&#8209;End</div>
+            <div class="wbb-lbl">Full procurement coverage — sourcing through delivery</div>
+          </div>
+          <div class="wbb-tag">One partner. Full procurement coverage. Less complexity.</div>
+        </div>
+        <div class="why-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80"
+               alt="Industrial engineering and machinery operations" loading="lazy">
+          <div class="why-img-cap">Fortis — operational continuity through structured procurement</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     HOW FORTIS WORKS — 4-STEP PROCESS
+     ══════════════════════════════════════════════════════ -->
+<section id="process" class="section section--border-t" aria-labelledby="proc-title">
+  <div class="wrap">
+    <div class="proc-hdr fu">
+      <p class="eyebrow eyebrow--center">Our Process</p>
+      <h2 class="sec-title" id="proc-title">How Fortis Works</h2>
+      <p class="sec-intro">A four-step procurement flow designed for clarity, speed, and results.</p>
+    </div>
+    <div class="proc-steps">
+      <div class="proc-step fu">
+        <div class="step-ring"><div class="step-n">1</div></div>
+        <div class="step-title">Define Requirement</div>
+        <p class="step-body">You specify the product or sourcing need — category, quantity, quality standard, and timeline.</p>
+      </div>
+      <div class="proc-step fu">
+        <div class="step-ring"><div class="step-n">2</div></div>
+        <div class="step-title">Identify Supply Options</div>
+        <p class="step-body">We identify suitable supply sources based on fit, price point, and availability across our global network.</p>
+      </div>
+      <div class="proc-step fu">
+        <div class="step-ring"><div class="step-n">3</div></div>
+        <div class="step-title">Evaluate &amp; Select</div>
+        <p class="step-body">We support selection through a tested procurement approach that prioritizes quality and compliance.</p>
+      </div>
+      <div class="proc-step fu">
+        <div class="step-ring"><div class="step-n">4</div></div>
+        <div class="step-title">Negotiate &amp; Deliver</div>
+        <p class="step-body">We negotiate and deliver to meet operational expectations on time and within agreed parameters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     BLOG / INSIGHTS PREVIEW
+     future: template-parts/blog-preview.php
+     WordPress: WP_Query for recent posts
+     ══════════════════════════════════════════════════════ -->
+<section id="blog" class="section section--gray section--border-t" aria-labelledby="blog-title">
+  <div class="wrap">
+    <div class="blog-hdr">
+      <div class="fu">
+        <p class="eyebrow">Insights</p>
+        <h2 class="sec-title" id="blog-title">Insights for Smarter Procurement</h2>
+        <p class="sec-intro">Practical perspectives on sourcing efficiency, industrial supply, and procurement planning.</p>
+      </div>
+      <div class="tip-w fu">
+        <a href="/blog/" class="btn btn-ghost-b">View All Insights</a>
+        <span class="tip">Opens: future WordPress Blog</span>
+      </div>
+    </div>
+    <div class="blog-grid">
+
+      <article class="blog-card fu">
+        <div class="blog-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=700&q=80"
+               alt="Industrial procurement operations at manufacturing site" loading="lazy">
+        </div>
+        <div class="blog-body">
+          <span class="blog-cat">Procurement Strategy</span>
+          <h3 class="blog-title">Reducing Procurement Friction in Multi-Supplier Operations</h3>
+          <p class="blog-exc">Managing multiple suppliers increases coordination cost and delivery risk. Here's how consolidation reduces friction without sacrificing supply flexibility.</p>
+          <div class="tip-w">
+            <a href="/blog/reducing-procurement-friction/" class="blog-link">Read Insight &#8594;</a>
+            <span class="tip">Opens: future Blog article</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card fu">
+        <div class="blog-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80"
+               alt="Workers in PPE safety equipment on industrial site" loading="lazy">
+        </div>
+        <div class="blog-body">
+          <span class="blog-cat">Industrial Buying</span>
+          <h3 class="blog-title">What Industrial Buyers Should Prioritise Beyond Unit Cost</h3>
+          <p class="blog-exc">Unit price is a starting point, not the full picture. Learn why compliance, lead time, and supplier reliability matter more in long-term procurement planning.</p>
+          <div class="tip-w">
+            <a href="/blog/beyond-unit-cost/" class="blog-link">Read Insight &#8594;</a>
+            <span class="tip">Opens: future Blog article</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card fu">
+        <div class="blog-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=700&q=80"
+               alt="Logistics and shipping container operations" loading="lazy">
+        </div>
+        <div class="blog-body">
+          <span class="blog-cat">Supply Chain</span>
+          <h3 class="blog-title">Building More Reliable Supply Continuity for Operational Teams</h3>
+          <p class="blog-exc">Operational disruptions often begin in procurement. A structured supply continuity approach helps teams anticipate gaps before they become stoppages.</p>
+          <div class="tip-w">
+            <a href="/blog/supply-continuity/" class="blog-link">Read Insight &#8594;</a>
+            <span class="tip">Opens: future Blog article</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FINAL CTA
+     ══════════════════════════════════════════════════════ -->
+<section id="final-cta" class="section section--blue" aria-labelledby="cta-title" style="position:relative;overflow:hidden;">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="fu">
+        <h2 class="cta-title" id="cta-title">Need a More Efficient Way to Source Industrial Supply?</h2>
+        <p class="cta-body">Tell us what you need. Our team will help direct your inquiry to the right procurement solution.</p>
+      </div>
+      <div class="cta-btns fu">
+        <div class="tip-w">
+          <a href="/cdn-cgi/l/email-protection#394a58555c4a795f564b4d504a494b505458175a5654" class="btn btn-orange" style="justify-content:center;">Send Inquiry</a>
+          <span class="tip">Opens: email to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ed9e8c81889ead8b829f99849e9d9f84808cc38e8280">[email&#160;protected]</a></span>
+        </div>
+        <div class="tip-w">
+          <a href="#contact" class="btn btn-ghost-w" style="justify-content:center;">Contact Fortis</a>
+          <span class="tip">Jumps to: Contact &amp; Footer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER — future: footer.php (WordPress)
+     ══════════════════════════════════════════════════════ -->
+<footer id="contact" class="section--dark" aria-label="Footer and contact information" style="padding:64px 0 32px;">
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <div class="ft-logo">
+          <div class="logo-box">F</div>
+          FORTIS
+        </div>
+        <p class="ft-desc">PT Fortis Prima Solusi — End-to-End Procurement Partner for Global-Grade Industrial Supply.</p>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Navigation</div>
+        <div class="ft-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#products">Products</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Contact</div>
+        <div class="ft-ci">
+          <div class="ft-ci-lbl">Address</div>
+          <div class="ft-ci-val">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta</div>
+        </div>
+        <div class="ft-ci">
+          <div class="ft-ci-lbl">Email</div>
+          <div class="ft-ci-val"><a href="/cdn-cgi/l/email-protection#483b29242d3b082e273a3c213b383a212529662b2725"><span class="__cf_email__" data-cfemail="681b09040d1b280e071a1c011b181a010509460b0705">[email&#160;protected]</span></a></div>
+        </div>
+        <div class="ft-ci">
+          <div class="ft-ci-lbl">Phone</div>
+          <div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p class="ft-copy">&copy; 2026 PT Fortis Prima Solusi. All rights reserved.</p>
+      <p class="ft-tag">Procurement Excellence, Delivered.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ── HERO HORIZONTAL CAROUSEL ──────────────────────────── */
+(function () {
+  const track   = document.getElementById('heroTrack');
+  const slides  = track.querySelectorAll('.hero-slide');
+  const dots    = document.querySelectorAll('.hero-dot');
+  const prevBtn = document.getElementById('heroPrev');
+  const nextBtn = document.getElementById('heroNext');
+  const numEl   = document.getElementById('slideNum');
+  const N       = slides.length;
+  let cur = 0, timer = null, tx0 = 0;
+  const DELAY = 6000;
+
+  function goTo(idx) {
+    cur = ((idx % N) + N) % N;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    if (numEl) numEl.textContent = cur + 1;
+    dots.forEach((d, i) => {
+      d.classList.toggle('on', i === cur);
+      d.setAttribute('aria-selected', i === cur ? 'true' : 'false');
+    });
+  }
+
+  function start() { timer = setInterval(() => goTo(cur + 1), DELAY); }
+  function stop()  { clearInterval(timer); }
+
+  prevBtn.addEventListener('click', () => { stop(); goTo(cur - 1); start(); });
+  nextBtn.addEventListener('click', () => { stop(); goTo(cur + 1); start(); });
+  dots.forEach(d => d.addEventListener('click', () => { stop(); goTo(+d.dataset.idx); start(); }));
+
+  /* Pause on hover */
+  track.addEventListener('mouseenter', stop);
+  track.addEventListener('mouseleave', start);
+
+  /* Touch swipe */
+  track.addEventListener('touchstart', e => { stop(); tx0 = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tx0;
+    if (Math.abs(dx) > 50) goTo(cur + (dx < 0 ? 1 : -1));
+    start();
+  }, { passive: true });
+
+  /* Keyboard */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { stop(); goTo(cur - 1); start(); }
+    if (e.key === 'ArrowRight') { stop(); goTo(cur + 1); start(); }
+  });
+
+  start();
+})();
+
+/* ── STICKY HEADER ─────────────────────────────────────── */
+(function () {
+  const hdr = document.getElementById('header');
+  const check = () => hdr.classList.toggle('scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', check, { passive: true });
+  check();
+})();
+
+/* ── MOBILE NAV ────────────────────────────────────────── */
+(function () {
+  const tog = document.getElementById('navTog');
+  const nav = document.getElementById('hdrNav');
+  tog.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    tog.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    tog.setAttribute('aria-expanded', 'false');
+  }));
+})();
+
+/* ── FADE-UP SCROLL REVEAL ─────────────────────────────── */
+(function () {
+  const els = document.querySelectorAll('.fu');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+  els.forEach(el => obs.observe(el));
+})();
+
+/* ── SMOOTH ANCHOR SCROLL ──────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function (e) {
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) {
+      e.preventDefault();
+      const top = t.getBoundingClientRect().top + window.pageYOffset - 72;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

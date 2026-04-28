@@ -610,8 +610,7 @@ a.mnav-link{display:flex}
 @media(max-width:960px){
   :root{--spy:68px}
   body{padding-top:104px}
-  .tb-right{display:none}
-  .top-bar-inner{justify-content:center}
+  .tb-contact .tb-sep,.tb-contact .tb-link:last-child,.tb-social,.tb-right .tb-sep{display:none}
   .mobile-nav{top:104px}
   .about-grid,.why-grid{grid-template-columns:1fr;gap:48px}
   .cap-hdr{grid-template-columns:1fr}
@@ -749,11 +748,10 @@ a.mnav-link{display:flex}
 .cp-img{aspect-ratio:4/3;overflow:hidden;background:#f4f6f8;position:relative;flex-shrink:0}
 .cp-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;display:block}
 .cp-card:hover .cp-img img{transform:scale(1.06)}
-.cp-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1;border-top:1px solid var(--g1)}
-.cp-meta-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
-.cp-cat-label{display:inline-flex;align-items:center;font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);padding:2px 8px;border-radius:20px;width:fit-content}
-.cp-title{font-family:var(--fh);font-size:14.5px;font-weight:700;color:var(--black);line-height:1.35;flex:1;margin-bottom:14px}
-.cp-brand-tag{font-family:var(--fh);font-size:11px;font-weight:500;color:var(--g3)}
+.cp-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1;border-top:1px solid var(--g1);text-align:center;align-items:center}
+.cp-cat-label{display:inline-flex;align-items:center;font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);padding:2px 8px;border-radius:20px;margin-bottom:9px;width:fit-content}
+.cp-title{font-family:var(--fh);font-size:14.5px;font-weight:700;color:var(--black);line-height:1.35;flex:1;margin-bottom:5px}
+.cp-brand-tag{font-family:var(--fh);font-size:11px;font-weight:500;color:var(--g3);margin-bottom:auto;padding-bottom:16px}
 .cp-add{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:11px 14px;border-radius:8px;background:var(--blue);color:#fff;font-family:var(--fh);font-size:13px;font-weight:700;border:none;cursor:pointer;transition:background .18s;-webkit-tap-highlight-color:transparent;margin-bottom:8px}
 .cp-add:hover{background:var(--blue-dk)}
 .cp-add.added{background:#16a34a}
@@ -797,6 +795,7 @@ a.mnav-link{display:flex}
           <a href="https://instagram.com" target="_blank" rel="noopener" class="tb-social" aria-label="Instagram">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
+          <span class="tb-sep"></span>
 
         </div>
       </div>
@@ -1383,8 +1382,9 @@ a.mnav-link{display:flex}
       <div class="cp-card fu">
         <div class="cp-img"><img src="https://images.unsplash.com/photo-1766736259614-61ac882294c5?auto=format&fit=crop&w=600&q=80" alt="Safety Helmet Full Brim" loading="lazy"></div>
         <div class="cp-body">
-          <div class="cp-meta-row"><span class="cp-cat-label">PPE</span><span class="cp-brand-tag">MSA Safety</span></div>
+          <span class="cp-cat-label">PPE</span>
           <div class="cp-title">Safety Helmet — Full Brim</div>
+          <span class="cp-brand-tag">MSA Safety</span>
           <button class="cp-add" data-pid="p01" onclick="FORTIS.addToCart('p01');this.innerHTML='<svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>Added';this.classList.add('added')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Add to Cart</button>
           <a href="product-detail.html?id=p01" class="cp-view">View Detail &#8594;</a>
         </div>
@@ -1393,8 +1393,9 @@ a.mnav-link{display:flex}
       <div class="cp-card fu">
         <div class="cp-img"><img src="https://images.unsplash.com/photo-1683308743837-e6ba8cdeb60a?auto=format&fit=crop&w=600&q=80" alt="Industrial Bearing Set" loading="lazy"></div>
         <div class="cp-body">
-          <div class="cp-meta-row"><span class="cp-cat-label">MRO</span><span class="cp-brand-tag">SKF</span></div>
+          <span class="cp-cat-label">MRO</span>
           <div class="cp-title">Industrial Deep Groove Bearing</div>
+          <span class="cp-brand-tag">SKF</span>
           <button class="cp-add" data-pid="p03" onclick="FORTIS.addToCart('p03');this.innerHTML='<svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>Added';this.classList.add('added')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Add to Cart</button>
           <a href="product-detail.html?id=p03" class="cp-view">View Detail &#8594;</a>
         </div>
@@ -1403,8 +1404,9 @@ a.mnav-link{display:flex}
       <div class="cp-card fu">
         <div class="cp-img"><img src="https://images.unsplash.com/photo-1566417110104-cd4f94af0fb3?auto=format&fit=crop&w=600&q=80" alt="Circuit Breaker" loading="lazy"></div>
         <div class="cp-body">
-          <div class="cp-meta-row"><span class="cp-cat-label">Electrical</span><span class="cp-brand-tag">Siemens</span></div>
+          <span class="cp-cat-label">Electrical</span>
           <div class="cp-title">3-Pole MCB Circuit Breaker</div>
+          <span class="cp-brand-tag">Siemens</span>
           <button class="cp-add" data-pid="p07" onclick="FORTIS.addToCart('p07');this.innerHTML='<svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>Added';this.classList.add('added')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Add to Cart</button>
           <a href="product-detail.html?id=p07" class="cp-view">View Detail &#8594;</a>
         </div>
@@ -1413,8 +1415,9 @@ a.mnav-link{display:flex}
       <div class="cp-card fu">
         <div class="cp-img"><img src="https://images.unsplash.com/photo-1622612023350-b15f063eabe6?auto=format&fit=crop&w=600&q=80" alt="High Visibility Safety Vest" loading="lazy"></div>
         <div class="cp-body">
-          <div class="cp-meta-row"><span class="cp-cat-label">PPE</span><span class="cp-brand-tag">Honeywell</span></div>
+          <span class="cp-cat-label">PPE</span>
           <div class="cp-title">High-Visibility Safety Vest (Class 2)</div>
+          <span class="cp-brand-tag">Honeywell</span>
           <button class="cp-add" data-pid="p08" onclick="FORTIS.addToCart('p08');this.innerHTML='<svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>Added';this.classList.add('added')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Add to Cart</button>
           <a href="product-detail.html?id=p08" class="cp-view">View Detail &#8594;</a>
         </div>

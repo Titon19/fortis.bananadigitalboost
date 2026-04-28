@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT Fortis Prima Solusi — Global Procurement & Industrial Supply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── VARIABLES & RESET ─────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#0E3BAA;--blue-dk:#0a2e87;--blue-lt:#E6EAF2;
+  --orange:#F7612A;--orange-dk:#d94e1a;
+  --black:#0A0A0A;--gray-bg:#F7F8FA;
+  --g1:#E6EAF2;--g2:#D9DEE8;--g3:#6B7280;
+  --white:#FFFFFF;
+  --fh:'Manrope',sans-serif;--fb:'IBM Plex Sans',sans-serif;
+  --mw:1180px;--r:10px;--spy:96px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);font-size:16px;line-height:1.75;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:100%;object-fit:cover}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
+
+.wrap{width:100%;max-width:var(--mw);margin:0 auto;padding:0 40px}
+
+/* ─── FADE-UP ───────────────────────────────────────────── */
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fu.on{opacity:1;transform:none}
+.fu:nth-child(2){transition-delay:.08s}.fu:nth-child(3){transition-delay:.16s}
+.fu:nth-child(4){transition-delay:.24s}.fu:nth-child(5){transition-delay:.32s}
+.fu:nth-child(6){transition-delay:.40s}.fu:nth-child(7){transition-delay:.48s}
+
+/* ─── TOOLTIP SYSTEM ────────────────────────────────────── */
+.tip-wrap{position:relative;display:inline-flex}
+.tip-wrap .tip{
+  position:absolute;bottom:calc(100% + 8px);left:50%;
+  transform:translateX(-50%);
+  background:rgba(10,10,10,.92);color:#fff;
+  font-family:var(--fb);font-size:11px;letter-spacing:.02em;
+  padding:5px 11px;border-radius:4px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:50
+}
+.tip-wrap .tip::after{
+  content:'';position:absolute;top:100%;left:50%;
+  transform:translateX(-50%);border:5px solid transparent;
+  border-top-color:rgba(10,10,10,.92)
+}
+.tip-wrap:hover .tip,.tip-wrap:focus-within .tip{opacity:1}
+
+/* ─── BUTTONS ───────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--fh);font-size:14px;font-weight:600;letter-spacing:.03em;padding:13px 26px;border-radius:7px;transition:background .2s,border-color .2s,transform .15s;cursor:pointer}
+.btn:hover{transform:translateY(-1px)}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-orange:hover{background:var(--orange-dk)}
+.btn-ghost-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.38)}
+.btn-ghost-w:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-dk)}
+.btn-ghost-b{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+.btn-ghost-b:hover{background:var(--blue);color:#fff}
+
+/* ─── SECTION LABELS ────────────────────────────────────── */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.eyebrow::before{content:'';display:block;width:16px;height:2px;background:var(--orange);border-radius:2px;flex-shrink:0}
+.sec-title{font-family:var(--fh);font-size:clamp(28px,3vw,36px);font-weight:700;line-height:1.2;letter-spacing:-.4px;color:var(--black)}
+.sec-intro{font-size:15px;line-height:1.8;color:var(--g3);max-width:540px;margin-top:12px}
+
+/* ─── HEADER ────────────────────────────────────────────── */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,box-shadow .3s}
+#hdr.solid{background:rgba(255,255,255,.97);box-shadow:0 1px 0 var(--g2);backdrop-filter:blur(8px)}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--fh);font-weight:800;font-size:19px;letter-spacing:-.2px;color:#fff;transition:color .3s}
+#hdr.solid .logo{color:var(--blue)}
+.logo-box{width:34px;height:34px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0}
+#hdr.solid .logo-box{background:var(--blue)}
+.hdr-nav{display:flex;align-items:center;gap:28px}
+.hdr-nav a{font-family:var(--fh);font-size:13.5px;font-weight:500;color:rgba(255,255,255,.82);transition:color .2s;letter-spacing:.02em}
+.hdr-nav a:hover{color:#fff}
+#hdr.solid .hdr-nav a{color:var(--g3)}
+#hdr.solid .hdr-nav a:hover{color:var(--blue)}
+.hdr-cta{font-family:var(--fh);font-size:13px;font-weight:600;letter-spacing:.04em;padding:8px 20px;background:var(--orange);color:#fff;border-radius:6px;transition:background .2s}
+.hdr-cta:hover{background:var(--orange-dk)}
+.nav-tog{display:none;flex-direction:column;gap:5px;padding:4px}
+.nav-tog span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:background .3s}
+#hdr.solid .nav-tog span{background:var(--black)}
+
+/* ─── HERO ──────────────────────────────────────────────── */
+#hero{position:relative;background:var(--blue)}
+.hero-main{
+  height:calc(100vh - 88px);min-height:560px;max-height:780px;
+  overflow:hidden;position:relative
+}
+/* Horizontal track */
+.hero-track{
+  display:flex;height:100%;
+  transition:transform .78s cubic-bezier(.4,0,.2,1);
+  will-change:transform
+}
+.hero-slide{
+  flex:0 0 100%;min-width:100%;height:100%;
+  background:linear-gradient(135deg,#071d5e 0%,#0E3BAA 55%,#1548cc 100%);
+  position:relative;display:flex;align-items:center
+}
+.hero-slide::after{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:64px 64px;pointer-events:none
+}
+.hero-slide-bg2{background:linear-gradient(135deg,#061850 0%,#0b2d8a 55%,#0E3BAA 100%)}
+.hero-slide-bg3{background:linear-gradient(135deg,#0a2470 0%,#0E3BAA 55%,#1244c0 100%)}
+
+.hero-grid{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:56px;align-items:center;
+  width:100%;max-width:var(--mw);
+  margin:0 auto;padding:72px 40px 32px
+}
+.hero-ey{display:inline-flex;align-items:center;gap:8px;font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.hero-ey::before{content:'';display:block;width:14px;height:2px;background:var(--orange);border-radius:2px}
+.hero-h1{font-family:var(--fh);font-size:clamp(34px,3.8vw,52px);font-weight:700;line-height:1.1;letter-spacing:-.8px;color:#fff;margin-bottom:18px}
+.hero-p{font-size:15px;line-height:1.8;color:rgba(255,255,255,.72);max-width:440px;margin-bottom:32px}
+.hero-cta-row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* Hero right image composition */
+.hv{height:100%;display:flex;align-items:center;justify-content:flex-end}
+.hv-frame{
+  position:relative;width:100%;max-width:500px;height:380px;
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.32)
+}
+.hv-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hv-frame::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(8,20,60,.55) 0%,transparent 50%)
+}
+/* Floating badge on image */
+.hv-badge{
+  position:absolute;bottom:20px;left:20px;z-index:3;
+  background:rgba(255,255,255,.97);border-radius:8px;
+  padding:14px 18px;display:flex;flex-direction:column;gap:2px;
+  box-shadow:0 4px 20px rgba(0,0,0,.18);min-width:140px
+}
+.hv-badge-num{font-family:var(--fh);font-size:24px;font-weight:800;color:var(--blue);letter-spacing:-.5px;line-height:1}
+.hv-badge-lbl{font-size:12px;color:var(--g3);font-weight:500;line-height:1.4;margin-top:4px}
+
+/* Hero controls */
+.hero-ctrl{
+  position:absolute;bottom:28px;right:40px;z-index:10;
+  display:flex;align-items:center;gap:16px
+}
+.hero-arr{
+  width:40px;height:40px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.35);
+  color:#fff;font-size:15px;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,border-color .2s;cursor:pointer
+}
+.hero-arr:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7)}
+.hero-dots{display:flex;gap:7px}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;border:none;transition:background .3s,transform .3s}
+.hero-dot.on{background:var(--orange);transform:scale(1.35)}
+
+/* ─── HERO STATS STRIP ──────────────────────────────────── */
+.hero-stats{
+  background:rgba(7,25,80,.96);
+  border-top:1px solid rgba(255,255,255,.1)
+}
+.hero-stats-inner{
+  display:flex;max-width:var(--mw);margin:0 auto;padding:0 40px
+}
+.hstat{
+  flex:1;padding:22px 0;
+  border-right:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;gap:14px
+}
+.hstat:last-child{border-right:none}
+.hstat-num{font-family:var(--fh);font-size:28px;font-weight:700;color:#fff;letter-spacing:-.4px;line-height:1}
+.hstat-lbl{font-size:13px;color:rgba(255,255,255,.58);line-height:1.4}
+
+/* ─── ABOUT ─────────────────────────────────────────────── */
+#about{padding:var(--spy) 0;background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.about-highlights{display:flex;flex-direction:column;border:1px solid var(--g1);border-radius:var(--r);overflow:hidden;margin-top:36px}
+.ah{display:flex;gap:14px;padding:20px 22px;border-bottom:1px solid var(--g1);transition:background .2s;align-items:flex-start}
+.ah:last-child{border-bottom:none}
+.ah:hover{background:var(--gray-bg)}
+.ah-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:8px}
+.ah-title{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--black);margin-bottom:3px}
+.ah-body{font-size:13.5px;color:var(--g3);line-height:1.65}
+.about-cta{margin-top:28px}
+
+.about-right{display:flex;flex-direction:column;gap:18px}
+.about-img{
+  width:100%;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;
+  position:relative;box-shadow:0 8px 32px rgba(0,0,0,.1)
+}
+.about-img img{position:absolute;inset:0;width:100%;height:100%}
+.about-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ametric{border:1px solid var(--g1);border-radius:8px;padding:18px 20px;transition:border-color .2s}
+.ametric:hover{border-color:var(--blue)}
+.ametric-num{font-family:var(--fh);font-size:28px;font-weight:700;color:var(--blue);letter-spacing:-.4px;margin-bottom:3px}
+.ametric-lbl{font-size:13px;color:var(--g3);line-height:1.4}
+
+/* ─── CAPABILITIES ──────────────────────────────────────── */
+#capabilities{padding:var(--spy) 0;background:var(--gray-bg);border-top:1px solid var(--g1)}
+.cap-hdr{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:48px}
+.cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cap-card{
+  background:var(--white);border:1px solid var(--g1);border-radius:var(--r);
+  padding:30px 26px;display:flex;flex-direction:column;gap:12px;
+  transition:border-color .25s,box-shadow .25s,transform .25s
+}
+.cap-card:hover{border-color:var(--blue);box-shadow:0 4px 24px rgba(14,59,170,.08);transform:translateY(-3px)}
+.cap-num{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--orange)}
+.cap-title{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--black);line-height:1.3;flex:1}
+.cap-body{font-size:13.5px;line-height:1.7;color:var(--g3)}
+.cap-link{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--fh);font-size:13px;font-weight:600;color:var(--blue);
+  transition:gap .2s;margin-top:4px
+}
+.cap-card:hover .cap-link{gap:8px}
+
+/* ─── CATEGORIES ────────────────────────────────────────── */
+#categories{padding:var(--spy) 0;background:var(--white)}
+.cat-hdr{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:44px}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cat-tile{
+  background:var(--gray-bg);border:1px solid var(--g1);border-radius:var(--r);
+  padding:26px 22px 22px;display:flex;flex-direction:column;gap:8px;min-height:156px;
+  position:relative;overflow:hidden;
+  transition:border-color .25s,background .25s,box-shadow .25s
+}
+.cat-tile:hover{border-color:var(--blue);background:var(--white);box-shadow:0 4px 18px rgba(14,59,170,.07)}
+.cat-tile--blue{background:var(--blue);border-color:var(--blue);grid-column:span 2}
+.cat-tile--blue:hover{background:var(--blue-dk);border-color:var(--blue-dk)}
+.cat-tile--blue .ct-title{color:#fff}
+.cat-tile--blue .ct-desc{color:rgba(255,255,255,.6)}
+.cat-tile--blue .ct-arr{border-color:rgba(255,255,255,.3);color:#fff}
+.cat-tile--blue:hover .ct-arr{border-color:#fff;background:rgba(255,255,255,.1)}
+.ct-icon{width:32px;height:32px;margin-bottom:4px;opacity:.6}
+.cat-tile--blue .ct-icon{opacity:.75}
+.ct-title{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--black);line-height:1.3}
+.ct-desc{font-size:12.5px;color:var(--g3);line-height:1.5}
+.ct-arr{
+  position:absolute;bottom:18px;right:18px;
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--g2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:var(--g3);
+  transition:all .2s;flex-shrink:0;text-decoration:none
+}
+.cat-tile:hover .ct-arr{border-color:var(--blue);color:var(--blue);background:var(--blue-lt)}
+
+/* ─── BRANDS ─────────────────────────────────────────────── */
+#brands{padding:72px 0;background:var(--gray-bg);border-top:1px solid var(--g1);border-bottom:1px solid var(--g1)}
+.brands-hdr{text-align:center;margin-bottom:44px}
+.brands-hdr .eyebrow{justify-content:center}
+.brands-hdr .eyebrow::before{display:none}
+.brands-hdr .sec-intro{margin:0 auto;text-align:center}
+.brands-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.brand-chip{
+  padding:13px 26px;background:var(--white);border:1px solid var(--g1);
+  border-radius:8px;font-family:var(--fh);font-size:15px;font-weight:700;
+  color:var(--g3);letter-spacing:.04em;
+  transition:border-color .2s,color .2s,box-shadow .2s;min-width:100px;text-align:center
+}
+.brand-chip:hover{border-color:var(--blue);color:var(--blue);box-shadow:0 2px 12px rgba(14,59,170,.07)}
+.brands-note{text-align:center;margin-top:28px;font-size:13px;color:var(--g3)}
+
+/* ─── WHY FORTIS ─────────────────────────────────────────── */
+#why-fortis{padding:var(--spy) 0;background:var(--white)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.why-reasons{display:flex;flex-direction:column;border:1px solid var(--g1);border-radius:var(--r);overflow:hidden;margin-top:36px}
+.wr{display:flex;gap:18px;padding:22px 26px;border-bottom:1px solid var(--g1);transition:background .2s;align-items:flex-start}
+.wr:last-child{border-bottom:none}
+.wr:hover{background:var(--gray-bg)}
+.wr-n{font-family:var(--fh);font-size:11px;font-weight:700;color:var(--orange);letter-spacing:.1em;min-width:24px;padding-top:2px}
+.wr-title{font-family:var(--fh);font-size:14.5px;font-weight:700;color:var(--black);margin-bottom:3px}
+.wr-body{font-size:13.5px;color:var(--g3);line-height:1.6}
+
+/* Why right panel */
+.why-panel{display:flex;flex-direction:column;gap:16px;padding-top:12px}
+.why-blue-blk{
+  background:var(--blue);border-radius:var(--r);padding:40px 36px;
+  position:relative;overflow:hidden;min-height:240px;
+  display:flex;flex-direction:column;justify-content:space-between
+}
+.why-blue-blk::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:40px 40px
+}
+.why-blk-top{position:relative;z-index:1}
+.why-blk-stat{font-family:var(--fh);font-size:52px;font-weight:800;color:#fff;letter-spacing:-2px;line-height:1}
+.why-blk-label{font-size:13px;color:rgba(255,255,255,.6);margin-top:8px}
+.why-blk-tag{position:relative;z-index:1;font-family:var(--fh);font-size:17px;font-weight:700;color:#fff;line-height:1.4;max-width:200px}
+.why-img{
+  border-radius:var(--r);overflow:hidden;height:200px;
+  border:1px solid var(--g1);position:relative
+}
+.why-img img{width:100%;height:100%;object-fit:cover}
+.why-img-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:14px 18px;background:linear-gradient(transparent,rgba(10,10,10,.6));
+  font-size:12px;color:rgba(255,255,255,.8);font-family:var(--fh);font-weight:500
+}
+
+/* ─── PROCESS ────────────────────────────────────────────── */
+#process{padding:var(--spy) 0;background:var(--gray-bg);border-top:1px solid var(--g1)}
+.proc-hdr{text-align:center;margin-bottom:64px}
+.proc-hdr .eyebrow{justify-content:center}
+.proc-hdr .eyebrow::before{display:none}
+.proc-hdr .sec-intro{margin:12px auto 0;text-align:center}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.proc-steps::before{
+  content:'';position:absolute;top:36px;
+  left:calc(12.5% + 2px);right:calc(12.5% + 2px);
+  height:1px;background:var(--g2)
+}
+.proc-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 20px;position:relative;z-index:1}
+.step-ring{
+  width:72px;height:72px;border-radius:50%;background:var(--white);
+  border:2px solid var(--g2);display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;transition:border-color .3s,background .3s;flex-shrink:0
+}
+.proc-step:hover .step-ring{border-color:var(--blue);background:var(--blue)}
+.step-num{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--blue);transition:color .3s}
+.proc-step:hover .step-num{color:#fff}
+.step-title{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--black);margin-bottom:10px;line-height:1.3}
+.step-body{font-size:13.5px;color:var(--g3);line-height:1.7}
+
+/* ─── BLOG ───────────────────────────────────────────────── */
+#blog{padding:var(--spy) 0;background:var(--white)}
+.blog-hdr{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:44px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.blog-card{
+  border:1px solid var(--g1);border-radius:var(--r);overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:border-color .25s,box-shadow .25s,transform .25s
+}
+.blog-card:hover{border-color:var(--blue);box-shadow:0 6px 28px rgba(14,59,170,.08);transform:translateY(-3px)}
+.blog-img{height:196px;overflow:hidden;position:relative;background:var(--g1)}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.blog-card:hover .blog-img img{transform:scale(1.04)}
+.blog-body{padding:24px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.blog-cat{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--orange)}
+.blog-title{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--black);line-height:1.4}
+.blog-exc{font-size:13.5px;color:var(--g3);line-height:1.7;flex:1}
+.blog-read{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--fh);font-size:13px;font-weight:600;color:var(--blue);
+  margin-top:8px;transition:gap .2s
+}
+.blog-card:hover .blog-read{gap:9px}
+
+/* ─── CTA SECTION ────────────────────────────────────────── */
+#final-cta{padding:var(--spy) 0;background:var(--blue);position:relative;overflow:hidden}
+#final-cta::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none
+}
+.cta-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center}
+.cta-title{font-family:var(--fh);font-size:clamp(26px,2.8vw,36px);font-weight:700;line-height:1.2;letter-spacing:-.4px;color:#fff;max-width:520px;margin-bottom:14px}
+.cta-body{font-size:15px;color:rgba(255,255,255,.7);line-height:1.75;max-width:480px}
+.cta-btns{display:flex;flex-direction:column;gap:10px;min-width:200px}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+#contact{background:var(--black);padding:64px 0 32px}
+.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:56px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:32px}
+.ft-brand .logo{margin-bottom:18px;color:#fff}
+.ft-desc{font-size:13.5px;color:rgba(255,255,255,.42);line-height:1.7;max-width:240px}
+.ft-col-ttl{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px}
+.ft-links{display:flex;flex-direction:column;gap:11px}
+.ft-links a{font-size:13.5px;color:rgba(255,255,255,.52);transition:color .2s}
+.ft-links a:hover{color:#fff}
+.ft-ci{margin-bottom:14px}
+.ft-ci-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:2px}
+.ft-ci-val{font-size:13.5px;color:rgba(255,255,255,.65);line-height:1.5}
+.ft-ci-val a{color:var(--orange);transition:color .2s}
+.ft-ci-val a:hover{color:#ff7a4a}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.ft-copy{font-size:12.5px;color:rgba(255,255,255,.22)}
+.ft-tag{font-family:var(--fh);font-size:12.5px;font-weight:600;color:rgba(255,255,255,.18);letter-spacing:.06em}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:1100px){
+  .cap-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .cat-tile--blue{grid-column:span 2}
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  :root{--spy:64px}
+  .hero-grid{grid-template-columns:1fr;gap:32px;padding-bottom:24px}
+  .hv{display:none}
+  .hero-h1{font-size:34px}
+  .about-grid,.why-grid{grid-template-columns:1fr;gap:48px}
+  .cta-inner{grid-template-columns:1fr;gap:36px}
+  .ft-top{grid-template-columns:1fr 1fr;gap:36px}
+  .cap-hdr{grid-template-columns:1fr}
+  .cat-hdr{flex-direction:column;align-items:flex-start;gap:16px}
+  .blog-hdr{flex-direction:column;align-items:flex-start;gap:16px}
+  .proc-steps{grid-template-columns:repeat(2,1fr);gap:40px}
+  .proc-steps::before{display:none}
+}
+@media(max-width:700px){
+  .wrap{padding:0 22px}
+  .hero-grid{padding:72px 22px 24px}
+  .hero-stats-inner{padding:0 22px;flex-wrap:wrap}
+  .hstat{flex:0 0 50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .hstat:nth-child(odd){border-right:1px solid rgba(255,255,255,.1)}
+  .hstat:last-child{flex:0 0 100%;border-bottom:none}
+  .hdr-nav{display:none}
+  .hdr-nav.open{
+    display:flex;flex-direction:column;
+    position:fixed;top:72px;left:0;right:0;
+    background:#fff;padding:22px 22px 30px;gap:18px;
+    border-bottom:1px solid var(--g1);z-index:99;
+    box-shadow:0 8px 30px rgba(0,0,0,.1)
+  }
+  .hdr-nav.open a{color:var(--g3);font-size:15px}
+  .nav-tog{display:flex}
+  .cap-grid{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .cat-tile--blue{grid-column:span 1}
+  .blog-grid{grid-template-columns:1fr}
+  .about-metrics{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr}
+  .ft-bot{flex-direction:column;text-align:center}
+  .proc-steps{grid-template-columns:1fr;gap:36px}
+  .hero-ctrl{right:22px;bottom:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     HEADER
+     ══════════════════════════════════════════════════════ -->
+<header id="hdr">
+  <div class="wrap">
+    <div class="hdr-inner">
+      <a href="#hero" class="logo" aria-label="PT Fortis Prima Solusi Home">
+        <div class="logo-box" aria-hidden="true">F</div>
+        FORTIS
+      </a>
+      <nav class="hdr-nav" id="hdrNav" role="navigation" aria-label="Main navigation">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#categories">Products</a>
+        <a href="#why-fortis">Why Fortis</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="#final-cta" class="hdr-cta">Inquiry</a>
+      </nav>
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO — HORIZONTAL CAROUSEL
+     ══════════════════════════════════════════════════════ -->
+<section id="hero" aria-label="Hero">
+
+  <!-- Sliding main area -->
+  <div class="hero-main" id="heroMain">
+    <div class="hero-track" id="heroTrack">
+
+      <!-- Slide 1: Global Procurement -->
+      <div class="hero-slide" role="group" aria-label="Slide 1: Global Procurement">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <p class="hero-ey">Global Procurement &amp; Industrial Supply</p>
+            <h1 class="hero-h1">Simplify Global Procurement with One Trusted Partner</h1>
+            <p class="hero-p">From sourcing to delivery, Fortis helps businesses reduce procurement complexity, control cost, and secure the right industrial supply with greater confidence.</p>
+            <div class="hero-cta-row">
+              <div class="tip-wrap">
+                <a href="#final-cta" class="btn btn-orange">Request an Inquiry</a>
+                <span class="tip">Jumps to: Inquiry section</span>
+              </div>
+              <div class="tip-wrap">
+                <a href="#capabilities" class="btn btn-ghost-w">Browse Capability</a>
+                <span class="tip">Jumps to: Capabilities</span>
+              </div>
+            </div>
+          </div>
+          <div class="hv" aria-hidden="true">
+            <div class="hv-frame">
+              <!-- Replace with approved Fortis photography in final build -->
+              <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80"
+                   alt="Industrial warehouse with logistics operations">
+              <div class="hv-badge">
+                <div class="hv-badge-num">1,000+</div>
+                <div class="hv-badge-lbl">Products ready to source globally</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: MRO & PPE -->
+      <div class="hero-slide hero-slide-bg2" role="group" aria-label="Slide 2: MRO & PPE">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <p class="hero-ey">MRO &amp; PPE Solutions</p>
+            <h1 class="hero-h1">Reliable Supply for Operational Continuity</h1>
+            <p class="hero-p">Access trusted MRO and PPE solutions from global brands, backed by a procurement process built for speed, accuracy, and business continuity.</p>
+            <div class="hero-cta-row">
+              <div class="tip-wrap">
+                <a href="#categories" class="btn btn-orange">Explore Products</a>
+                <span class="tip">Jumps to: Supply Categories</span>
+              </div>
+              <div class="tip-wrap">
+                <a href="#contact" class="btn btn-ghost-w">Talk to Our Team</a>
+                <span class="tip">Jumps to: Contact section</span>
+              </div>
+            </div>
+          </div>
+          <div class="hv" aria-hidden="true">
+            <div class="hv-frame">
+              <!-- Replace with approved Fortis photography in final build -->
+              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80"
+                   alt="Industrial workers wearing PPE safety equipment">
+              <div class="hv-badge">
+                <div class="hv-badge-num">30+</div>
+                <div class="hv-badge-lbl">Global brand principals in our network</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Container Lease -->
+      <div class="hero-slide hero-slide-bg3" role="group" aria-label="Slide 3: Container Lease">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <p class="hero-ey">Container Lease &amp; Supply Support</p>
+            <h1 class="hero-h1">Flexible Supply Support for Changing Operational Needs</h1>
+            <p class="hero-p">From container lease options to procurement support, Fortis helps companies stay responsive without adding unnecessary operational burden.</p>
+            <div class="hero-cta-row">
+              <div class="tip-wrap">
+                <a href="#capabilities" class="btn btn-orange">View Services</a>
+                <span class="tip">Jumps to: Capabilities</span>
+              </div>
+              <div class="tip-wrap">
+                <a href="#final-cta" class="btn btn-ghost-w">Send Inquiry</a>
+                <span class="tip">Jumps to: Inquiry section</span>
+              </div>
+            </div>
+          </div>
+          <div class="hv" aria-hidden="true">
+            <div class="hv-frame">
+              <!-- Replace with approved Fortis photography in final build -->
+              <img src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=900&q=80"
+                   alt="Shipping containers at logistics freight yard">
+              <div class="hv-badge">
+                <div class="hv-badge-num">B2B</div>
+                <div class="hv-badge-lbl">Enterprise-ready procurement approach</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /hero-track -->
+
+    <!-- Arrows + dots -->
+    <div class="hero-ctrl" aria-label="Carousel controls">
+      <button class="hero-arr" id="heroPrev" aria-label="Previous slide">&#8592;</button>
+      <div class="hero-dots" role="tablist">
+        <button class="hero-dot on" role="tab" aria-selected="true"  aria-label="Slide 1" data-idx="0"></button>
+        <button class="hero-dot"    role="tab" aria-selected="false" aria-label="Slide 2" data-idx="1"></button>
+        <button class="hero-dot"    role="tab" aria-selected="false" aria-label="Slide 3" data-idx="2"></button>
+      </div>
+      <button class="hero-arr" id="heroNext" aria-label="Next slide">&#8594;</button>
+    </div>
+  </div><!-- /hero-main -->
+
+  <!-- Stats strip — SEPARATE from slider, never overlapping -->
+  <div class="hero-stats" role="region" aria-label="Key metrics">
+    <div class="hero-stats-inner">
+      <div class="hstat">
+        <div>
+          <div class="hstat-num" data-count="1000" data-suffix="+">1,000+</div>
+          <div class="hstat-lbl">Product Catalog</div>
+        </div>
+      </div>
+      <div class="hstat">
+        <div>
+          <div class="hstat-num" data-count="30" data-suffix="+">30+</div>
+          <div class="hstat-lbl">Global Brand Principals</div>
+        </div>
+      </div>
+      <div class="hstat">
+        <div>
+          <div class="hstat-num">Multi</div>
+          <div class="hstat-lbl">Industry Segments Served</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ABOUT / COMPANY SNAPSHOT
+     ══════════════════════════════════════════════════════ -->
+<section id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="fu">
+        <p class="eyebrow">About Fortis</p>
+        <h2 class="sec-title" id="about-title">A Procurement Partner Built for Industrial Demands</h2>
+        <p class="sec-intro">Fortis supports procurement and sourcing needs across manufacturing, energy, logistics, automotive, and industrial operations. We help simplify sourcing, reduce hidden cost layers, and improve supply efficiency through a more structured procurement approach.</p>
+        <div class="about-highlights">
+          <div class="ah">
+            <div class="ah-dot"></div>
+            <div>
+              <div class="ah-title">Strategic Sourcing</div>
+              <div class="ah-body">A curated global network focused on quality products, accurate timing, and sustainable cost efficiency across industrial categories.</div>
+            </div>
+          </div>
+          <div class="ah">
+            <div class="ah-dot"></div>
+            <div>
+              <div class="ah-title">Trusted Supply Network</div>
+              <div class="ah-body">Relationships with recognized global brands and verified suppliers that meet industrial-grade standards.</div>
+            </div>
+          </div>
+          <div class="ah">
+            <div class="ah-dot"></div>
+            <div>
+              <div class="ah-title">Cost Efficiency Focus</div>
+              <div class="ah-body">Consolidate fragmented sourcing and reduce total procurement cost through a transparent supply approach.</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-cta">
+          <div class="tip-wrap">
+            <a href="#contact" class="btn btn-blue">Learn More About Fortis</a>
+            <span class="tip">Jumps to: Contact section</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right fu">
+        <div class="about-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+               alt="Industrial warehouse interior operations">
+        </div>
+        <div class="about-metrics">
+          <div class="ametric">
+            <div class="ametric-num">1,000+</div>
+            <div class="ametric-lbl">Product lines across industrial categories</div>
+          </div>
+          <div class="ametric">
+            <div class="ametric-num">30+</div>
+            <div class="ametric-lbl">Global brand principals in our supply network</div>
+          </div>
+          <div class="ametric">
+            <div class="ametric-num">6+</div>
+            <div class="ametric-lbl">Industry sectors actively supported</div>
+          </div>
+          <div class="ametric">
+            <div class="ametric-num">B2B</div>
+            <div class="ametric-lbl">Enterprise-ready procurement approach</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     CORE CAPABILITIES
+     ══════════════════════════════════════════════════════ -->
+<section id="capabilities" aria-labelledby="cap-title">
+  <div class="wrap">
+    <div class="cap-hdr">
+      <div class="fu">
+        <p class="eyebrow">Core Capabilities</p>
+        <h2 class="sec-title" id="cap-title">What We Do</h2>
+      </div>
+      <p class="sec-intro fu">Our service scope is built to support industrial procurement with greater clarity, speed, and control.</p>
+    </div>
+    <div class="cap-grid">
+
+      <div class="cap-card fu">
+        <div class="cap-num">01</div>
+        <div class="cap-title">Global Procurement &amp; Sourcing</div>
+        <p class="cap-body">We source products, materials, and equipment worldwide through a curated network focused on quality, timing, and cost efficiency.</p>
+        <div class="tip-wrap">
+          <a href="services.html" class="cap-link">Learn More &#8594;</a>
+          <span class="tip">Opens: future Services page</span>
+        </div>
+      </div>
+
+      <div class="cap-card fu">
+        <div class="cap-num">02</div>
+        <div class="cap-title">Industrial MRO Supply</div>
+        <p class="cap-body">A broad sourcing capability for maintenance, repair, and operating supply requirements across multiple industrial sectors.</p>
+        <div class="tip-wrap">
+          <a href="catalog.html?cat=mro" class="cap-link">Learn More &#8594;</a>
+          <span class="tip">Opens: future Catalog &rsaquo; MRO</span>
+        </div>
+      </div>
+
+      <div class="cap-card fu">
+        <div class="cap-num">03</div>
+        <div class="cap-title">PPE Supply</div>
+        <p class="cap-body">Access workplace safety products from trusted brands with procurement support that prioritizes compliance and reliability.</p>
+        <div class="tip-wrap">
+          <a href="catalog.html?cat=ppe" class="cap-link">Learn More &#8594;</a>
+          <span class="tip">Opens: future Catalog &rsaquo; PPE</span>
+        </div>
+      </div>
+
+      <div class="cap-card fu">
+        <div class="cap-num">04</div>
+        <div class="cap-title">Container Lease &amp; Sale</div>
+        <p class="cap-body">Flexible long-term and short-term options to support changing operational and logistics requirements.</p>
+        <div class="tip-wrap">
+          <a href="services.html#container" class="cap-link">Learn More &#8594;</a>
+          <span class="tip">Opens: future Services &rsaquo; Container</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FEATURED SUPPLY CATEGORIES
+     ══════════════════════════════════════════════════════ -->
+<section id="categories" aria-labelledby="cat-title">
+  <div class="wrap">
+    <div class="cat-hdr">
+      <div class="fu">
+        <p class="eyebrow">Supply Categories</p>
+        <h2 class="sec-title" id="cat-title">Featured Supply Categories</h2>
+      </div>
+      <p class="sec-intro fu">Explore key categories representing Fortis' procurement strength across industrial and operational needs.</p>
+    </div>
+    <div class="cat-grid">
+
+      <!-- Featured blue tile -->
+      <div class="cat-tile cat-tile--blue fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5">
+          <circle cx="16" cy="16" r="4"/><path d="M16 2v4M16 26v4M4.22 4.22l2.83 2.83M24.95 24.95l2.83 2.83M2 16h4M26 16h4M4.22 27.78l2.83-2.83M24.95 7.05l2.83-2.83"/>
+        </svg>
+        <div class="ct-title">MRO Supply</div>
+        <div class="ct-desc">Maintenance, Repair &amp; Operating</div>
+        <div class="tip-wrap" style="position:absolute;bottom:14px;right:14px;">
+          <a href="catalog.html?cat=mro" class="ct-arr" aria-label="Browse MRO Supply catalog">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: Catalog &rsaquo; MRO</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <path d="M16 30s10-5 10-12.5V6.25L16 2.5 6 6.25V17.5C6 25 16 30 16 30z"/>
+        </svg>
+        <div class="ct-title">PPE Equipment</div>
+        <div class="ct-desc">Personal Protective Equipment</div>
+        <div class="tip-wrap" style="position:absolute;bottom:14px;right:14px;">
+          <a href="catalog.html?cat=ppe" class="ct-arr" aria-label="Browse PPE Equipment catalog">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: Catalog &rsaquo; PPE</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <polygon points="17 2.5 4 18 16 18 15 29.5 28 14 16 14 17 2.5"/>
+        </svg>
+        <div class="ct-title">Electrical &amp; Electro Mechanical</div>
+        <div class="ct-desc">Parts &amp; Components</div>
+        <div class="tip-wrap" style="position:absolute;bottom:14px;right:14px;">
+          <a href="catalog.html?cat=electrical" class="ct-arr" aria-label="Browse Electrical catalog">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: Catalog &rsaquo; Electrical</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <rect x="1" y="10" width="20" height="14" rx="2"/><polygon points="21 11 26 11 30 15 30 24 21 24 21 11"/><circle cx="7" cy="26" r="3"/><circle cx="24" cy="26" r="3"/>
+        </svg>
+        <div class="ct-title">Automotive Fleet &amp; Parts</div>
+        <div class="ct-desc">Fleet &amp; Vehicle Components</div>
+        <div class="tip-wrap" style="position:absolute;bottom:14px;right:14px;">
+          <a href="catalog.html?cat=automotive" class="ct-arr" aria-label="Browse Automotive catalog">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: Catalog &rsaquo; Automotive</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <path d="M16 2v28M22 6H12a5 5 0 0 0 0 10h8a5 5 0 0 1 0 10H8"/>
+        </svg>
+        <div class="ct-title">Flow Control &amp; Fluid Transfer</div>
+        <div class="ct-desc">Valves, Fittings &amp; Piping</div>
+        <div class="tip-wrap" style="position:absolute;bottom:14px;right:14px;">
+          <a href="catalog.html?cat=flow-control" class="ct-arr" aria-label="Browse Flow Control catalog">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: Catalog &rsaquo; Flow Control</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <circle cx="16" cy="16" r="13"/><line x1="16" y1="10" x2="16" y2="16"/><line x1="16" y1="21" x2="16.01" y2="21"/>
+        </svg>
+        <div class="ct-title">Safety &amp; Security Equipment</div>
+        <div class="ct-desc">Workplace &amp; Site Safety</div>
+        <div class="tip-wrap" style="position:absolute;bottom:14px;right:14px;">
+          <a href="catalog.html?cat=safety" class="ct-arr" aria-label="Browse Safety catalog">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: Catalog &rsaquo; Safety</span>
+        </div>
+      </div>
+
+      <div class="cat-tile fu" role="article">
+        <svg class="ct-icon" viewBox="0 0 32 32" fill="none" stroke="#0E3BAA" stroke-width="1.5">
+          <rect x="2" y="9" width="28" height="18" rx="2"/>
+          <path d="M21 9V7a4 4 0 0 0-8 0v2"/>
+        </svg>
+        <div class="ct-title">Container Lease &amp; Sale</div>
+        <div class="ct-desc">Long-term &amp; Short-term Options</div>
+        <div class="tip-wrap" style="position:absolute;bottom:14px;right:14px;">
+          <a href="services.html#container" class="ct-arr" aria-label="Browse Container services">&#8594;</a>
+          <span class="tip" style="left:auto;right:0;transform:none;">Opens: Services &rsaquo; Container</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TRUSTED BRANDS
+     ══════════════════════════════════════════════════════ -->
+<section id="brands" aria-labelledby="brands-title">
+  <div class="wrap">
+    <div class="brands-hdr fu">
+      <p class="eyebrow">Brand Principals</p>
+      <h2 class="sec-title" id="brands-title">Trusted Brands Within Our Supply Network</h2>
+      <p class="sec-intro">Fortis works across recognized industrial and safety brands to help clients source the products they need with greater assurance and efficiency.</p>
+    </div>
+    <div class="brands-row fu">
+      <div class="brand-chip">SKF</div>
+      <div class="brand-chip">3M</div>
+      <div class="brand-chip">Honeywell</div>
+      <div class="brand-chip">Ansell</div>
+      <div class="brand-chip">MSA Safety</div>
+      <div class="brand-chip">Schneider</div>
+      <div class="brand-chip">Siemens</div>
+      <div class="brand-chip">ABB</div>
+    </div>
+    <p class="brands-note fu">Our supply network continues to grow across industrial categories and global brand partnerships.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     WHY CHOOSE FORTIS
+     ══════════════════════════════════════════════════════ -->
+<section id="why-fortis" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="why-grid">
+
+      <div class="fu">
+        <p class="eyebrow">Why Fortis</p>
+        <h2 class="sec-title" id="why-title">Why Companies Choose Fortis</h2>
+        <p class="sec-intro">A structured, reliable procurement partner for businesses that need more than a transactional supplier relationship.</p>
+        <div class="why-reasons">
+          <div class="wr">
+            <div class="wr-n">01</div>
+            <div><div class="wr-title">Extensive Supplier Network</div><div class="wr-body">Access to a broad network of quality-assured suppliers across industrial and safety categories worldwide.</div></div>
+          </div>
+          <div class="wr">
+            <div class="wr-n">02</div>
+            <div><div class="wr-title">Performance-Driven Procurement</div><div class="wr-body">A structured approach that improves efficiency and purchasing control from first inquiry to final delivery.</div></div>
+          </div>
+          <div class="wr">
+            <div class="wr-n">03</div>
+            <div><div class="wr-title">Reduced Complexity</div><div class="wr-body">Fortis consolidates fragmented sourcing into a more manageable, transparent procurement flow.</div></div>
+          </div>
+          <div class="wr">
+            <div class="wr-n">04</div>
+            <div><div class="wr-title">Cost &amp; Capital Optimisation</div><div class="wr-body">Lower overhead, balance inventory, and support better cost control across procurement cycles.</div></div>
+          </div>
+          <div class="wr">
+            <div class="wr-n">05</div>
+            <div><div class="wr-title">Flexibility &amp; Responsiveness</div><div class="wr-body">A responsive partner for changing timelines and evolving operational requirements.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-panel fu">
+        <div class="why-blue-blk">
+          <div class="why-blk-top">
+            <div class="why-blk-stat">End&#8209;to&#8209;End</div>
+            <div class="why-blk-label">Procurement coverage — sourcing through delivery</div>
+          </div>
+          <div class="why-blk-tag">One partner. Full procurement coverage. Less complexity.</div>
+        </div>
+        <div class="why-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=700&q=80"
+               alt="Industrial engineering and machinery operations">
+          <div class="why-img-caption">Fortis — operational continuity through structured procurement</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     HOW FORTIS WORKS — 4 STEPS
+     ══════════════════════════════════════════════════════ -->
+<section id="process" aria-labelledby="proc-title">
+  <div class="wrap">
+    <div class="proc-hdr fu">
+      <p class="eyebrow">Our Process</p>
+      <h2 class="sec-title" id="proc-title">How Fortis Works</h2>
+      <p class="sec-intro">A four-step procurement flow designed for clarity, speed, and results.</p>
+    </div>
+    <div class="proc-steps">
+      <div class="proc-step fu">
+        <div class="step-ring"><div class="step-num">1</div></div>
+        <div class="step-title">Define Requirement</div>
+        <p class="step-body">You specify the product or sourcing need — category, quantity, quality standard, and timeline.</p>
+      </div>
+      <div class="proc-step fu">
+        <div class="step-ring"><div class="step-num">2</div></div>
+        <div class="step-title">Identify Supply Options</div>
+        <p class="step-body">We identify suitable supply sources based on fit, price point, and availability across our global network.</p>
+      </div>
+      <div class="proc-step fu">
+        <div class="step-ring"><div class="step-num">3</div></div>
+        <div class="step-title">Evaluate &amp; Select</div>
+        <p class="step-body">We support selection through a tested procurement approach that prioritizes quality and compliance.</p>
+      </div>
+      <div class="proc-step fu">
+        <div class="step-ring"><div class="step-num">4</div></div>
+        <div class="step-title">Negotiate &amp; Deliver</div>
+        <p class="step-body">We negotiate and deliver to meet operational expectations — on time and within agreed parameters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     BLOG / INSIGHTS
+     ══════════════════════════════════════════════════════ -->
+<section id="blog" aria-labelledby="blog-title">
+  <div class="wrap">
+    <div class="blog-hdr">
+      <div class="fu">
+        <p class="eyebrow">Insights</p>
+        <h2 class="sec-title" id="blog-title">Insights for Smarter Procurement</h2>
+        <p class="sec-intro">Practical perspectives on sourcing efficiency, industrial supply, and procurement planning.</p>
+      </div>
+      <div class="tip-wrap fu">
+        <a href="blog.html" class="btn btn-ghost-b">View All Insights</a>
+        <span class="tip">Opens: future Blog page</span>
+      </div>
+    </div>
+
+    <div class="blog-grid">
+
+      <article class="blog-card fu">
+        <div class="blog-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=700&q=80"
+               alt="Industrial procurement operations at factory">
+        </div>
+        <div class="blog-body">
+          <span class="blog-cat">Procurement Strategy</span>
+          <h3 class="blog-title">Reducing Procurement Friction in Multi-Supplier Operations</h3>
+          <p class="blog-exc">Managing multiple suppliers increases coordination cost, delivery risk, and quality variance. Here's how procurement consolidation reduces friction without sacrificing supply flexibility.</p>
+          <div class="tip-wrap">
+            <a href="blog/reducing-procurement-friction.html" class="blog-read">Read Insight &#8594;</a>
+            <span class="tip">Opens: future Blog article</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card fu">
+        <div class="blog-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=700&q=80"
+               alt="Workers in PPE safety equipment on industrial site">
+        </div>
+        <div class="blog-body">
+          <span class="blog-cat">Industrial Safety</span>
+          <h3 class="blog-title">What Industrial Buyers Should Prioritise Beyond Unit Cost</h3>
+          <p class="blog-exc">Unit price is a starting point, not the full picture. Learn why compliance, lead time, and supplier reliability matter more in long-term procurement planning.</p>
+          <div class="tip-wrap">
+            <a href="blog/beyond-unit-cost.html" class="blog-read">Read Insight &#8594;</a>
+            <span class="tip">Opens: future Blog article</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card fu">
+        <div class="blog-img">
+          <!-- Replace with approved Fortis photography in final build -->
+          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=700&q=80"
+               alt="Logistics and shipping container operations">
+        </div>
+        <div class="blog-body">
+          <span class="blog-cat">Supply Chain</span>
+          <h3 class="blog-title">Building More Reliable Supply Continuity for Operational Teams</h3>
+          <p class="blog-exc">Operational disruptions often begin in procurement. A structured supply continuity approach helps industrial teams anticipate gaps before they become stoppages.</p>
+          <div class="tip-wrap">
+            <a href="blog/supply-continuity.html" class="blog-read">Read Insight &#8594;</a>
+            <span class="tip">Opens: future Blog article</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FINAL CTA
+     ══════════════════════════════════════════════════════ -->
+<section id="final-cta" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="cta-inner">
+      <div class="fu">
+        <h2 class="cta-title" id="cta-title">Need a More Efficient Way to Source Industrial Supply?</h2>
+        <p class="cta-body">Tell us what you need. Our team will help direct your inquiry to the right procurement solution.</p>
+      </div>
+      <div class="cta-btns fu">
+        <div class="tip-wrap">
+          <a href="/cdn-cgi/l/email-protection#6310020f061023050c11170a1013110a0e024d000c0e" class="btn btn-orange" style="justify-content:center;">Send Inquiry</a>
+          <span class="tip">Opens: email to <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="92e1f3fef7e1d2f4fde0e6fbe1e2e0fbfff3bcf1fdff">[email&#160;protected]</a></span>
+        </div>
+        <div class="tip-wrap">
+          <a href="#contact" class="btn btn-ghost-w" style="justify-content:center;">Contact Fortis</a>
+          <span class="tip">Jumps to: Contact &amp; Footer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER / CONTACT
+     ══════════════════════════════════════════════════════ -->
+<footer id="contact" aria-label="Footer and contact information">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="logo" style="display:flex;align-items:center;gap:9px;">
+          <div class="logo-box">F</div>
+          <span style="font-family:var(--fh);font-weight:800;font-size:19px;color:#fff;">FORTIS</span>
+        </div>
+        <p class="ft-desc">PT Fortis Prima Solusi — End-to-End Procurement Partner for Global-Grade Industrial Supply.</p>
+      </div>
+
+      <div>
+        <div class="ft-col-ttl">Navigation</div>
+        <div class="ft-links">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#categories">Products</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="ft-col-ttl">Contact</div>
+        <div class="ft-ci">
+          <div class="ft-ci-lbl">Address</div>
+          <div class="ft-ci-val">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta</div>
+        </div>
+        <div class="ft-ci">
+          <div class="ft-ci-lbl">Email</div>
+          <div class="ft-ci-val"><a href="/cdn-cgi/l/email-protection#dba8bab7bea89bbdb4a9afb2a8aba9b2b6baf5b8b4b6"><span class="__cf_email__" data-cfemail="3142505d544271575e434558424143585c501f525e5c">[email&#160;protected]</span></a></div>
+        </div>
+        <div class="ft-ci">
+          <div class="ft-ci-lbl">Phone</div>
+          <div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-bot">
+      <p class="ft-copy">&copy; 2026 PT Fortis Prima Solusi. All rights reserved.</p>
+      <p class="ft-tag">Procurement Excellence, Delivered.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════════════════════ -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ── HERO HORIZONTAL SLIDER ─────────────────────────────── */
+(function(){
+  const track   = document.getElementById('heroTrack');
+  const slides  = track.querySelectorAll('.hero-slide');
+  const dots    = document.querySelectorAll('.hero-dot');
+  const prevBtn = document.getElementById('heroPrev');
+  const nextBtn = document.getElementById('heroNext');
+  let cur = 0, timer = null, touching = false, tx0 = 0;
+  const N = slides.length;
+  const DELAY = 6000;
+
+  function goTo(idx){
+    cur = ((idx % N) + N) % N;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dots.forEach((d,i)=>{
+      d.classList.toggle('on', i===cur);
+      d.setAttribute('aria-selected', i===cur ? 'true':'false');
+    });
+  }
+
+  function start(){ timer = setInterval(()=>goTo(cur+1), DELAY); }
+  function stop(){ clearInterval(timer); }
+
+  prevBtn.addEventListener('click',()=>{ stop(); goTo(cur-1); start(); });
+  nextBtn.addEventListener('click',()=>{ stop(); goTo(cur+1); start(); });
+  dots.forEach(d=>d.addEventListener('click',()=>{ stop(); goTo(+d.dataset.idx); start(); }));
+
+  /* Pause on hover */
+  track.addEventListener('mouseenter', stop);
+  track.addEventListener('mouseleave', ()=>{ if(!touching) start(); });
+
+  /* Touch swipe */
+  track.addEventListener('touchstart', e=>{ touching=true; stop(); tx0=e.touches[0].clientX; },{passive:true});
+  track.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - tx0;
+    if(Math.abs(dx)>48) goTo(cur + (dx<0?1:-1));
+    touching=false; start();
+  },{passive:true});
+
+  /* Keyboard */
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'){stop();goTo(cur-1);start();}
+    if(e.key==='ArrowRight'){stop();goTo(cur+1);start();}
+  });
+
+  start();
+})();
+
+/* ── STICKY HEADER ──────────────────────────────────────── */
+(function(){
+  const hdr = document.getElementById('hdr');
+  function check(){ hdr.classList.toggle('solid', window.scrollY>24); }
+  window.addEventListener('scroll', check, {passive:true});
+  check();
+})();
+
+/* ── MOBILE NAV ─────────────────────────────────────────── */
+(function(){
+  const tog = document.getElementById('navTog');
+  const nav = document.getElementById('hdrNav');
+  tog.addEventListener('click',()=>{
+    const open = nav.classList.toggle('open');
+    tog.setAttribute('aria-expanded', open?'true':'false');
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('open');
+    tog.setAttribute('aria-expanded','false');
+  }));
+})();
+
+/* ── FADE-UP ON SCROLL ──────────────────────────────────── */
+(function(){
+  const els = document.querySelectorAll('.fu');
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }});
+  },{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+  els.forEach(el=>obs.observe(el));
+})();
+
+/* ── SMOOTH SCROLL ──────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',function(e){
+    const t = document.querySelector(this.getAttribute('href'));
+    if(t){ e.preventDefault(); const top=t.getBoundingClientRect().top+window.pageYOffset-72; window.scrollTo({top,behavior:'smooth'}); }
+  });
+});
+
+/* ── ACTIVE NAV HIGHLIGHT ───────────────────────────────── */
+(function(){
+  const links = document.querySelectorAll('.hdr-nav a[href^="#"]');
+  const ids   = [...links].map(a=>a.getAttribute('href').slice(1));
+  const secs  = ids.map(id=>document.getElementById(id)).filter(Boolean);
+  function setActive(){
+    let active=0;
+    secs.forEach((s,i)=>{ if(window.scrollY+100>=s.offsetTop) active=i; });
+    links.forEach((l,i)=>l.style.color = i===active ? (document.getElementById('hdr').classList.contains('solid')?'var(--blue)':'#fff') : '');
+  }
+  window.addEventListener('scroll',setActive,{passive:true});
+})();
+</script>
+
+</body>
+</html>

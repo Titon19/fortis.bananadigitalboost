@@ -36,7 +36,7 @@
    ═══════════════════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--fb);font-size:16px;line-height:1.75;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;padding-top:104px}
+body{font-family:var(--fb);font-size:16px;line-height:1.75;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
@@ -75,56 +75,34 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
 .sec-intro{font-size:15px;line-height:1.8;color:var(--g3);max-width:540px;margin-top:12px}
 
 /* ═══════════════════════════════════════════════════════
-   TOP INFO BAR
-   ═══════════════════════════════════════════════════════ */
-.top-bar{background:var(--blue-xdk);height:36px;flex-shrink:0}
-.top-bar-inner{display:flex;align-items:center;justify-content:space-between;height:36px;gap:16px}
-.tb-contact{display:flex;align-items:center;gap:16px}
-.tb-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--fh);font-size:11.5px;font-weight:500;color:rgba(255,255,255,.58);transition:color .2s;white-space:nowrap}
-.tb-link:hover{color:#fff}
-.tb-link svg{flex-shrink:0}
-.tb-sep{width:1px;height:11px;background:rgba(255,255,255,.16);flex-shrink:0}
-.tb-right{display:flex;align-items:center;gap:10px}
-.tb-social{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:4px;color:rgba(255,255,255,.4);transition:color .2s,background .2s}
-.tb-social:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.08)}
-.nav-search-btn{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:6px;color:var(--g3);border:none;background:none;cursor:pointer;transition:color .2s,background .2s;margin-left:4px;flex-shrink:0}
-.nav-search-btn:hover{color:var(--blue);background:var(--gray-bg)}
-.search-overlay{position:fixed;inset:0;z-index:600;display:flex;flex-direction:column;align-items:center;opacity:0;pointer-events:none;transition:opacity .22s ease}
-.search-overlay.so-open{opacity:1;pointer-events:auto}
-.so-backdrop{position:absolute;inset:0;background:rgba(4,10,40,.72);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
-.so-panel{position:relative;z-index:1;width:100%;max-width:780px;padding:0 24px;margin-top:108px;transform:translateY(-12px);transition:transform .22s ease}
-.search-overlay.so-open .so-panel{transform:translateY(0)}
-.so-wrap{display:flex;align-items:center;background:#fff;border-radius:14px;padding:0 16px 0 22px;box-shadow:0 28px 72px rgba(0,0,0,.28);gap:14px}
-.so-search-icon{color:var(--blue);flex-shrink:0}
-.so-input{flex:1;height:66px;font-family:var(--fh);font-size:18px;font-weight:500;color:var(--black);border:none;outline:none;background:transparent}
-.so-input::placeholder{color:var(--g3);font-weight:400}
-.so-close-btn{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--g2);display:flex;align-items:center;justify-content:center;color:var(--g3);flex-shrink:0;cursor:pointer;background:none;transition:border-color .15s,color .15s}
-.so-close-btn:hover{border-color:var(--blue);color:var(--blue)}
-.so-hint{text-align:center;margin-top:16px;font-family:var(--fh);font-size:12px;color:rgba(255,255,255,.42);letter-spacing:.03em}
-@media(max-width:680px){.so-panel{margin-top:80px;padding:0 16px}.so-input{font-size:16px;height:56px}}
-
-/* ═══════════════════════════════════════════════════════
    HEADER & NAV
    ═══════════════════════════════════════════════════════ */
-#hdr{position:fixed;top:0;left:0;right:0;z-index:200}
-.main-bar{background:#fff;border-bottom:1px solid var(--g2)}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+#hdr{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .32s,box-shadow .32s}
+#hdr.solid{background:rgba(255,255,255,.97);box-shadow:0 1px 0 var(--g2);backdrop-filter:blur(8px)}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
 
 /* Logo */
-.logo{display:inline-flex;align-items:center;padding:4px 0;transition:opacity .2s}
-.logo:hover{opacity:.82}
-.logo-img{height:36px;width:auto;display:block}
+.logo{
+  display:inline-flex;align-items:center;
+  padding:5px 12px;
+  background:rgba(255,255,255,.95);border-radius:8px;
+  box-shadow:0 1px 10px rgba(0,0,0,.15);
+  transition:background .32s,box-shadow .32s,padding .32s
+}
+#hdr.solid .logo{background:transparent;box-shadow:none;padding:4px 0}
+.logo-img{height:34px;width:auto;display:block}
 .ft-logo-mark{width:28px;height:28px;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
 .ft-logo-name{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;letter-spacing:-.2px;line-height:1}
 .ft-logo-sub{font-family:var(--fh);font-size:7.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;line-height:1}
-.ft-logo-img{height:34px;width:auto;display:block;border-radius:6px;padding:5px 10px;background:rgba(255,255,255,.95)}
 
 /* Primary nav */
 .hdr-nav{display:flex;align-items:center;gap:4px}
 .nav-item{position:relative}
-.nav-link{display:flex;align-items:center;gap:4px;font-family:var(--fh);font-size:13.5px;font-weight:500;color:var(--g3);padding:8px 12px;border-radius:6px;transition:color .2s,background .2s;letter-spacing:.02em;cursor:pointer;white-space:nowrap}
+.nav-link{display:flex;align-items:center;gap:4px;font-family:var(--fh);font-size:13.5px;font-weight:500;color:rgba(255,255,255,.82);padding:8px 12px;border-radius:6px;transition:color .2s,background .2s;letter-spacing:.02em;cursor:pointer;white-space:nowrap}
 .nav-link svg{flex-shrink:0;opacity:.6;transition:transform .2s}
-.nav-link:hover{color:var(--blue);background:var(--gray-bg)}
+#hdr.solid .nav-link{color:var(--g3)}
+.nav-link:hover{color:#fff}
+#hdr.solid .nav-link:hover{color:var(--blue);background:var(--gray-bg)}
 .nav-item:hover .nav-link svg{transform:rotate(180deg)}
 
 /* Dropdown */
@@ -135,70 +113,13 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
   box-shadow:0 8px 32px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);
   opacity:0;pointer-events:none;
   transform:translateY(-6px);
-  transition:opacity .2s ease .18s,transform .2s ease .18s;
+  transition:opacity .2s ease,transform .2s ease;
   z-index:300
 }
-.subnav::before{content:'';position:absolute;top:-20px;left:0;right:0;height:20px}
-.nav-item:hover .subnav{opacity:1;pointer-events:auto;transform:translateY(0);transition-delay:0s}
-.nav-item.mega-open .cat-mega{opacity:1;pointer-events:auto;transform:translateY(0);transition-delay:0s}
+.nav-item:hover .subnav{opacity:1;pointer-events:auto;transform:translateY(0)}
 .subnav a{display:block;padding:9px 18px;font-size:13.5px;color:var(--g3);transition:color .15s,background .15s;font-family:var(--fb)}
 .subnav a:hover{color:var(--blue);background:var(--gray-bg)}
 .subnav-divider{height:1px;background:var(--g1);margin:6px 0}
-
-/* Services mega menu */
-.subnav-svc{min-width:440px;padding:16px 12px 12px}
-.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
-.svc-card{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;transition:background .15s;text-decoration:none}
-.svc-card:hover{background:var(--gray-bg)}
-.svc-card:hover .svc-name{color:var(--blue)}
-.svc-icon{width:30px;height:30px;border-radius:6px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:background .15s}
-.svc-card:hover .svc-icon{background:var(--blue)}
-.svc-icon svg{color:var(--blue);transition:color .15s}
-.svc-card:hover .svc-icon svg{color:#fff}
-.svc-body{display:flex;flex-direction:column;gap:1px}
-.svc-name{font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--black);line-height:1.3;transition:color .15s}
-.svc-desc{font-size:11px;color:var(--g3);line-height:1.4}
-.svc-footer{margin-top:10px;padding-top:10px;border-top:1px solid var(--g1);display:flex;align-items:center;justify-content:space-between;gap:12px}
-.svc-footer-text{font-size:12px;color:var(--g3)}
-.svc-footer-link{font-family:var(--fh);font-size:12px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px;transition:gap .18s}
-.svc-footer-link:hover{gap:7px}
-
-/* Catalog mega-menu */
-.cat-mega{position:fixed;top:104px;left:0;right:0;width:100%;padding:0;overflow-x:hidden;overflow-y:auto;max-height:calc(100vh - 110px);border-radius:0 0 14px 14px;border-top:none;border-left:none;border-right:none}
-.cat-mega-top{padding:16px 48px 12px}
-.cat-mega-all{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:8px;background:var(--gray-bg);transition:background .15s;text-decoration:none}
-.cat-mega-all:hover{background:var(--blue-lt)}
-.cat-mega-all-icon{width:32px;height:32px;border-radius:7px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
-.cat-mega-all:hover .cat-mega-all-icon{background:var(--blue-dk)}
-.cat-mega-all-icon svg{color:#fff}
-.cat-mega-all-body{flex:1}
-.cat-mega-all-name{display:block;font-family:var(--fh);font-size:13.5px;font-weight:700;color:var(--black);line-height:1.2;transition:color .15s}
-.cat-mega-all:hover .cat-mega-all-name{color:var(--blue)}
-.cat-mega-all-desc{display:block;font-size:11.5px;color:var(--g3);margin-top:1px}
-.cat-mega-all-arr{font-family:var(--fh);font-size:14px;font-weight:600;color:var(--blue);flex-shrink:0;opacity:.7;transition:opacity .15s,transform .15s}
-.cat-mega-all:hover .cat-mega-all-arr{opacity:1;transform:translateX(-3px)}
-.cat-mega-sep{height:1px;background:var(--g1);margin:0 48px}
-.cat-mega-body{display:grid;grid-template-columns:1fr auto 1fr;padding:16px 48px 12px;gap:0}
-.cat-mega-sec-head{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g3);margin-bottom:8px;padding:0 4px}
-.cat-mega-cat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
-.cat-mega-brand-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2px}
-.cat-mega-item{display:flex;align-items:flex-start;gap:9px;padding:8px 9px;border-radius:7px;transition:background .15s;text-decoration:none}
-.cat-mega-item:hover{background:var(--gray-bg)}
-.cat-mega-item:hover .cat-mega-item-icon{background:var(--blue)}
-.cat-mega-item:hover .cat-mega-item-icon svg{color:#fff}
-.cat-mega-item:hover .cat-mega-item-name{color:var(--blue)}
-.cat-mega-item--brand{align-items:center;padding:6px 8px}
-.cat-mega-item-icon{width:26px;height:26px;border-radius:5px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s;margin-top:1px}
-.cat-mega-item--brand .cat-mega-item-icon{margin-top:0}
-.cat-mega-item-icon svg{color:var(--blue);transition:color .15s}
-.cat-mega-item-body{display:flex;flex-direction:column;gap:1px;min-width:0}
-.cat-mega-item-name{font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--black);line-height:1.3;transition:color .15s}
-.cat-mega-item-sub{font-size:11px;color:var(--g3);line-height:1.3;margin-top:1px}
-.cat-mega-vsep{width:1px;background:var(--g1);margin:0 16px}
-.cat-mega-footer{border-top:1px solid var(--g1);margin-top:4px;padding:12px 48px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.cat-mega-footer-text{font-size:12px;color:var(--g3)}
-.cat-mega-footer-link{font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px;transition:gap .18s}
-.cat-mega-footer-link:hover{gap:8px}
 
 /* CTA */
 .hdr-cta{font-family:var(--fh);font-size:13px;font-weight:600;letter-spacing:.04em;padding:9px 20px;background:var(--orange);color:#fff;border-radius:6px;transition:background .2s;margin-left:8px}
@@ -210,14 +131,16 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
   width:44px;height:44px;border-radius:6px;position:relative;flex-shrink:0;
   transition:background .2s
 }
-.nav-tog:hover{background:var(--gray-bg)}
+.nav-tog:hover{background:rgba(255,255,255,.09)}
+#hdr.solid .nav-tog:hover{background:var(--gray-bg)}
 
 .nav-tog-bar{
   position:absolute;left:50%;top:50%;
   margin-left:-11px;margin-top:-1px;
-  width:22px;height:2px;border-radius:2px;background:var(--black);
+  width:22px;height:2px;border-radius:2px;background:#fff;
   transition:transform 280ms cubic-bezier(.4,0,.2,1),opacity 200ms ease
 }
+#hdr.solid .nav-tog-bar{background:var(--black)}
 .nav-tog-bar:nth-child(1){transform:translateY(-6px)}
 .nav-tog-bar:nth-child(2){transform:translateY(0)}
 .nav-tog-bar:nth-child(3){transform:translateY(6px)}
@@ -238,7 +161,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
 
 /* ── MOBILE NAV PANEL ───────────────────────────────────── */
 .mobile-nav{
-  position:fixed;top:104px;left:0;right:0;bottom:0;
+  position:fixed;top:72px;left:0;right:0;bottom:0;
   background:#fff;z-index:190;overflow-y:auto;overflow-x:hidden;
   padding:0 0 56px;
   opacity:0;transform:translateY(-14px);
@@ -292,26 +215,6 @@ a.mnav-link{display:flex}
 }
 .mnav-sub a:last-child{border-bottom:none}
 .mnav-sub a:hover{color:var(--blue);background:rgba(14,59,170,.04)}
-/* Mobile: service rows */
-.mnav-sub a.mnav-svc-row{align-items:flex-start;min-height:auto;padding:10px 24px;gap:10px}
-.mnav-svc-icon{width:28px;height:28px;border-radius:6px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background .18s}
-.mnav-svc-icon svg{color:var(--blue);transition:color .18s}
-.mnav-svc-body{display:flex;flex-direction:column;gap:1px}
-.mnav-svc-name{font-family:var(--fh);font-size:13.5px;font-weight:600;color:var(--black);line-height:1.3;transition:color .18s}
-.mnav-svc-desc{font-size:11.5px;color:var(--g3);line-height:1.4}
-.mnav-sub a.mnav-svc-row:hover .mnav-svc-icon{background:var(--blue)}
-.mnav-sub a.mnav-svc-row:hover .mnav-svc-icon svg{color:#fff}
-.mnav-sub a.mnav-svc-row:hover .mnav-svc-name{color:var(--blue)}
-/* Mobile: catalog section labels */
-.mnav-sub-head{padding:6px 24px 4px;font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--g3);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(230,234,242,.5)}
-.mnav-sub-divider{height:1px;background:var(--g2);margin:2px 0}
-/* Mobile: catalog brand/category rows */
-.mnav-sub a.mnav-cat-row{min-height:auto;padding:7px 24px;gap:10px}
-.mnav-cat-icon{width:24px;height:24px;border-radius:5px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .18s}
-.mnav-cat-icon svg{color:var(--blue);transition:color .18s}
-.mnav-sub a.mnav-cat-row:hover .mnav-cat-icon{background:var(--blue)}
-.mnav-sub a.mnav-cat-row:hover .mnav-cat-icon svg{color:#fff}
-.mnav-sub a.mnav-all-link{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--blue);justify-content:center;border-bottom:none;padding:10px 24px}
 
 /* ── MOBILE CTA ─────────────────────────────────────────── */
 .mnav-cta{padding:22px 24px 0}
@@ -330,8 +233,8 @@ a.mnav-link{display:flex}
 
 .hero-wrap{
   position:relative;
-  height:calc(100vh - 104px);
-  min-height:520px;max-height:820px;
+  height:calc(100vh - 88px);
+  min-height:560px;max-height:820px;
   overflow:hidden
 }
 
@@ -372,7 +275,7 @@ a.mnav-link{display:flex}
 .hero-text-wrap{
   width:100%;max-width:var(--mw);
   margin:0 auto;padding:0 40px;
-  padding-top:56px
+  padding-top:72px
 }
 .hero-text-inner{max-width:600px}
 
@@ -412,15 +315,6 @@ a.mnav-link{display:flex}
 .hstat:last-child{border-right:none}
 .hstat-num{font-family:var(--fh);font-size:26px;font-weight:700;color:#fff;letter-spacing:-.4px;line-height:1;margin-bottom:4px}
 .hstat-lbl{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.4}
-
-/* Trust bar */
-.hero-trust{background:#fff;border-bottom:1px solid var(--g1)}
-.hero-trust-inner{display:flex;justify-content:center;gap:56px;max-width:var(--mw);margin:0 auto;padding:18px 40px}
-.htrust-item{display:flex;align-items:center;gap:12px}
-.htrust-check{width:26px;height:26px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.htrust-label{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--black);line-height:1.2}
-.htrust-sub{font-size:11.5px;color:var(--g3);margin-top:2px}
-@media(max-width:680px){.hero-trust-inner{gap:28px;flex-wrap:wrap;padding:16px 22px}.htrust-item{flex:1;min-width:120px}}
 
 /* ═══════════════════════════════════════════════════════
    SECTION BASE
@@ -576,7 +470,7 @@ a.mnav-link{display:flex}
 /* ═══════════════════════════════════════════════════════
    FOOTER
    ═══════════════════════════════════════════════════════ */
-#contact{background:#071a4f;padding:72px 0 0}
+#contact{background:var(--black);padding:72px 0 0}
 .ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
 .ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .logo-img-ft{height:28px;width:auto;display:block;border-radius:4px}
@@ -609,10 +503,6 @@ a.mnav-link{display:flex}
 }
 @media(max-width:960px){
   :root{--spy:68px}
-  body{padding-top:104px}
-  .tb-right{display:none}
-  .top-bar-inner{justify-content:center}
-  .mobile-nav{top:104px}
   .about-grid,.why-grid{grid-template-columns:1fr;gap:48px}
   .cap-hdr{grid-template-columns:1fr}
   .cat-hdr{flex-direction:column;align-items:flex-start;gap:16px}
@@ -626,7 +516,7 @@ a.mnav-link{display:flex}
 }
 @media(max-width:680px){
   .wrap{padding:0 22px}
-  .hero-text-wrap{padding:40px 22px 0}
+  .hero-text-wrap{padding:72px 22px 0}
   .hero-h1{font-size:32px;letter-spacing:-1px}
   .hero-p{font-size:14.5px}
   .hero-stats-inner{padding:0 22px;flex-wrap:wrap}
@@ -688,7 +578,8 @@ a.mnav-link{display:flex}
 .cf-detail-lbl{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--g3)}
 .cf-detail-val{font-size:14px;color:var(--black);font-family:var(--fh);font-weight:500;line-height:1.55}
 .cf-detail-val a{color:var(--blue);transition:color .2s}
-.cf-detail-val a:hover{color:var(--blue-dk)}.cf-form{display:flex;flex-direction:column;gap:16px}
+.cf-detail-val a:hover{color:var(--blue-dk)}
+.cf-form{display:flex;flex-direction:column;gap:16px}
 .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .cf-group{display:flex;flex-direction:column;gap:7px}
 .cf-group label{font-family:var(--fh);font-size:12px;font-weight:600;color:var(--black);letter-spacing:.01em}
@@ -734,8 +625,10 @@ a.mnav-link{display:flex}
    CART ICON
    ═══════════════════════════════════════════════════════ */
 .cart-icon-wrap{position:relative;display:inline-flex;align-items:center;margin-left:4px}
-.cart-icon-btn{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:6px;color:var(--g3);transition:color .2s,background .2s}
-.cart-icon-btn:hover{color:var(--blue);background:var(--gray-bg)}
+.cart-icon-btn{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:6px;color:rgba(255,255,255,.82);transition:color .2s,background .2s}
+#hdr.solid .cart-icon-btn{color:var(--g3)}
+.cart-icon-btn:hover{color:#fff;background:rgba(255,255,255,.09)}
+#hdr.solid .cart-icon-btn:hover{color:var(--blue);background:var(--gray-bg)}
 .cart-badge{position:absolute;top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--fh);font-size:10px;font-weight:700;line-height:16px;text-align:center;display:none;pointer-events:none}
 .cart-badge.has-items{display:block}
 
@@ -744,71 +637,37 @@ a.mnav-link{display:flex}
    ═══════════════════════════════════════════════════════ */
 .cp-hdr{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:44px}
 .cp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.cp-card{background:#fff;border:1px solid var(--g1);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,box-shadow .25s,transform .2s;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.cp-card:hover{border-color:var(--blue);box-shadow:0 10px 36px rgba(14,59,170,.12);transform:translateY(-2px)}
-.cp-img{aspect-ratio:4/3;overflow:hidden;background:#f4f6f8;position:relative;flex-shrink:0}
-.cp-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;display:block}
-.cp-card:hover .cp-img img{transform:scale(1.06)}
-.cp-body{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1;border-top:1px solid var(--g1)}
-.cp-meta-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
-.cp-cat-label{display:inline-flex;align-items:center;font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);padding:2px 8px;border-radius:20px;width:fit-content}
-.cp-title{font-family:var(--fh);font-size:14.5px;font-weight:700;color:var(--black);line-height:1.35;flex:1;margin-bottom:14px}
-.cp-brand-tag{font-family:var(--fh);font-size:11px;font-weight:500;color:var(--g3)}
-.cp-add{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:11px 14px;border-radius:8px;background:var(--blue);color:#fff;font-family:var(--fh);font-size:13px;font-weight:700;border:none;cursor:pointer;transition:background .18s;-webkit-tap-highlight-color:transparent;margin-bottom:8px}
+.cp-card{background:var(--white);border:1px solid var(--g1);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s,transform .25s}
+.cp-card:hover{border-color:var(--blue);box-shadow:0 4px 24px rgba(14,59,170,.08);transform:translateY(-3px)}
+.cp-img{height:176px;overflow:hidden;background:var(--g1)}
+.cp-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;display:block}
+.cp-card:hover .cp-img img{transform:scale(1.05)}
+.cp-body{padding:18px 16px;display:flex;flex-direction:column;gap:7px;flex:1}
+.cp-cat{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--orange)}
+.cp-title{font-family:var(--fh);font-size:14.5px;font-weight:700;color:var(--black);line-height:1.3}
+.cp-exc{font-size:13px;color:var(--g3);line-height:1.65;flex:1}
+.cp-actions{display:flex;align-items:center;gap:8px;margin-top:10px}
+.cp-view{display:inline-flex;align-items:center;gap:4px;font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--blue);transition:gap .2s;flex:1}
+.cp-card:hover .cp-view{gap:7px}
+.cp-add{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-family:var(--fh);font-size:12px;font-weight:600;padding:7px 13px;border-radius:6px;background:var(--blue);color:#fff;transition:background .2s;cursor:pointer;border:none;white-space:nowrap;flex-shrink:0;-webkit-tap-highlight-color:transparent}
 .cp-add:hover{background:var(--blue-dk)}
 .cp-add.added{background:#16a34a}
-.cp-view{display:flex;align-items:center;justify-content:center;gap:4px;font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--g3);padding:4px 0;transition:color .18s}
-.cp-view:hover{color:var(--blue)}
 .cp-cta-row{text-align:center;margin-top:44px}
 @media(max-width:1100px){.cp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.cp-hdr{flex-direction:column;align-items:flex-start;gap:16px}}
 @media(max-width:480px){.cp-grid{grid-template-columns:1fr}}
-
-.mnav-search{padding:16px 24px 0}
-.mnav-search-wrap{display:flex;align-items:center;gap:10px;background:var(--gray-bg);border:1.5px solid var(--g2);border-radius:9px;padding:0 14px;height:42px}
-.mnav-search-wrap svg{color:var(--g3);flex-shrink:0}
-.mnav-search-input{flex:1;border:none;outline:none;background:transparent;font-family:var(--fh);font-size:13.5px;color:var(--black)}
-.mnav-search-input::placeholder{color:var(--g3)}
 </style>
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════ -->
 <header id="hdr" role="banner">
-
-  <!-- Top info bar -->
-  <div class="top-bar" id="topBar">
-    <div class="wrap">
-      <div class="top-bar-inner">
-        <div class="tb-contact">
-          <a href="tel:+622129704002" class="tb-link">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.4 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            +62 21 29704002
-          </a>
-          <span class="tb-sep"></span>
-          <a href="mailto:sales@fortisprima.com" class="tb-link">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            sales@fortisprima.com
-          </a>
-        </div>
-        <div class="tb-right">
-          <a href="https://linkedin.com" target="_blank" rel="noopener" class="tb-social" aria-label="LinkedIn">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener" class="tb-social" aria-label="Instagram">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main nav bar -->
-  <div class="main-bar">
   <div class="wrap">
     <div class="hdr-inner">
 
-      <a href="index.html" class="logo" aria-label="PT Fortis Prima Solusi — Home">
+      <a href="#home" class="logo" aria-label="PT Fortis Prima Solusi — Home">
         <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="logo-img">
       </a>
 
@@ -816,11 +675,11 @@ a.mnav-link{display:flex}
       <nav class="hdr-nav" id="hdrNav" aria-label="Primary navigation">
 
         <div class="nav-item">
-          <a href="index.html" class="nav-link active" data-nav="home">Home</a>
+          <a href="#home" class="nav-link">Home</a>
         </div>
 
         <div class="nav-item">
-          <a href="index.html#about" class="nav-link" data-nav="about">About</a>
+          <a href="#about" class="nav-link">About</a>
         </div>
 
         <div class="nav-item">
@@ -828,142 +687,27 @@ a.mnav-link{display:flex}
             Services
             <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
           </span>
-          <div class="subnav subnav-svc" role="menu">
-            <div class="svc-grid">
-              <a href="index.html#services" class="svc-card" role="menuitem">
-                <div class="svc-body"><span class="svc-name">Global Procurement &amp; Sourcing</span><span class="svc-desc">End-to-end sourcing from global suppliers</span></div>
-              </a>
-              <a href="index.html#services" class="svc-card" role="menuitem">
-                <div class="svc-body"><span class="svc-name">Industrial MRO Supply</span><span class="svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
-              </a>
-              <a href="index.html#services" class="svc-card" role="menuitem">
-                <div class="svc-body"><span class="svc-name">PPE Supply</span><span class="svc-desc">ANSI / EN certified protective equipment</span></div>
-              </a>
-              <a href="index.html#services" class="svc-card" role="menuitem">
-                <div class="svc-body"><span class="svc-name">Container Lease &amp; Sale</span><span class="svc-desc">ISO containers for storage &amp; logistics</span></div>
-              </a>
-              <a href="index.html#services" class="svc-card" role="menuitem" style="grid-column:1/-1">
-                <div class="svc-body"><span class="svc-name">Consignment Inventory</span><span class="svc-desc">Pay-as-you-use stocking program for plant operations</span></div>
-              </a>
-            </div>
-            <div class="svc-footer">
-              <span class="svc-footer-text">Need a custom quote for bulk orders?</span>
-              <a href="index.html#contact-form" class="svc-footer-link">Request Inquiry &#8594;</a>
-            </div>
+          <div class="subnav" role="menu">
+            <a href="#services" role="menuitem">Global Procurement &amp; Sourcing</a>
+            <a href="#services" role="menuitem">Industrial MRO Supply</a>
+            <a href="#services" role="menuitem">PPE Supply</a>
+            <a href="#services" role="menuitem">Container Lease &amp; Sale</a>
+            <a href="#services" role="menuitem">Consignment Inventory</a>
           </div>
         </div>
 
         <div class="nav-item">
-          <span class="nav-link" tabindex="0" data-nav="catalog">
-            Catalog
-            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-          </span>
-          <div class="subnav cat-mega" role="menu">
-            <!-- Sections: By Category + By Brand -->
-            <div class="cat-mega-body">
-              <!-- By Category -->
-              <div>
-                <div class="cat-mega-sec-head">By Category</div>
-                                <div class="cat-mega-cat-grid">
-                  <a href="catalog.html?cat=mro" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Maintenance, Repair &amp; Operating Supplies (MRO)</span><span class="cat-mega-item-sub">Bearings, seals, valves, tools</span></div>
-                  </a>
-                  <a href="catalog.html?cat=ose" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Operating Supplies &amp; Equipment (OS&amp;E)</span><span class="cat-mega-item-sub">Consumables, janitorial, office</span></div>
-                  </a>
-                  <a href="catalog.html?cat=electrical" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Electrical Parts</span><span class="cat-mega-item-sub">Switchgear, cables, connectors</span></div>
-                  </a>
-                  <a href="catalog.html?cat=automotive" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Automotive Fleet &amp; Parts</span><span class="cat-mega-item-sub">Filters, lubricants, tires</span></div>
-                  </a>
-                  <a href="catalog.html?cat=electromech" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Electro Mechanical Systems</span><span class="cat-mega-item-sub">Motors, drives, actuators</span></div>
-                  </a>
-                  <a href="catalog.html?cat=flow" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Flow Control &amp; Fluid Transfer</span><span class="cat-mega-item-sub">Pumps, pipes, hoses</span></div>
-                  </a>
-                  <a href="catalog.html?cat=fluid-power" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Fluid &amp; Pneumatic Power</span><span class="cat-mega-item-sub">Hydraulics, compressors, cylinders</span></div>
-                  </a>
-                  <a href="catalog.html?cat=manufacturing" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Manufacturing &amp; Process Equipment</span><span class="cat-mega-item-sub">Machinery, tools, fixtures</span></div>
-                  </a>
-                  <a href="catalog.html?cat=material-handling" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Material Handling &amp; Packaging Material</span><span class="cat-mega-item-sub">Conveyors, pallets, packaging</span></div>
-                  </a>
-                  <a href="catalog.html?cat=safety" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Safety &amp; Security Equipment</span><span class="cat-mega-item-sub">PPE, fire, surveillance</span></div>
-                  </a>
-                  <a href="catalog.html?cat=specialized" class="cat-mega-item" role="menuitem">
-                    <div class="cat-mega-item-body"><span class="cat-mega-item-name">Specialized Industrial Products</span><span class="cat-mega-item-sub">Custom &amp; niche industrial items</span></div>
-                  </a>
-                </div>
-              </div>
-              <!-- Vertical separator -->
-              <div class="cat-mega-vsep"></div>
-              <!-- By Brand -->
-              <div>
-                <div class="cat-mega-sec-head">By Brand</div>
-                <div class="cat-mega-brand-grid">
-                  <a href="catalog.html?brand=SKF" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">SKF</span></a>
-                  <a href="catalog.html?brand=NTN" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">NTN</span></a>
-                  <a href="catalog.html?brand=ABB" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">ABB</span></a>
-                  <a href="catalog.html?brand=ESAB" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">ESAB</span></a>
-                  <a href="catalog.html?brand=Yokogawa" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Yokogawa</span></a>
-                  <a href="catalog.html?brand=Rockwool" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Rockwool</span></a>
-                  <a href="catalog.html?brand=3M" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">3M</span></a>
-                  <a href="catalog.html?brand=Flexovit" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Flexovit</span></a>
-                  <a href="catalog.html?brand=Union" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Union</span></a>
-                  <a href="catalog.html?brand=Sullair" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Sullair</span></a>
-                  <a href="catalog.html?brand=Philips" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Philips</span></a>
-                  <a href="catalog.html?brand=Bando" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Bando</span></a>
-                  <a href="catalog.html?brand=Honeywell" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Honeywell</span></a>
-                  <a href="catalog.html?brand=Schneider" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Schneider</span></a>
-                  <a href="catalog.html?brand=Siemens" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Siemens</span></a>
-                  <a href="catalog.html?brand=Crane" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Crane</span></a>
-                  <a href="catalog.html?brand=Kobelco" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Kobelco</span></a>
-                  <a href="catalog.html?brand=Trelleborg" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Trelleborg</span></a>
-                  <a href="catalog.html?brand=Srapp" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Srapp</span></a>
-                  <a href="catalog.html?brand=Supreme" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Supreme</span></a>
-                  <a href="catalog.html?brand=Denso" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Denso</span></a>
-                  <a href="catalog.html?brand=Bosch" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Bosch</span></a>
-                  <a href="catalog.html?brand=Komatsu" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Komatsu</span></a>
-                  <a href="catalog.html?brand=Yanmar" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Yanmar</span></a>
-                  <a href="catalog.html?brand=Mitsubishi" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Mitsubishi</span></a>
-                  <a href="catalog.html?brand=Milliard" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Milliard</span></a>
-                  <a href="catalog.html?brand=Geze" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Geze</span></a>
-                  <a href="catalog.html?brand=MSA" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">MSA</span></a>
-                  <a href="catalog.html?brand=CIG" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">CIG</span></a>
-                  <a href="catalog.html?brand=UVEX" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">UVEX</span></a>
-                  <a href="catalog.html?brand=Ansell" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Ansell</span></a>
-                  <a href="catalog.html?brand=Drager" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Drager</span></a>
-                  <a href="catalog.html?brand=Aetos" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Aetos</span></a>
-                  <a href="catalog.html?brand=DuPont" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">DuPont</span></a>
-                  <a href="catalog.html?brand=Petrova" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Petrova</span></a>
-                  <a href="catalog.html?brand=Safety+Jogger" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Safety Jogger</span></a>
-                </div>
-              </div>
-            </div>
-            <!-- Footer -->
-            <div class="cat-mega-footer">
-              <span class="cat-mega-footer-text">Need a specific product or bulk order?</span>
-              <a href="catalog.html" class="cat-mega-footer-link">View All Products &#8594;</a>
-            </div>
-          </div>
+          <a href="catalog.html" class="nav-link">Catalog</a>
         </div>
 
         <div class="nav-item">
-          <a href="index.html#blog" class="nav-link">Blog</a>
+          <a href="#blog" class="nav-link">Blog</a>
         </div>
 
         <div class="nav-item">
-          <a href="index.html#contact" class="nav-link">Contact</a>
+          <a href="#contact" class="nav-link">Contact</a>
         </div>
 
-        <button class="nav-search-btn" id="navSearchBtn" aria-label="Search catalog">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        </button>
         <div class="cart-icon-wrap">
           <a href="cart.html" class="cart-icon-btn" id="cartNavIcon" aria-label="View cart">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -971,7 +715,7 @@ a.mnav-link{display:flex}
           <span class="cart-badge" id="cartBadge"></span>
         </div>
 
-        <a href="index.html#contact-form" class="hdr-cta">Send Inquiry &rarr;</a>
+        <a href="#contact-form" class="hdr-cta">Send Inquiry &rarr;</a>
       </nav>
 
       <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false">
@@ -982,7 +726,6 @@ a.mnav-link{display:flex}
 
     </div>
   </div>
-  </div><!-- /main-bar -->
 </header>
 
 <!-- Mobile nav backdrop -->
@@ -992,11 +735,11 @@ a.mnav-link{display:flex}
 <div class="mobile-nav" id="mobileNav" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
   <nav>
     <div class="mnav-item">
-      <a href="index.html" class="mnav-link" data-nav="home">Home</a>
+      <a href="#home" class="mnav-link">Home</a>
     </div>
 
     <div class="mnav-item">
-      <a href="index.html#about" class="mnav-link">About</a>
+      <a href="#about" class="mnav-link">About</a>
     </div>
 
     <div class="mnav-item">
@@ -1004,110 +747,35 @@ a.mnav-link{display:flex}
         <span>Services</span>
         <svg class="mnav-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
       </div>
-      <div class="mnav-sub" id="m-svc"><div class="mnav-sub-inner">
-  <a href="index.html#services" class="mnav-svc-row">
-    <div class="mnav-svc-body"><span class="mnav-svc-name">Global Procurement &amp; Sourcing</span><span class="mnav-svc-desc">End-to-end sourcing from global suppliers</span></div>
-  </a>
-  <a href="index.html#services" class="mnav-svc-row">
-    <div class="mnav-svc-body"><span class="mnav-svc-name">Industrial MRO Supply</span><span class="mnav-svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
-  </a>
-  <a href="index.html#services" class="mnav-svc-row">
-    <div class="mnav-svc-body"><span class="mnav-svc-name">PPE Supply</span><span class="mnav-svc-desc">ANSI / EN certified protective equipment</span></div>
-  </a>
-  <a href="index.html#services" class="mnav-svc-row">
-    <div class="mnav-svc-body"><span class="mnav-svc-name">Container Lease &amp; Sale</span><span class="mnav-svc-desc">ISO containers for storage &amp; logistics</span></div>
-  </a>
-  <a href="index.html#services" class="mnav-svc-row">
-    <div class="mnav-svc-body"><span class="mnav-svc-name">Consignment Inventory</span><span class="mnav-svc-desc">Pay-as-you-use stocking program</span></div>
-  </a>
-</div></div>
-    </div>
-
-    <div class="mnav-item">
-      <div class="mnav-link" data-expand="m-cat" tabindex="0" role="button" aria-expanded="false" aria-controls="m-cat">
-        <span>Catalog</span>
-        <svg class="mnav-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+      <div class="mnav-sub" id="m-svc">
+        <div class="mnav-sub-inner">
+          <a href="#services">Global Procurement &amp; Sourcing</a>
+          <a href="#services">Industrial MRO Supply</a>
+          <a href="#services">PPE Supply</a>
+          <a href="#services">Container Lease &amp; Sale</a>
+          <a href="#services">Consignment Inventory</a>
+        </div>
       </div>
-      <div class="mnav-sub" id="m-cat"><div class="mnav-sub-inner">
-  <a href="catalog.html" style="display:flex;align-items:center;min-height:44px;padding:0 24px 0 34px;font-size:13.5px;font-family:var(--fh);font-weight:700;color:var(--blue);border-bottom:1px solid rgba(230,234,242,.7);transition:color .18s">All Products</a>
-  <div class="mnav-sub-head">By Category</div>
-
-  <a href="catalog.html?cat=mro" class="mnav-cat-row"><span>Maintenance, Repair &amp; Operating Supplies (MRO)</span></a>
-  <a href="catalog.html?cat=ose" class="mnav-cat-row"><span>Operating Supplies &amp; Equipment (OS&amp;E)</span></a>
-  <a href="catalog.html?cat=electrical" class="mnav-cat-row"><span>Electrical Parts</span></a>
-  <a href="catalog.html?cat=automotive" class="mnav-cat-row"><span>Automotive Fleet &amp; Parts</span></a>
-  <a href="catalog.html?cat=electromech" class="mnav-cat-row"><span>Electro Mechanical Systems</span></a>
-  <a href="catalog.html?cat=flow" class="mnav-cat-row"><span>Flow Control &amp; Fluid Transfer</span></a>
-  <a href="catalog.html?cat=fluid-power" class="mnav-cat-row"><span>Fluid &amp; Pneumatic Power</span></a>
-  <a href="catalog.html?cat=manufacturing" class="mnav-cat-row"><span>Manufacturing &amp; Process Equipment</span></a>
-  <a href="catalog.html?cat=material-handling" class="mnav-cat-row"><span>Material Handling &amp; Packaging Material</span></a>
-  <a href="catalog.html?cat=safety" class="mnav-cat-row"><span>Safety &amp; Security Equipment</span></a>
-  <a href="catalog.html?cat=specialized" class="mnav-cat-row"><span>Specialized Industrial Products</span></a>
-
-  <div class="mnav-sub-divider"></div>
-  <div class="mnav-sub-head">By Brand</div>
-  <a href="catalog.html?brand=SKF" class="mnav-cat-row"><span>SKF</span></a>
-  <a href="catalog.html?brand=NTN" class="mnav-cat-row"><span>NTN</span></a>
-  <a href="catalog.html?brand=ABB" class="mnav-cat-row"><span>ABB</span></a>
-  <a href="catalog.html?brand=ESAB" class="mnav-cat-row"><span>ESAB</span></a>
-  <a href="catalog.html?brand=Yokogawa" class="mnav-cat-row"><span>Yokogawa</span></a>
-  <a href="catalog.html?brand=Rockwool" class="mnav-cat-row"><span>Rockwool</span></a>
-  <a href="catalog.html?brand=3M" class="mnav-cat-row"><span>3M</span></a>
-  <a href="catalog.html?brand=Flexovit" class="mnav-cat-row"><span>Flexovit</span></a>
-  <a href="catalog.html?brand=Union" class="mnav-cat-row"><span>Union</span></a>
-  <a href="catalog.html?brand=Sullair" class="mnav-cat-row"><span>Sullair</span></a>
-  <a href="catalog.html?brand=Philips" class="mnav-cat-row"><span>Philips</span></a>
-  <a href="catalog.html?brand=Bando" class="mnav-cat-row"><span>Bando</span></a>
-  <a href="catalog.html?brand=Honeywell" class="mnav-cat-row"><span>Honeywell</span></a>
-  <a href="catalog.html?brand=Schneider" class="mnav-cat-row"><span>Schneider</span></a>
-  <a href="catalog.html?brand=Siemens" class="mnav-cat-row"><span>Siemens</span></a>
-  <a href="catalog.html?brand=Crane" class="mnav-cat-row"><span>Crane</span></a>
-  <a href="catalog.html?brand=Kobelco" class="mnav-cat-row"><span>Kobelco</span></a>
-  <a href="catalog.html?brand=Trelleborg" class="mnav-cat-row"><span>Trelleborg</span></a>
-  <a href="catalog.html?brand=Srapp" class="mnav-cat-row"><span>Srapp</span></a>
-  <a href="catalog.html?brand=Supreme" class="mnav-cat-row"><span>Supreme</span></a>
-  <a href="catalog.html?brand=Denso" class="mnav-cat-row"><span>Denso</span></a>
-  <a href="catalog.html?brand=Bosch" class="mnav-cat-row"><span>Bosch</span></a>
-  <a href="catalog.html?brand=Komatsu" class="mnav-cat-row"><span>Komatsu</span></a>
-  <a href="catalog.html?brand=Yanmar" class="mnav-cat-row"><span>Yanmar</span></a>
-  <a href="catalog.html?brand=Mitsubishi" class="mnav-cat-row"><span>Mitsubishi</span></a>
-  <a href="catalog.html?brand=Milliard" class="mnav-cat-row"><span>Milliard</span></a>
-  <a href="catalog.html?brand=Geze" class="mnav-cat-row"><span>Geze</span></a>
-  <a href="catalog.html?brand=MSA" class="mnav-cat-row"><span>MSA</span></a>
-  <a href="catalog.html?brand=CIG" class="mnav-cat-row"><span>CIG</span></a>
-  <a href="catalog.html?brand=UVEX" class="mnav-cat-row"><span>UVEX</span></a>
-  <a href="catalog.html?brand=Ansell" class="mnav-cat-row"><span>Ansell</span></a>
-  <a href="catalog.html?brand=Drager" class="mnav-cat-row"><span>Drager</span></a>
-  <a href="catalog.html?brand=Aetos" class="mnav-cat-row"><span>Aetos</span></a>
-  <a href="catalog.html?brand=DuPont" class="mnav-cat-row"><span>DuPont</span></a>
-  <a href="catalog.html?brand=Petrova" class="mnav-cat-row"><span>Petrova</span></a>
-  <a href="catalog.html?brand=Safety+Jogger" class="mnav-cat-row"><span>Safety Jogger</span></a>
-  <div class="mnav-sub-divider"></div>
-  <a href="catalog.html" class="mnav-all-link">View All Products &rarr;</a>
-</div></div>
     </div>
 
     <div class="mnav-item">
-      <a href="index.html#blog" class="mnav-link">Blog</a>
+      <a href="catalog.html" class="mnav-link">Catalog</a>
     </div>
 
     <div class="mnav-item">
-      <a href="index.html#contact" class="mnav-link">Contact</a>
+      <a href="#blog" class="mnav-link">Blog</a>
+    </div>
+
+    <div class="mnav-item">
+      <a href="#contact" class="mnav-link">Contact</a>
     </div>
   </nav>
 
-  <div class="mnav-search">
-    <div class="mnav-search-wrap">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" class="mnav-search-input" id="mnavSearch" placeholder="Search catalog..." autocomplete="off">
-    </div>
-  </div>
   <div class="mnav-cta">
     <a href="cart.html" class="btn btn-ghost-b" style="margin-bottom:10px">View Cart</a>
-    <a href="index.html#contact-form" class="btn btn-orange">Send Inquiry</a>
+    <a href="#contact-form" class="btn btn-orange">Send Inquiry</a>
   </div>
 </div>
-
 
 <!-- ═══════════════════════════════════════════════════════
      HERO — FULL BANNER, INDEPENDENT TEXT ANIMATION
@@ -1168,24 +836,6 @@ a.mnav-link{display:flex}
       <div class="hstat"><div class="hstat-num">1,000+</div><div class="hstat-lbl">Product Catalog</div></div>
       <div class="hstat"><div class="hstat-num">30+</div><div class="hstat-lbl">Global Brand Principals</div></div>
       <div class="hstat"><div class="hstat-num">Multi</div><div class="hstat-lbl">Industry Segments Served</div></div>
-    </div>
-  </div>
-
-  <!-- Trust bar -->
-  <div class="hero-trust" role="region" aria-label="Key trust signals">
-    <div class="hero-trust-inner">
-      <div class="htrust-item">
-        <div class="htrust-check" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div><div class="htrust-label">Global Network</div><div class="htrust-sub">B2B-ready</div></div>
-      </div>
-      <div class="htrust-item">
-        <div class="htrust-check" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div><div class="htrust-label">Trusted Brands</div><div class="htrust-sub">B2B-ready</div></div>
-      </div>
-      <div class="htrust-item">
-        <div class="htrust-check" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div><div class="htrust-label">Cost Optimised</div><div class="htrust-sub">B2B-ready</div></div>
-      </div>
     </div>
   </div>
 
@@ -1289,8 +939,8 @@ a.mnav-link{display:flex}
         <div class="cat-overlay"></div>
         <div class="cat-content">
           <div class="ct-label">Featured Category</div>
-          <div class="ct-title ct-title-lg">Industrial MRO Components</div>
-          <div class="ct-desc">Bearings, seals, valves & instruments — comprehensive MRO supply for industrial operations</div>
+          <div class="ct-title ct-title-lg">MRO Supply</div>
+          <div class="ct-desc">Maintenance, Repair &amp; Operating — comprehensive supply for industrial operations</div>
           <a href="catalog.html?cat=mro" class="ct-cta">Browse MRO &#8594;</a>
         </div>
       </div>
@@ -1299,9 +949,9 @@ a.mnav-link{display:flex}
         <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=600&q=80')"></div>
         <div class="cat-overlay"></div>
         <div class="cat-content">
-          <div class="ct-label">PPE / Safety</div>
-          <div class="ct-title">PPE &amp; Personal Safety</div>
-          <div class="ct-desc">Certified protective equipment for industrial and high-risk work environments</div>
+          <div class="ct-label">Safety</div>
+          <div class="ct-title">PPE Equipment</div>
+          <div class="ct-desc">Personal Protective Equipment</div>
           <a href="catalog.html?cat=ppe" class="ct-cta">Browse &#8594;</a>
         </div>
       </div>
@@ -1310,9 +960,9 @@ a.mnav-link{display:flex}
         <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80')"></div>
         <div class="cat-overlay"></div>
         <div class="cat-content">
-          <div class="ct-label">Electrical</div>
-          <div class="ct-title">Electrical &amp; Electro-Mechanical Parts</div>
-          <div class="ct-desc">Switchgear, motors, contactors &amp; panel components</div>
+          <div class="ct-label">Technical</div>
+          <div class="ct-title">Electrical &amp; Electro Mechanical</div>
+          <div class="ct-desc">Parts &amp; Components</div>
           <a href="catalog.html?cat=electrical" class="ct-cta">Browse &#8594;</a>
         </div>
       </div>
@@ -1343,9 +993,9 @@ a.mnav-link{display:flex}
         <div class="cat-bg" style="background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=600&q=80&crop=right')"></div>
         <div class="cat-overlay"></div>
         <div class="cat-content">
-          <div class="ct-label">Facility</div>
-          <div class="ct-title">Facility Safety &amp; Security</div>
-          <div class="ct-desc">Fire suppression, surveillance &amp; access control systems</div>
+          <div class="ct-label">Safety</div>
+          <div class="ct-title">Safety &amp; Security Equipment</div>
+          <div class="ct-desc">Workplace &amp; Site Safety</div>
           <a href="catalog.html?cat=safety" class="ct-cta">Browse &#8594;</a>
         </div>
       </div>
@@ -1355,9 +1005,9 @@ a.mnav-link{display:flex}
         <div class="cat-overlay"></div>
         <div class="cat-content">
           <div class="ct-label">Logistics</div>
-          <div class="ct-title">Container Solutions</div>
-          <div class="ct-desc">ISO containers for storage, site logistics &amp; procurement</div>
-          <a href="catalog.html?cat=container" class="ct-cta">Browse &#8594;</a>
+          <div class="ct-title">Container Lease &amp; Sale</div>
+          <div class="ct-desc">Long-term &amp; Short-term Options</div>
+          <a href="services.html#container" class="ct-cta">Learn More &#8594;</a>
         </div>
       </div>
 
@@ -1376,47 +1026,68 @@ a.mnav-link{display:flex}
         <h2 class="sec-title" id="cp-title">Browse Our Catalog</h2>
         <p class="sec-intro">A curated selection from our industrial supply catalog — browse by category or search the full product range.</p>
       </div>
+      <a href="catalog.html" class="btn btn-ghost-b fu">View Full Catalog</a>
     </div>
 
     <div class="cp-grid">
 
       <div class="cp-card fu">
-        <div class="cp-img"><img src="https://images.unsplash.com/photo-1766736259614-61ac882294c5?auto=format&fit=crop&w=600&q=80" alt="Safety Helmet Full Brim" loading="lazy"></div>
+        <div class="cp-img">
+          <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=600&q=80" alt="Safety Helmet Full Brim" loading="lazy">
+        </div>
         <div class="cp-body">
-          <div class="cp-meta-row"><span class="cp-cat-label">PPE</span><span class="cp-brand-tag">MSA Safety</span></div>
+          <span class="cp-cat">PPE</span>
           <div class="cp-title">Safety Helmet — Full Brim</div>
-          <button class="cp-add" data-pid="p01" onclick="FORTIS.addToCart('p01');this.innerHTML='<svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>Added';this.classList.add('added')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Add to Cart</button>
-          <a href="product-detail.html?id=p01" class="cp-view">View Detail &#8594;</a>
+          <p class="cp-exc">ANSI Z89.1 compliant full brim hard hat for industrial and construction environments.</p>
+          <div class="cp-actions">
+            <a href="product-detail.html?id=p01" class="cp-view">View Detail &#8594;</a>
+            <button class="cp-add" data-pid="p01" onclick="FORTIS.addToCart('p01');this.textContent='Added ✓';this.classList.add('added')">+ Cart</button>
+          </div>
         </div>
       </div>
 
       <div class="cp-card fu">
-        <div class="cp-img"><img src="https://images.unsplash.com/photo-1683308743837-e6ba8cdeb60a?auto=format&fit=crop&w=600&q=80" alt="Industrial Bearing Set" loading="lazy"></div>
+        <div class="cp-img">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="Industrial Bearing Set" loading="lazy">
+        </div>
         <div class="cp-body">
-          <div class="cp-meta-row"><span class="cp-cat-label">MRO</span><span class="cp-brand-tag">SKF</span></div>
+          <span class="cp-cat">MRO</span>
           <div class="cp-title">Industrial Deep Groove Bearing</div>
-          <button class="cp-add" data-pid="p03" onclick="FORTIS.addToCart('p03');this.innerHTML='<svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>Added';this.classList.add('added')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Add to Cart</button>
-          <a href="product-detail.html?id=p03" class="cp-view">View Detail &#8594;</a>
+          <p class="cp-exc">High-load deep groove ball bearing for industrial machinery and rotating equipment.</p>
+          <div class="cp-actions">
+            <a href="product-detail.html?id=p03" class="cp-view">View Detail &#8594;</a>
+            <button class="cp-add" data-pid="p03" onclick="FORTIS.addToCart('p03');this.textContent='Added ✓';this.classList.add('added')">+ Cart</button>
+          </div>
         </div>
       </div>
 
       <div class="cp-card fu">
-        <div class="cp-img"><img src="https://images.unsplash.com/photo-1566417110104-cd4f94af0fb3?auto=format&fit=crop&w=600&q=80" alt="Circuit Breaker" loading="lazy"></div>
+        <div class="cp-img">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Circuit Breaker" loading="lazy">
+        </div>
         <div class="cp-body">
-          <div class="cp-meta-row"><span class="cp-cat-label">Electrical</span><span class="cp-brand-tag">Siemens</span></div>
+          <span class="cp-cat">Electrical</span>
           <div class="cp-title">3-Pole MCB Circuit Breaker</div>
-          <button class="cp-add" data-pid="p07" onclick="FORTIS.addToCart('p07');this.innerHTML='<svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>Added';this.classList.add('added')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Add to Cart</button>
-          <a href="product-detail.html?id=p07" class="cp-view">View Detail &#8594;</a>
+          <p class="cp-exc">IEC 60898 rated miniature circuit breaker for industrial panel and distribution boards.</p>
+          <div class="cp-actions">
+            <a href="product-detail.html?id=p07" class="cp-view">View Detail &#8594;</a>
+            <button class="cp-add" data-pid="p07" onclick="FORTIS.addToCart('p07');this.textContent='Added ✓';this.classList.add('added')">+ Cart</button>
+          </div>
         </div>
       </div>
 
       <div class="cp-card fu">
-        <div class="cp-img"><img src="https://images.unsplash.com/photo-1622612023350-b15f063eabe6?auto=format&fit=crop&w=600&q=80" alt="High Visibility Safety Vest" loading="lazy"></div>
+        <div class="cp-img">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="High Visibility Safety Vest" loading="lazy">
+        </div>
         <div class="cp-body">
-          <div class="cp-meta-row"><span class="cp-cat-label">PPE</span><span class="cp-brand-tag">Honeywell</span></div>
+          <span class="cp-cat">PPE</span>
           <div class="cp-title">High-Visibility Safety Vest (Class 2)</div>
-          <button class="cp-add" data-pid="p08" onclick="FORTIS.addToCart('p08');this.innerHTML='<svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;><polyline points=&quot;20 6 9 17 4 12&quot;/></svg>Added';this.classList.add('added')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>Add to Cart</button>
-          <a href="product-detail.html?id=p08" class="cp-view">View Detail &#8594;</a>
+          <p class="cp-exc">ANSI/ISEA 107 Class 2 vest with retroreflective tape for high-risk work zones.</p>
+          <div class="cp-actions">
+            <a href="product-detail.html?id=p08" class="cp-view">View Detail &#8594;</a>
+            <button class="cp-add" data-pid="p08" onclick="FORTIS.addToCart('p08');this.textContent='Added ✓';this.classList.add('added')">+ Cart</button>
+          </div>
         </div>
       </div>
 
@@ -1680,7 +1351,7 @@ a.mnav-link{display:flex}
             </div>
             <div class="cf-group">
               <label for="cf-phone">Phone / WhatsApp</label>
-              <input type="tel" inputmode="numeric" id="cf-phone" name="phone" placeholder="+62 ..." pattern="[0-9+\s]*" oninput="this.value=this.value.replace(/[^0-9+\s]/g,'')">
+              <input type="tel" id="cf-phone" name="phone" placeholder="+62 ...">
             </div>
           </div>
           <div class="cf-group">
@@ -1704,7 +1375,7 @@ a.mnav-link{display:flex}
             <p class="cf-note">We typically respond within 1–2 business days.</p>
           </div>
           <div class="cf-success" id="cfSuccess">
-            Inquiry terkirim — WhatsApp terbuka di tab baru. Tim kami akan segera membalas.
+            Thank you — your inquiry has been received. Our team will be in touch within 1–2 business days.
           </div>
         </form>
       </div>
@@ -1719,48 +1390,61 @@ a.mnav-link{display:flex}
 <footer id="contact" aria-label="Footer and contact information">
   <div class="wrap">
     <div class="ft-top">
+
+      <!-- Col 1: Brand -->
       <div>
         <div class="ft-logo">
-          <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="ft-logo-img">
+          <div class="ft-logo-mark">F</div>
+          <div>
+            <div class="ft-logo-name">ortis</div>
+            <div class="ft-logo-sub">Prima Sinergi</div>
+          </div>
         </div>
         <p class="ft-desc">PT Fortis Prima Solusi — End-to-End Procurement Partner for Global-Grade Industrial Supply.</p>
         <p class="ft-addr">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta Pusat</p>
       </div>
+
+      <!-- Col 2: Navigation -->
       <div>
         <div class="ft-col-ttl">Navigation</div>
         <div class="ft-links">
-          <a href="index.html">Home</a>
-          <a href="index.html#about">About</a>
-          <a href="index.html#services">Services</a>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
           <a href="catalog.html">Catalog</a>
-          <a href="index.html#blog">Blog</a>
-          <a href="index.html#contact">Contact</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
+
+      <!-- Col 3: Services -->
       <div>
-        <div class="ft-col-ttl">Categories</div>
+        <div class="ft-col-ttl">Services</div>
         <div class="ft-links">
-          <a href="catalog.html?cat=mro">Maintenance, Repair &amp; Operating (MRO)</a>
-          <a href="catalog.html?cat=ose">Operating Supplies &amp; Equipment (OS&amp;E)</a>
-          <a href="catalog.html?cat=electrical">Electrical Parts</a>
-          <a href="catalog.html?cat=automotive">Automotive Fleet &amp; Parts</a>
-          <a href="catalog.html?cat=electromech">Electro Mechanical Systems</a>
-          <a href="catalog.html?cat=flow">Flow Control &amp; Fluid Transfer</a>
-          <a href="catalog.html?cat=fluid-power">Fluid &amp; Pneumatic Power</a>
-          <a href="catalog.html?cat=manufacturing">Manufacturing &amp; Process Equipment</a>
-          <a href="catalog.html?cat=material-handling">Material Handling &amp; Packaging</a>
-          <a href="catalog.html?cat=safety">Safety &amp; Security Equipment</a>
-          <a href="catalog.html?cat=specialized">Specialized Industrial Products</a>
+          <a href="#services">Global Procurement &amp; Sourcing</a>
+          <a href="#services">Industrial MRO Supply</a>
+          <a href="#services">PPE Supply</a>
+          <a href="#services">Container Lease &amp; Sale</a>
+          <a href="#services">Consignment Inventory</a>
         </div>
       </div>
+
+      <!-- Col 4: Contact -->
       <div>
         <div class="ft-col-ttl">Contact</div>
-        <div class="ft-ci"><div class="ft-ci-lbl">Email</div><div class="ft-ci-val"><a href="mailto:sales@fortisprima.com">sales@fortisprima.com</a></div></div>
-        <div class="ft-ci"><div class="ft-ci-lbl">Phone</div><div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div></div>
-        <a href="index.html#contact-form" class="ft-inquiry">Send Inquiry &#8594;</a>
-        <a href="cart.html" class="ft-inquiry" style="color:rgba(255,255,255,.52);margin-top:6px">View Cart &#8594;</a>
+        <div class="ft-ci">
+          <div class="ft-ci-lbl">Email</div>
+          <div class="ft-ci-val"><a href="mailto:sales@fortisprima.com">sales@fortisprima.com</a></div>
+        </div>
+        <div class="ft-ci">
+          <div class="ft-ci-lbl">Phone</div>
+          <div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div>
+        </div>
+        <a href="#contact-form" class="ft-inquiry">Send Inquiry &#8594;</a>
       </div>
+
     </div>
+
     <div class="ft-bot">
       <p class="ft-copy">&copy; 2026 PT Fortis Prima Solusi. All rights reserved.</p>
       <p class="ft-legal">Privacy Policy &nbsp;&middot;&nbsp; Terms of Use</p>
@@ -1904,6 +1588,86 @@ a.mnav-link{display:flex}
 })();
 
 /* ──────────────────────────────────────────────────────
+   STICKY HEADER
+   ────────────────────────────────────────────────────── */
+(function () {
+  var hdr = document.getElementById('hdr');
+  function check() { hdr.classList.toggle('solid', window.scrollY > 24); }
+  window.addEventListener('scroll', check, { passive: true });
+  check();
+})();
+
+/* ──────────────────────────────────────────────────────
+   MOBILE NAV
+   ────────────────────────────────────────────────────── */
+(function () {
+  var tog      = document.getElementById('navTog');
+  var mnav     = document.getElementById('mobileNav');
+  var backdrop = document.getElementById('mnavBackdrop');
+  var isOpen   = false;
+
+  function openMenu() {
+    isOpen = true;
+    tog.classList.add('is-open');
+    mnav.classList.add('is-open');
+    backdrop.classList.add('is-open');
+    tog.setAttribute('aria-expanded', 'true');
+    mnav.setAttribute('aria-hidden', 'false');
+    backdrop.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    tog.classList.remove('is-open');
+    mnav.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    tog.setAttribute('aria-expanded', 'false');
+    mnav.setAttribute('aria-hidden', 'true');
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    /* collapse all open accordions */
+    mnav.querySelectorAll('.mnav-sub.is-open').forEach(function (s) { s.classList.remove('is-open'); });
+    mnav.querySelectorAll('.mnav-link.is-open').forEach(function (l) {
+      l.classList.remove('is-open');
+      l.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  tog.addEventListener('click', function () { isOpen ? closeMenu() : openMenu(); });
+  backdrop.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeMenu(); });
+
+  /* Accordion — one open at a time */
+  mnav.querySelectorAll('[data-expand]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var target = document.getElementById(el.dataset.expand);
+      if (!target) return;
+      var wasOpen = target.classList.contains('is-open');
+
+      /* collapse all */
+      mnav.querySelectorAll('.mnav-sub.is-open').forEach(function (s) { s.classList.remove('is-open'); });
+      mnav.querySelectorAll('.mnav-link.is-open').forEach(function (l) {
+        l.classList.remove('is-open');
+        l.setAttribute('aria-expanded', 'false');
+      });
+
+      /* open if it wasn't already */
+      if (!wasOpen) {
+        target.classList.add('is-open');
+        el.classList.add('is-open');
+        el.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* Close panel on any internal link click */
+  mnav.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
+  });
+})();
+
+/* ──────────────────────────────────────────────────────
    SCROLL REVEAL
    ────────────────────────────────────────────────────── */
 (function () {
@@ -1954,28 +1718,9 @@ a.mnav-link{display:flex}
       else { f.style.borderColor = ''; }
     });
     if (!valid) return;
-
-    var name    = document.getElementById('cf-name').value.trim();
-    var company = document.getElementById('cf-company').value.trim();
-    var email   = document.getElementById('cf-email').value.trim();
-    var phone   = document.getElementById('cf-phone').value.trim();
-    var svcEl   = document.getElementById('cf-service');
-    var svcLabel = svcEl.selectedIndex > 0 ? svcEl.options[svcEl.selectedIndex].text : '';
-    var message = document.getElementById('cf-message').value.trim();
-
-    var text =
-      'Halo Fortis Prima Solusi,\n\n' +
-      'Saya ingin menyampaikan inquiry berikut:\n\n' +
-      'Nama: ' + name + '\n' +
-      'Perusahaan: ' + company + '\n' +
-      'Email: ' + email + '\n' +
-      (phone   ? 'No. Telepon: ' + phone + '\n'       : '') +
-      (svcLabel? 'Kebutuhan: '   + svcLabel + '\n'    : '') +
-      '\nDetail:\n' + message + '\n\nTerima kasih.';
-
+    form.querySelectorAll('input,select,textarea,button').forEach(function (f) { f.disabled = true; });
     success.classList.add('show');
     success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    window.open('https://wa.me/622129704002?text=' + encodeURIComponent(text), '_blank');
   });
 
   form.querySelectorAll('input,select,textarea').forEach(function (f) {
@@ -1991,99 +1736,14 @@ document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     var t = document.querySelector(this.getAttribute('href'));
     if (t) {
       e.preventDefault();
-      var top = t.getBoundingClientRect().top + window.pageYOffset - document.getElementById('hdr').offsetHeight;
+      var top = t.getBoundingClientRect().top + window.pageYOffset - 72;
       window.scrollTo({ top: top, behavior: 'smooth' });
     }
   });
 });
-
 </script>
 
 <script src="assets/js/fortis.js"></script>
-<script>
-/* Mobile nav */
-(function () {
-  var tog = document.getElementById('navTog'), mnav = document.getElementById('mobileNav'), bd = document.getElementById('mnavBackdrop'), open = false;
-  function openMenu(){open=true;tog.classList.add('is-open');mnav.classList.add('is-open');bd.classList.add('is-open');tog.setAttribute('aria-expanded','true');mnav.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
-  function closeMenu(){open=false;tog.classList.remove('is-open');mnav.classList.remove('is-open');bd.classList.remove('is-open');tog.setAttribute('aria-expanded','false');mnav.setAttribute('aria-hidden','true');document.body.style.overflow=''}
-  tog.addEventListener('click',function(){open?closeMenu():openMenu()});
-  bd.addEventListener('click',closeMenu);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&open)closeMenu()});
-  mnav.querySelectorAll('[data-expand]').forEach(function(el){
-    el.addEventListener('click',function(){
-      var t=document.getElementById(el.dataset.expand);if(!t)return;
-      var was=t.classList.contains('is-open');
-      mnav.querySelectorAll('.mnav-sub.is-open').forEach(function(s){s.classList.remove('is-open')});
-      mnav.querySelectorAll('.mnav-link.is-open').forEach(function(l){l.classList.remove('is-open');l.setAttribute('aria-expanded','false')});
-      if(!was){t.classList.add('is-open');el.classList.add('is-open');el.setAttribute('aria-expanded','true')}
-    });
-  });
-  mnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu)});
-})();
-</script>
-<script>
-(function(){
-  document.querySelectorAll('.nav-item').forEach(function(item){
-    var mega=item.querySelector('.cat-mega');
-    if(!mega)return;
-    var t;
-    function open(){clearTimeout(t);item.classList.add('mega-open');}
-    function close(){t=setTimeout(function(){item.classList.remove('mega-open');},150);}
-    item.addEventListener('mouseenter',open);
-    item.addEventListener('mouseleave',close);
-    mega.addEventListener('mouseenter',open);
-    mega.addEventListener('mouseleave',close);
-  });
-})();
-</script>
 
-
-<!-- SEARCH OVERLAY -->
-<div class="search-overlay" id="searchOverlay" aria-hidden="true" role="dialog" aria-label="Search catalog">
-  <div class="so-backdrop" id="soBackdrop"></div>
-  <div class="so-panel">
-    <div class="so-wrap">
-      <svg class="so-search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" class="so-input" id="soInput" placeholder="Search 1,000+ products — bearings, PPE, circuit breakers..." autocomplete="off" spellcheck="false">
-      <button class="so-close-btn" id="soClose" aria-label="Close search">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <p class="so-hint">Press Enter to search &nbsp;&middot;&nbsp; Esc to close</p>
-  </div>
-</div>
-<script>
-(function () {
-  var overlay  = document.getElementById('searchOverlay');
-  var backdrop = document.getElementById('soBackdrop');
-  var input    = document.getElementById('soInput');
-  var closeBtn = document.getElementById('soClose');
-  var openBtn  = document.getElementById('navSearchBtn');
-  var mnavInp  = document.getElementById('mnavSearch');
-  if (!overlay) return;
-  function openSearch() {
-    overlay.classList.add('so-open');
-    overlay.setAttribute('aria-hidden', 'false');
-    setTimeout(function () { input.focus(); }, 60);
-  }
-  function closeSearch() {
-    overlay.classList.remove('so-open');
-    overlay.setAttribute('aria-hidden', 'true');
-    input.value = '';
-  }
-  function doSearch(val) {
-    if (val.trim()) window.location.href = 'catalog.html?q=' + encodeURIComponent(val.trim());
-  }
-  if (openBtn) openBtn.addEventListener('click', openSearch);
-  closeBtn.addEventListener('click', closeSearch);
-  backdrop.addEventListener('click', closeSearch);
-  input.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') doSearch(input.value);
-    if (e.key === 'Escape') closeSearch();
-  });
-  if (mnavInp) mnavInp.addEventListener('keydown', function (e) { if (e.key === 'Enter') doSearch(mnavInp.value); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSearch(); });
-}());
-</script>
 </body>
 </html>

@@ -11,7 +11,7 @@
 :root{--blue:#0E3BAA;--blue-dk:#0a2e87;--blue-xdk:#060e38;--blue-lt:#E6EAF2;--orange:#F7612A;--orange-dk:#d94e1a;--black:#0A0A0A;--gray-bg:#F7F8FA;--g1:#E6EAF2;--g2:#D9DEE8;--g3:#6B7280;--white:#FFFFFF;--fh:'Manrope',sans-serif;--fb:'IBM Plex Sans',sans-serif;--mw:1180px;--r:10px;--spy:80px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--fb);font-size:16px;line-height:1.75;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased;padding-top:124px}
+body{font-family:var(--fb);font-size:16px;line-height:1.75;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
@@ -55,10 +55,10 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
 /* HEADER */
 #hdr{position:fixed;top:0;left:0;right:0;z-index:200}
 .main-bar{background:#fff;border-bottom:1px solid var(--g2)}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:88px}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{display:inline-flex;align-items:center;padding:4px 0;transition:opacity .2s}
 .logo:hover{opacity:.82}
-.logo-img{height:56px;width:auto;display:block}
+.logo-img{height:36px;width:auto;display:block}
 .hdr-nav{display:flex;align-items:center;gap:4px}
 .nav-item{position:relative}
 .nav-link{display:flex;align-items:center;gap:4px;font-family:var(--fh);font-size:13.5px;font-weight:500;color:var(--g3);padding:8px 12px;border-radius:6px;transition:color .2s,background .2s;letter-spacing:.02em;cursor:pointer;white-space:nowrap}
@@ -90,7 +90,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
 .svc-footer-link{font-family:var(--fh);font-size:12px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px;transition:gap .18s}
 .svc-footer-link:hover{gap:7px}
 /* Catalog mega-menu */
-.cat-mega{position:fixed;top:124px;left:0;right:0;width:100%;padding:0;overflow-x:hidden;overflow-y:auto;max-height:calc(100vh - 130px);border-radius:0 0 14px 14px;border-top:none;border-left:none;border-right:none}
+.cat-mega{position:fixed;top:104px;left:0;right:0;width:100%;padding:0;overflow-x:hidden;overflow-y:auto;max-height:calc(100vh - 110px);border-radius:0 0 14px 14px;border-top:none;border-left:none;border-right:none}
 .cat-mega-top{padding:16px 48px 12px}
 .cat-mega-all{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:8px;background:var(--gray-bg);transition:background .15s;text-decoration:none}
 .cat-mega-all:hover{background:var(--blue-lt)}
@@ -143,7 +143,7 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
 .nav-tog.is-open .nav-tog-bar:nth-child(3){transform:translateY(0) rotate(-45deg)}
 .mnav-backdrop{position:fixed;inset:0;background:rgba(10,10,10,.3);z-index:185;opacity:0;pointer-events:none;visibility:hidden;transition:opacity 300ms ease,visibility 0s linear 300ms}
 .mnav-backdrop.is-open{opacity:1;pointer-events:auto;visibility:visible;transition:opacity 300ms ease,visibility 0s linear 0s}
-.mobile-nav{position:fixed;top:124px;left:0;right:0;bottom:0;background:#fff;z-index:190;overflow-y:auto;padding:0 0 56px;opacity:0;transform:translateY(-14px);pointer-events:none;visibility:hidden;transition:opacity 300ms cubic-bezier(.25,.1,.25,1),transform 300ms cubic-bezier(.25,.1,.25,1),visibility 0s linear 300ms}
+.mobile-nav{position:fixed;top:104px;left:0;right:0;bottom:0;background:#fff;z-index:190;overflow-y:auto;padding:0 0 56px;opacity:0;transform:translateY(-14px);pointer-events:none;visibility:hidden;transition:opacity 300ms cubic-bezier(.25,.1,.25,1),transform 300ms cubic-bezier(.25,.1,.25,1),visibility 0s linear 300ms}
 .mobile-nav.is-open{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible;transition:opacity 300ms cubic-bezier(.25,.1,.25,1),transform 300ms cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s}
 .mnav-item{border-bottom:1px solid var(--g1)}
 .mnav-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 24px;min-height:54px;font-family:var(--fh);font-size:15px;font-weight:600;color:var(--black);cursor:pointer;transition:color .18s;-webkit-tap-highlight-color:transparent;user-select:none}
@@ -182,19 +182,22 @@ a.mnav-link{display:flex}
 .mnav-cta .btn:active{transform:scale(.98)}
 
 /* PAGE HERO */
-.page-hero{position:relative;background:var(--blue-xdk);overflow:hidden;min-height:320px;display:flex;align-items:center}
-.page-hero-bg{position:absolute;inset:0}
-.page-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(4,10,38,.96) 0%,rgba(5,14,52,.90) 38%,rgba(5,14,52,.65) 62%,rgba(5,14,52,.24) 100%)}
-.page-hero-inner{position:relative;z-index:2;width:100%;max-width:var(--mw);margin:0 auto;padding:56px 40px 64px}
-.breadcrumb{display:flex;align-items:center;gap:8px;font-family:var(--fh);font-size:11.5px;font-weight:500;color:rgba(255,255,255,.4);margin-bottom:24px}
-.breadcrumb a{color:rgba(255,255,255,.4);transition:color .2s}.breadcrumb a:hover{color:rgba(255,255,255,.75)}
-.breadcrumb-sep{color:rgba(255,255,255,.2)}
-.hero-ey{display:inline-flex;align-items:center;gap:8px;font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
-.hero-ey::before{content:'';display:block;width:14px;height:2px;background:var(--orange);border-radius:2px}
-.hero-h1{font-family:var(--fh);font-size:clamp(30px,3.8vw,48px);font-weight:700;line-height:1.1;letter-spacing:-1px;color:#fff;margin-bottom:14px}
-.hero-h1 em{font-style:normal;color:var(--orange)}
-.hero-p{font-size:15px;line-height:1.8;color:rgba(255,255,255,.65);max-width:480px}
+.page-hero{padding:136px 0 52px;background:var(--blue-xdk);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.ph-inner{position:relative;z-index:1}
+.ph-label{font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.ph-label::before{content:'';display:block;width:14px;height:2px;background:var(--orange);border-radius:2px}
+.ph-title{font-family:var(--fh);font-size:clamp(28px,4vw,44px);font-weight:700;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:12px}
+.ph-sub{font-size:15px;color:rgba(255,255,255,.6);max-width:520px;line-height:1.75}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--gray-bg);border-bottom:1px solid var(--g1)}
+.bc-inner{padding:12px 0;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--g3);flex-wrap:wrap}
+.bc-inner a{color:var(--blue);transition:color .18s}
+.bc-inner a:hover{color:var(--blue-dk)}
+.bc-sep{opacity:.4}
+.bc-current{color:var(--black);font-weight:500}
+
 /* CATALOG LAYOUT */
 .catalog-section{padding:40px 0 var(--spy)}
 .catalog-layout{display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:start}
@@ -273,7 +276,7 @@ a.mnav-link{display:flex}
 
 /* FOOTER */
 #ft{background:#071a4f;padding:72px 0 0}
-.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
 .ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .ft-logo-mark{width:28px;height:28px;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
 .ft-logo-name{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;letter-spacing:-.2px;line-height:1}
@@ -314,7 +317,7 @@ a.mnav-link{display:flex}
 @media(max-width:960px){
   .tb-right{display:none}
   .top-bar-inner{justify-content:center}
-  .mobile-nav{top:124px}
+  .mobile-nav{top:104px}
   .hdr-nav{display:none}.nav-tog{display:flex}
   .cat-sidebar{position:fixed;top:0;left:0;bottom:0;width:280px;background:#fff;z-index:300;overflow-y:auto;padding:80px 20px 40px;transform:translateX(-100%);transition:transform 300ms cubic-bezier(.25,.1,.25,1);box-shadow:4px 0 32px rgba(0,0,0,.12)}
   .cat-sidebar.is-open{transform:translateX(0)}
@@ -372,7 +375,7 @@ a.mnav-link{display:flex}
     <div class="hdr-inner">
 
       <a href="index.html" class="logo" aria-label="PT Fortis Prima Solusi — Home">
-        <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="logo-img">
+        <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="logo-img">
       </a>
 
       <!-- Desktop nav -->
@@ -383,7 +386,7 @@ a.mnav-link{display:flex}
         </div>
 
         <div class="nav-item">
-          <a href="about.html" class="nav-link" data-nav="about">About</a>
+          <a href="index.html#about" class="nav-link" data-nav="about">About</a>
         </div>
 
         <div class="nav-item">
@@ -393,25 +396,25 @@ a.mnav-link{display:flex}
           </span>
           <div class="subnav subnav-svc" role="menu">
             <div class="svc-grid">
-              <a href="service-procurement.html" class="svc-card" role="menuitem">
+              <a href="index.html#services" class="svc-card" role="menuitem">
                 <div class="svc-body"><span class="svc-name">Global Procurement &amp; Sourcing</span><span class="svc-desc">End-to-end sourcing from global suppliers</span></div>
               </a>
-              <a href="service-mro.html" class="svc-card" role="menuitem">
+              <a href="index.html#services" class="svc-card" role="menuitem">
                 <div class="svc-body"><span class="svc-name">Industrial MRO Supply</span><span class="svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
               </a>
-              <a href="service-ppe.html" class="svc-card" role="menuitem">
+              <a href="index.html#services" class="svc-card" role="menuitem">
                 <div class="svc-body"><span class="svc-name">PPE Supply</span><span class="svc-desc">ANSI / EN certified protective equipment</span></div>
               </a>
-              <a href="service-container.html" class="svc-card" role="menuitem">
+              <a href="index.html#services" class="svc-card" role="menuitem">
                 <div class="svc-body"><span class="svc-name">Container Lease &amp; Sale</span><span class="svc-desc">ISO containers for storage &amp; logistics</span></div>
               </a>
-              <a href="service-consignment.html" class="svc-card" role="menuitem" style="grid-column:1/-1">
+              <a href="index.html#services" class="svc-card" role="menuitem" style="grid-column:1/-1">
                 <div class="svc-body"><span class="svc-name">Consignment Inventory</span><span class="svc-desc">Pay-as-you-use stocking program for plant operations</span></div>
               </a>
             </div>
             <div class="svc-footer">
               <span class="svc-footer-text">Need a custom quote for bulk orders?</span>
-              <a href="inquiry.html" class="svc-footer-link">Request Inquiry &#8594;</a>
+              <a href="index.html#contact-form" class="svc-footer-link">Request Inquiry &#8594;</a>
             </div>
           </div>
         </div>
@@ -517,11 +520,11 @@ a.mnav-link{display:flex}
         </div>
 
         <div class="nav-item">
-          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="index.html#blog" class="nav-link">Blog</a>
         </div>
 
         <div class="nav-item">
-          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="index.html#contact" class="nav-link">Contact</a>
         </div>
 
         <button class="nav-search-btn" id="navSearchBtn" aria-label="Search catalog">
@@ -534,7 +537,7 @@ a.mnav-link{display:flex}
           <span class="cart-badge" id="cartBadge"></span>
         </div>
 
-        <a href="inquiry.html" class="hdr-cta">Send Inquiry &rarr;</a>
+        <a href="index.html#contact-form" class="hdr-cta">Send Inquiry &rarr;</a>
       </nav>
 
       <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false">
@@ -568,19 +571,19 @@ a.mnav-link{display:flex}
         <svg class="mnav-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
       </div>
       <div class="mnav-sub" id="m-svc"><div class="mnav-sub-inner">
-  <a href="service-procurement.html" class="mnav-svc-row">
+  <a href="index.html#services" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">Global Procurement &amp; Sourcing</span><span class="mnav-svc-desc">End-to-end sourcing from global suppliers</span></div>
   </a>
-  <a href="service-mro.html" class="mnav-svc-row">
+  <a href="index.html#services" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">Industrial MRO Supply</span><span class="mnav-svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
   </a>
-  <a href="service-ppe.html" class="mnav-svc-row">
+  <a href="index.html#services" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">PPE Supply</span><span class="mnav-svc-desc">ANSI / EN certified protective equipment</span></div>
   </a>
-  <a href="service-container.html" class="mnav-svc-row">
+  <a href="index.html#services" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">Container Lease &amp; Sale</span><span class="mnav-svc-desc">ISO containers for storage &amp; logistics</span></div>
   </a>
-  <a href="service-consignment.html" class="mnav-svc-row">
+  <a href="index.html#services" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">Consignment Inventory</span><span class="mnav-svc-desc">Pay-as-you-use stocking program</span></div>
   </a>
 </div></div>
@@ -651,11 +654,11 @@ a.mnav-link{display:flex}
     </div>
 
     <div class="mnav-item">
-      <a href="blog.html" class="mnav-link">Blog</a>
+      <a href="index.html#blog" class="mnav-link">Blog</a>
     </div>
 
     <div class="mnav-item">
-      <a href="contact.html" class="mnav-link">Contact</a>
+      <a href="index.html#contact" class="mnav-link">Contact</a>
     </div>
   </nav>
 
@@ -667,28 +670,32 @@ a.mnav-link{display:flex}
   </div>
   <div class="mnav-cta">
     <a href="cart.html" class="btn btn-ghost-b" style="margin-bottom:10px">View Cart</a>
-    <a href="inquiry.html" class="btn btn-orange">Send Inquiry</a>
+    <a href="index.html#contact-form" class="btn btn-orange">Send Inquiry</a>
   </div>
 </div>
 
 
 <!-- PAGE HERO -->
-<section class="page-hero" aria-label="Product Catalog">
-  <div class="page-hero-bg">
-    <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1600&q=75" alt="Industrial supply warehouse" loading="eager">
-  </div>
-  <div class="page-hero-overlay"></div>
-  <div class="page-hero-inner">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span class="breadcrumb-sep">/</span>
-      <span style="color:rgba(255,255,255,.6)">Catalog</span>
+<section class="page-hero">
+  <div class="wrap">
+    <div class="ph-inner">
+      <div class="ph-label">Industrial Supply</div>
+      <h1 class="ph-title">Product Catalog</h1>
+      <p class="ph-sub">Browse our industrial supply range — MRO, PPE, Electrical, and Automotive. Add items to your inquiry cart and submit via WhatsApp.</p>
     </div>
-    <div class="hero-ey">Industrial Supply</div>
-    <h1 class="hero-h1">Product Catalog</h1>
-    <p class="hero-p">Browse our industrial supply range — MRO, PPE, Electrical, and Automotive. Add items to your inquiry cart and submit via WhatsApp.</p>
   </div>
 </section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="wrap">
+    <div class="bc-inner">
+      <a href="index.html">Home</a>
+      <span class="bc-sep">›</span>
+      <span class="bc-current">Catalog</span>
+    </div>
+  </div>
+</div>
 
 <!-- SIDEBAR OVERLAY (mobile) -->
 <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
@@ -789,7 +796,7 @@ a.mnav-link{display:flex}
     <div class="ft-top">
       <div>
         <div class="ft-logo">
-          <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="ft-logo-img">
+          <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="ft-logo-img">
         </div>
         <p class="ft-desc">PT Fortis Prima Solusi — End-to-End Procurement Partner for Global-Grade Industrial Supply.</p>
         <p class="ft-addr">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta Pusat</p>
@@ -799,20 +806,10 @@ a.mnav-link{display:flex}
         <div class="ft-links">
           <a href="index.html">Home</a>
           <a href="index.html#about">About</a>
-          <a href="service-procurement.html">Services</a>
+          <a href="index.html#services">Services</a>
           <a href="catalog.html">Catalog</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-      <div>
-        <div class="ft-col-ttl">Services</div>
-        <div class="ft-links">
-          <a href="service-procurement.html">Global Procurement &amp; Sourcing</a>
-          <a href="service-mro.html">Industrial MRO Supply</a>
-          <a href="service-ppe.html">PPE Supply</a>
-          <a href="service-container.html">Container Lease &amp; Sale</a>
-          <a href="service-consignment.html">Consignment Inventory</a>
+          <a href="index.html#blog">Blog</a>
+          <a href="index.html#contact">Contact</a>
         </div>
       </div>
       <div>
@@ -835,7 +832,7 @@ a.mnav-link{display:flex}
         <div class="ft-col-ttl">Contact</div>
         <div class="ft-ci"><div class="ft-ci-lbl">Email</div><div class="ft-ci-val"><a href="mailto:sales@fortisprima.com">sales@fortisprima.com</a></div></div>
         <div class="ft-ci"><div class="ft-ci-lbl">Phone</div><div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div></div>
-        <a href="inquiry.html" class="ft-inquiry">Send Inquiry &#8594;</a>
+        <a href="index.html#contact-form" class="ft-inquiry">Send Inquiry &#8594;</a>
         <a href="cart.html" class="ft-inquiry" style="color:rgba(255,255,255,.52);margin-top:6px">View Cart &#8594;</a>
       </div>
     </div>
