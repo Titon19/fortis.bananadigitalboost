@@ -108,12 +108,12 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
    ═══════════════════════════════════════════════════════ */
 #hdr{position:fixed;top:0;left:0;right:0;z-index:200}
 .main-bar{background:#fff;border-bottom:1px solid var(--g2)}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:88px}
 
 /* Logo */
 .logo{display:inline-flex;align-items:center;padding:4px 0;transition:opacity .2s}
 .logo:hover{opacity:.82}
-.logo-img{height:36px;width:auto;display:block}
+.logo-img{height:56px;width:auto;display:block}
 .ft-logo-mark{width:28px;height:28px;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
 .ft-logo-name{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;letter-spacing:-.2px;line-height:1}
 .ft-logo-sub{font-family:var(--fh);font-size:7.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:3px;line-height:1}
@@ -426,12 +426,46 @@ a.mnav-link{display:flex}
    SECTION BASE
    ═══════════════════════════════════════════════════════ */
 .section{padding:var(--spy) 0}
-.section-gray{background:var(--gray-bg)}
+.section-gray{background:#E9EDF7;background-image:linear-gradient(rgba(14,59,170,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(14,59,170,.022) 1px,transparent 1px);background-size:52px 52px}
 .section-blue{background:var(--blue);position:relative;overflow:hidden}
 .section-dark{background:var(--black)}
 .section-bt{border-top:1px solid var(--g1)}
+.section-dark.section-bt{border-top:1px solid rgba(255,255,255,.07)}
+.section-blue.section-bt{border-top:none}
 
 .section-blue::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+
+/* ── DARK / BLUE SECTION — UNIVERSAL TEXT OVERRIDES ─────── */
+.section-dark .sec-title,.section-blue .sec-title{color:#fff}
+.section-dark .sec-intro,.section-blue .sec-intro{color:rgba(255,255,255,.58)}
+.section-dark .eyebrow,.section-blue .eyebrow{color:var(--orange)}
+.section-dark .eyebrow::before,.section-blue .eyebrow::before{background:var(--orange)}
+
+/* Services / cap-cards on blue bg */
+.section-blue .cap-card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.13)}
+.section-blue .cap-card:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.28);box-shadow:0 6px 28px rgba(0,0,0,.25);transform:translateY(-3px)}
+.section-blue .cap-num{color:var(--orange)}
+.section-blue .cap-title{color:#fff}
+.section-blue .cap-body{color:rgba(255,255,255,.62)}
+.section-blue .cap-link{color:var(--orange)}
+
+/* Brands / brand-chips on dark bg */
+.section-dark .brand-chip{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.65)}
+.section-dark .brand-chip:hover{border-color:var(--orange);color:#fff;box-shadow:0 2px 16px rgba(247,97,42,.18)}
+.section-dark .brands-note{color:rgba(255,255,255,.26)}
+
+/* Process / proc-steps on blue bg */
+.section-blue .proc-steps::before{background:rgba(255,255,255,.18)}
+.section-blue .step-ring{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)}
+.section-blue .step-n{color:#fff}
+.section-blue .step-title{color:#fff}
+.section-blue .step-body{color:rgba(255,255,255,.62)}
+.section-blue .proc-step:hover .step-ring{background:var(--orange);border-color:var(--orange)}
+.section-blue .proc-step:hover .step-n{color:#fff}
+
+/* About metrics — blue left accent */
+.am{background:linear-gradient(135deg,#f0f4ff 0%,#fff 100%);border-left:3px solid var(--blue)}
+.am:hover{border-color:var(--blue);border-left-color:var(--orange)}
 
 /* ═══════════════════════════════════════════════════════
    ABOUT / COMPANY SNAPSHOT
@@ -577,7 +611,7 @@ a.mnav-link{display:flex}
    FOOTER
    ═══════════════════════════════════════════════════════ */
 #contact{background:#071a4f;padding:72px 0 0}
-.ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
 .ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .logo-img-ft{height:28px;width:auto;display:block;border-radius:4px}
 .ft-desc{font-size:13.5px;color:rgba(255,255,255,.42);line-height:1.75;max-width:240px;margin-bottom:18px}
@@ -809,7 +843,7 @@ a.mnav-link{display:flex}
     <div class="hdr-inner">
 
       <a href="index.html" class="logo" aria-label="PT Fortis Prima Solusi — Home">
-        <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="logo-img">
+        <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="logo-img">
       </a>
 
       <!-- Desktop nav -->
@@ -820,7 +854,7 @@ a.mnav-link{display:flex}
         </div>
 
         <div class="nav-item">
-          <a href="index.html#about" class="nav-link" data-nav="about">About</a>
+          <a href="about.html" class="nav-link" data-nav="about">About</a>
         </div>
 
         <div class="nav-item">
@@ -830,25 +864,25 @@ a.mnav-link{display:flex}
           </span>
           <div class="subnav subnav-svc" role="menu">
             <div class="svc-grid">
-              <a href="index.html#services" class="svc-card" role="menuitem">
+              <a href="service-procurement.html" class="svc-card" role="menuitem">
                 <div class="svc-body"><span class="svc-name">Global Procurement &amp; Sourcing</span><span class="svc-desc">End-to-end sourcing from global suppliers</span></div>
               </a>
-              <a href="index.html#services" class="svc-card" role="menuitem">
+              <a href="service-mro.html" class="svc-card" role="menuitem">
                 <div class="svc-body"><span class="svc-name">Industrial MRO Supply</span><span class="svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
               </a>
-              <a href="index.html#services" class="svc-card" role="menuitem">
+              <a href="service-ppe.html" class="svc-card" role="menuitem">
                 <div class="svc-body"><span class="svc-name">PPE Supply</span><span class="svc-desc">ANSI / EN certified protective equipment</span></div>
               </a>
-              <a href="index.html#services" class="svc-card" role="menuitem">
+              <a href="service-container.html" class="svc-card" role="menuitem">
                 <div class="svc-body"><span class="svc-name">Container Lease &amp; Sale</span><span class="svc-desc">ISO containers for storage &amp; logistics</span></div>
               </a>
-              <a href="index.html#services" class="svc-card" role="menuitem" style="grid-column:1/-1">
+              <a href="service-consignment.html" class="svc-card" role="menuitem" style="grid-column:1/-1">
                 <div class="svc-body"><span class="svc-name">Consignment Inventory</span><span class="svc-desc">Pay-as-you-use stocking program for plant operations</span></div>
               </a>
             </div>
             <div class="svc-footer">
               <span class="svc-footer-text">Need a custom quote for bulk orders?</span>
-              <a href="index.html#contact-form" class="svc-footer-link">Request Inquiry &#8594;</a>
+              <a href="inquiry.html" class="svc-footer-link">Request Inquiry &#8594;</a>
             </div>
           </div>
         </div>
@@ -954,11 +988,11 @@ a.mnav-link{display:flex}
         </div>
 
         <div class="nav-item">
-          <a href="index.html#blog" class="nav-link">Blog</a>
+          <a href="blog.html" class="nav-link">Blog</a>
         </div>
 
         <div class="nav-item">
-          <a href="index.html#contact" class="nav-link">Contact</a>
+          <a href="contact.html" class="nav-link">Contact</a>
         </div>
 
         <button class="nav-search-btn" id="navSearchBtn" aria-label="Search catalog">
@@ -971,7 +1005,7 @@ a.mnav-link{display:flex}
           <span class="cart-badge" id="cartBadge"></span>
         </div>
 
-        <a href="index.html#contact-form" class="hdr-cta">Send Inquiry &rarr;</a>
+        <a href="inquiry.html" class="hdr-cta">Send Inquiry &rarr;</a>
       </nav>
 
       <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false">
@@ -1005,19 +1039,19 @@ a.mnav-link{display:flex}
         <svg class="mnav-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
       </div>
       <div class="mnav-sub" id="m-svc"><div class="mnav-sub-inner">
-  <a href="index.html#services" class="mnav-svc-row">
+  <a href="service-procurement.html" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">Global Procurement &amp; Sourcing</span><span class="mnav-svc-desc">End-to-end sourcing from global suppliers</span></div>
   </a>
-  <a href="index.html#services" class="mnav-svc-row">
+  <a href="service-mro.html" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">Industrial MRO Supply</span><span class="mnav-svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
   </a>
-  <a href="index.html#services" class="mnav-svc-row">
+  <a href="service-ppe.html" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">PPE Supply</span><span class="mnav-svc-desc">ANSI / EN certified protective equipment</span></div>
   </a>
-  <a href="index.html#services" class="mnav-svc-row">
+  <a href="service-container.html" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">Container Lease &amp; Sale</span><span class="mnav-svc-desc">ISO containers for storage &amp; logistics</span></div>
   </a>
-  <a href="index.html#services" class="mnav-svc-row">
+  <a href="service-consignment.html" class="mnav-svc-row">
     <div class="mnav-svc-body"><span class="mnav-svc-name">Consignment Inventory</span><span class="mnav-svc-desc">Pay-as-you-use stocking program</span></div>
   </a>
 </div></div>
@@ -1088,11 +1122,11 @@ a.mnav-link{display:flex}
     </div>
 
     <div class="mnav-item">
-      <a href="index.html#blog" class="mnav-link">Blog</a>
+      <a href="blog.html" class="mnav-link">Blog</a>
     </div>
 
     <div class="mnav-item">
-      <a href="index.html#contact" class="mnav-link">Contact</a>
+      <a href="contact.html" class="mnav-link">Contact</a>
     </div>
   </nav>
 
@@ -1104,7 +1138,7 @@ a.mnav-link{display:flex}
   </div>
   <div class="mnav-cta">
     <a href="cart.html" class="btn btn-ghost-b" style="margin-bottom:10px">View Cart</a>
-    <a href="index.html#contact-form" class="btn btn-orange">Send Inquiry</a>
+    <a href="inquiry.html" class="btn btn-orange">Send Inquiry</a>
   </div>
 </div>
 
@@ -1207,7 +1241,7 @@ a.mnav-link{display:flex}
           <div class="ah"><div class="ah-dot"></div><div><div class="ah-title">Cost Efficiency Focus</div><div class="ah-body">Consolidate fragmented sourcing to reduce total procurement cost through transparent supply processes.</div></div></div>
         </div>
         <div class="about-cta-row">
-          <a href="#contact" class="btn btn-blue">Learn More About Fortis</a>
+          <a href="contact.html" class="btn btn-blue">Learn More About Fortis</a>
         </div>
       </div>
       <div class="about-right fu">
@@ -1229,7 +1263,7 @@ a.mnav-link{display:flex}
 <!-- ═══════════════════════════════════════════════════════
      WHAT WE DO / SERVICES OVERVIEW
      ═══════════════════════════════════════════════════════ -->
-<section id="services" class="section section-gray section-bt" aria-labelledby="svc-title">
+<section id="services" class="section section-blue section-bt" aria-labelledby="svc-title">
   <div class="wrap">
     <div class="cap-hdr">
       <div class="fu">
@@ -1431,7 +1465,7 @@ a.mnav-link{display:flex}
 <!-- ═══════════════════════════════════════════════════════
      TRUSTED BRANDS
      ═══════════════════════════════════════════════════════ -->
-<section id="brands" class="section section-gray section-bt" aria-labelledby="brands-title">
+<section id="brands" class="section section-dark section-bt" aria-labelledby="brands-title">
   <div class="wrap">
     <div class="brands-hdr fu">
       <p class="eyebrow eyebrow-c">Brand Principals</p>
@@ -1491,7 +1525,7 @@ a.mnav-link{display:flex}
 <!-- ═══════════════════════════════════════════════════════
      HOW FORTIS WORKS
      ═══════════════════════════════════════════════════════ -->
-<section id="process" class="section section-gray section-bt" aria-labelledby="proc-title">
+<section id="process" class="section section-blue section-bt" aria-labelledby="proc-title">
   <div class="wrap">
     <div class="proc-hdr fu">
       <p class="eyebrow eyebrow-c">Our Process</p>
@@ -1701,7 +1735,6 @@ a.mnav-link{display:flex}
           </div>
           <div class="cf-footer">
             <button type="submit" class="btn btn-blue">Send Inquiry</button>
-            <p class="cf-note">We typically respond within 1–2 business days.</p>
           </div>
           <div class="cf-success" id="cfSuccess">
             Inquiry terkirim — WhatsApp terbuka di tab baru. Tim kami akan segera membalas.
@@ -1721,7 +1754,7 @@ a.mnav-link{display:flex}
     <div class="ft-top">
       <div>
         <div class="ft-logo">
-          <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="ft-logo-img">
+          <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="ft-logo-img">
         </div>
         <p class="ft-desc">PT Fortis Prima Solusi — End-to-End Procurement Partner for Global-Grade Industrial Supply.</p>
         <p class="ft-addr">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta Pusat</p>
@@ -1733,8 +1766,18 @@ a.mnav-link{display:flex}
           <a href="index.html#about">About</a>
           <a href="index.html#services">Services</a>
           <a href="catalog.html">Catalog</a>
-          <a href="index.html#blog">Blog</a>
-          <a href="index.html#contact">Contact</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Services</div>
+        <div class="ft-links">
+          <a href="service-procurement.html">Global Procurement &amp; Sourcing</a>
+          <a href="service-mro.html">Industrial MRO Supply</a>
+          <a href="service-ppe.html">PPE Supply</a>
+          <a href="service-container.html">Container Lease &amp; Sale</a>
+          <a href="service-consignment.html">Consignment Inventory</a>
         </div>
       </div>
       <div>
@@ -1757,7 +1800,7 @@ a.mnav-link{display:flex}
         <div class="ft-col-ttl">Contact</div>
         <div class="ft-ci"><div class="ft-ci-lbl">Email</div><div class="ft-ci-val"><a href="mailto:sales@fortisprima.com">sales@fortisprima.com</a></div></div>
         <div class="ft-ci"><div class="ft-ci-lbl">Phone</div><div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div></div>
-        <a href="index.html#contact-form" class="ft-inquiry">Send Inquiry &#8594;</a>
+        <a href="inquiry.html" class="ft-inquiry">Send Inquiry &#8594;</a>
         <a href="cart.html" class="ft-inquiry" style="color:rgba(255,255,255,.52);margin-top:6px">View Cart &#8594;</a>
       </div>
     </div>

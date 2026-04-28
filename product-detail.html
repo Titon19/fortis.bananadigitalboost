@@ -53,9 +53,9 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
 /* HEADER */
 #hdr{position:fixed;top:0;left:0;right:0;z-index:200}
 .main-bar{background:#fff;border-bottom:1px solid var(--g2)}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:88px}
 .logo{display:inline-flex;align-items:center;padding:4px 0;transition:opacity .2s}.logo:hover{opacity:.82}
-.logo-img{height:36px;width:auto;display:block}
+.logo-img{height:56px;width:auto;display:block}
 .hdr-nav{display:flex;align-items:center;gap:4px}
 .nav-item{position:relative}
 .nav-link{display:flex;align-items:center;gap:4px;font-family:var(--fh);font-size:13.5px;font-weight:500;color:var(--g3);padding:8px 12px;border-radius:6px;transition:color .2s,background .2s;letter-spacing:.02em;cursor:pointer;white-space:nowrap}
@@ -262,7 +262,7 @@ a.mnav-link{display:flex}
 
 /* FOOTER */
 #ft{background:#071a4f;padding:72px 0 0}
-.ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
 .ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .ft-logo-mark{width:28px;height:28px;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
 .ft-logo-name{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;letter-spacing:-.2px;line-height:1}
@@ -352,7 +352,7 @@ a.mnav-link{display:flex}
     <div class="hdr-inner">
 
       <a href="index.html" class="logo" aria-label="PT Fortis Prima Solusi — Home">
-        <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="logo-img">
+        <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="logo-img">
       </a>
 
       <!-- Desktop nav -->
@@ -363,7 +363,7 @@ a.mnav-link{display:flex}
         </div>
 
         <div class="nav-item">
-          <a href="index.html#about" class="nav-link" data-nav="about">About</a>
+          <a href="about.html" class="nav-link" data-nav="about">About</a>
         </div>
 
         <div class="nav-item">
@@ -391,7 +391,7 @@ a.mnav-link{display:flex}
             </div>
             <div class="svc-footer">
               <span class="svc-footer-text">Need a custom quote for bulk orders?</span>
-              <a href="index.html#contact-form" class="svc-footer-link">Request Inquiry &#8594;</a>
+              <a href="inquiry.html" class="svc-footer-link">Request Inquiry &#8594;</a>
             </div>
           </div>
         </div>
@@ -497,11 +497,11 @@ a.mnav-link{display:flex}
         </div>
 
         <div class="nav-item">
-          <a href="index.html#blog" class="nav-link">Blog</a>
+          <a href="blog.html" class="nav-link">Blog</a>
         </div>
 
         <div class="nav-item">
-          <a href="index.html#contact" class="nav-link">Contact</a>
+          <a href="contact.html" class="nav-link">Contact</a>
         </div>
 
         <button class="nav-search-btn" id="navSearchBtn" aria-label="Search catalog">
@@ -514,7 +514,7 @@ a.mnav-link{display:flex}
           <span class="cart-badge" id="cartBadge"></span>
         </div>
 
-        <a href="index.html#contact-form" class="hdr-cta">Send Inquiry &rarr;</a>
+        <a href="inquiry.html" class="hdr-cta">Send Inquiry &rarr;</a>
       </nav>
 
       <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false">
@@ -631,11 +631,11 @@ a.mnav-link{display:flex}
     </div>
 
     <div class="mnav-item">
-      <a href="index.html#blog" class="mnav-link">Blog</a>
+      <a href="blog.html" class="mnav-link">Blog</a>
     </div>
 
     <div class="mnav-item">
-      <a href="index.html#contact" class="mnav-link">Contact</a>
+      <a href="contact.html" class="mnav-link">Contact</a>
     </div>
   </nav>
 
@@ -647,7 +647,7 @@ a.mnav-link{display:flex}
   </div>
   <div class="mnav-cta">
     <a href="cart.html" class="btn btn-ghost-b" style="margin-bottom:10px">View Cart</a>
-    <a href="index.html#contact-form" class="btn btn-orange">Send Inquiry</a>
+    <a href="inquiry.html" class="btn btn-orange">Send Inquiry</a>
   </div>
 </div>
 
@@ -689,7 +689,7 @@ a.mnav-link{display:flex}
     <div class="ft-top">
       <div>
         <div class="ft-logo">
-          <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="ft-logo-img">
+          <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="ft-logo-img">
         </div>
         <p class="ft-desc">PT Fortis Prima Solusi — End-to-End Procurement Partner for Global-Grade Industrial Supply.</p>
         <p class="ft-addr">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta Pusat</p>
@@ -701,8 +701,18 @@ a.mnav-link{display:flex}
           <a href="index.html#about">About</a>
           <a href="index.html#services">Services</a>
           <a href="catalog.html">Catalog</a>
-          <a href="index.html#blog">Blog</a>
-          <a href="index.html#contact">Contact</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Services</div>
+        <div class="ft-links">
+          <a href="index.html#services">Global Procurement &amp; Sourcing</a>
+          <a href="index.html#services">Industrial MRO Supply</a>
+          <a href="index.html#services">PPE Supply</a>
+          <a href="index.html#services">Container Lease &amp; Sale</a>
+          <a href="index.html#services">Consignment Inventory</a>
         </div>
       </div>
       <div>
@@ -725,7 +735,7 @@ a.mnav-link{display:flex}
         <div class="ft-col-ttl">Contact</div>
         <div class="ft-ci"><div class="ft-ci-lbl">Email</div><div class="ft-ci-val"><a href="mailto:sales@fortisprima.com">sales@fortisprima.com</a></div></div>
         <div class="ft-ci"><div class="ft-ci-lbl">Phone</div><div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div></div>
-        <a href="index.html#contact-form" class="ft-inquiry">Send Inquiry &#8594;</a>
+        <a href="inquiry.html" class="ft-inquiry">Send Inquiry &#8594;</a>
         <a href="cart.html" class="ft-inquiry" style="color:rgba(255,255,255,.52);margin-top:6px">View Cart &#8594;</a>
       </div>
     </div>
@@ -815,7 +825,7 @@ a.mnav-link{display:flex}
         '</div>' +
         '<div class="pd-ctas">' +
           '<button class="btn btn-blue" id="addToCartBtn">Add to Cart</button>' +
-          '<a href="index.html#contact-form" class="btn btn-ghost-b">Request Inquiry</a>' +
+          '<a href="inquiry.html" class="btn btn-ghost-b">Request Inquiry</a>' +
         '</div>' +
       '</div>' +
 

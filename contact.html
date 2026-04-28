@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — PT Fortis Prima Solusi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --blue:#0E3BAA;--blue-dk:#0a2e87;--blue-xdk:#060e38;--blue-lt:#E6EAF2;
+  --orange:#F7612A;--orange-dk:#d94e1a;--black:#0A0A0A;
+  --gray-bg:#F7F8FA;--g1:#E6EAF2;--g2:#D9DEE8;--g3:#6B7280;--white:#FFFFFF;
+  --fh:'Manrope',sans-serif;--fb:'IBM Plex Sans',sans-serif;
+  --mw:1180px;--r:10px;--spy:96px
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);font-size:16px;line-height:1.75;color:var(--black);background:#fff;-webkit-font-smoothing:antialiased;padding-top:124px}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
+.wrap{width:100%;max-width:var(--mw);margin:0 auto;padding:0 40px}
+
+/* SCROLL REVEAL */
+.fu{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fu.on{opacity:1;transform:none}
+.fu:nth-child(2){transition-delay:.08s}.fu:nth-child(3){transition-delay:.15s}
+.fu:nth-child(4){transition-delay:.22s}.fu:nth-child(5){transition-delay:.29s}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:7px;font-family:var(--fh);font-size:14px;font-weight:600;letter-spacing:.03em;padding:13px 26px;border-radius:7px;transition:background .2s,border-color .2s,transform .15s;cursor:pointer;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-orange{background:var(--orange);color:#fff}.btn-orange:hover{background:var(--orange-dk)}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blue-dk)}
+.btn-ghost-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.38)}.btn-ghost-w:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.75)}
+.btn-ghost-b{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}.btn-ghost-b:hover{background:var(--blue);color:#fff}
+
+/* SECTION LABELS */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.eyebrow::before{content:'';display:block;width:16px;height:2px;background:var(--orange);border-radius:2px;flex-shrink:0}
+.eyebrow-c{justify-content:center}.eyebrow-c::before{display:none}
+.sec-title{font-family:var(--fh);font-size:clamp(26px,3vw,36px);font-weight:700;line-height:1.2;letter-spacing:-.4px;color:var(--black)}
+.sec-intro{font-size:15px;line-height:1.8;color:var(--g3);max-width:540px;margin-top:12px}
+
+/* TOP INFO BAR */
+.top-bar{background:var(--blue-xdk);height:36px;flex-shrink:0}
+.top-bar-inner{display:flex;align-items:center;justify-content:space-between;height:36px;gap:16px}
+.tb-contact{display:flex;align-items:center;gap:16px}
+.tb-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--fh);font-size:11.5px;font-weight:500;color:rgba(255,255,255,.58);transition:color .2s;white-space:nowrap}
+.tb-link:hover{color:#fff}
+.tb-sep{width:1px;height:11px;background:rgba(255,255,255,.16);flex-shrink:0}
+.tb-right{display:flex;align-items:center;gap:10px}
+.tb-social{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:4px;color:rgba(255,255,255,.4);transition:color .2s,background .2s}
+.tb-social:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.08)}
+
+/* HEADER & NAV */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:200}
+.main-bar{background:#fff;border-bottom:1px solid var(--g2)}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:88px}
+.logo{display:inline-flex;align-items:center;padding:4px 0;transition:opacity .2s}
+.logo:hover{opacity:.82}
+.logo-img{height:56px;width:auto;display:block}
+.hdr-nav{display:flex;align-items:center;gap:4px}
+.nav-item{position:relative}
+.nav-link{display:flex;align-items:center;gap:4px;font-family:var(--fh);font-size:13.5px;font-weight:500;color:var(--g3);padding:8px 12px;border-radius:6px;transition:color .2s,background .2s;letter-spacing:.02em;cursor:pointer;white-space:nowrap}
+.nav-link svg{flex-shrink:0;opacity:.6;transition:transform .2s}
+.nav-link:hover,.nav-link.active{color:var(--blue);background:var(--gray-bg)}
+.nav-item:hover .nav-link svg{transform:rotate(180deg)}
+.subnav{position:absolute;top:calc(100% + 10px);left:0;background:#fff;border:1px solid var(--g1);border-radius:10px;padding:8px 0;min-width:210px;box-shadow:0 8px 32px rgba(0,0,0,.1);opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s ease .18s,transform .2s ease .18s;z-index:300}
+.subnav::before{content:'';position:absolute;top:-20px;left:0;right:0;height:20px}
+.nav-item:hover .subnav{opacity:1;pointer-events:auto;transform:translateY(0);transition-delay:0s}
+.subnav a{display:block;padding:9px 18px;font-size:13.5px;color:var(--g3);transition:color .15s,background .15s;font-family:var(--fb)}
+.subnav a:hover{color:var(--blue);background:var(--gray-bg)}
+.subnav-svc{min-width:440px;padding:16px 12px 12px}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.svc-card{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:8px;transition:background .15s;text-decoration:none}
+.svc-card:hover{background:var(--gray-bg)}.svc-card:hover .svc-name{color:var(--blue)}
+.svc-body{display:flex;flex-direction:column;gap:1px}
+.svc-name{font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--black);line-height:1.3;transition:color .15s}
+.svc-desc{font-size:11px;color:var(--g3);line-height:1.4}
+.svc-footer{margin-top:10px;padding-top:10px;border-top:1px solid var(--g1);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.svc-footer-text{font-size:12px;color:var(--g3)}
+.svc-footer-link{font-family:var(--fh);font-size:12px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px;transition:gap .18s}
+.svc-footer-link:hover{gap:7px}
+.hdr-cta{font-family:var(--fh);font-size:13px;font-weight:600;letter-spacing:.04em;padding:9px 20px;background:var(--orange);color:#fff;border-radius:6px;transition:background .2s;margin-left:8px}
+.hdr-cta:hover{background:var(--orange-dk)}
+.cart-icon-wrap{position:relative;display:inline-flex;align-items:center;margin-left:4px}
+.cart-icon-btn{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:6px;color:var(--g3);transition:color .2s,background .2s}
+.cart-icon-btn:hover{color:var(--blue);background:var(--gray-bg)}
+.nav-search-btn{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:6px;color:var(--g3);border:none;background:none;cursor:pointer;transition:color .2s,background .2s;margin-left:4px;flex-shrink:0}
+.nav-search-btn:hover{color:var(--blue);background:var(--gray-bg)}
+
+/* HAMBURGER */
+.nav-tog{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:6px;position:relative;flex-shrink:0;transition:background .2s}
+.nav-tog:hover{background:var(--gray-bg)}
+.nav-tog-bar{position:absolute;left:50%;top:50%;margin-left:-11px;margin-top:-1px;width:22px;height:2px;border-radius:2px;background:var(--black);transition:transform 280ms cubic-bezier(.4,0,.2,1),opacity 200ms ease}
+.nav-tog-bar:nth-child(1){transform:translateY(-6px)}
+.nav-tog-bar:nth-child(2){transform:translateY(0)}
+.nav-tog-bar:nth-child(3){transform:translateY(6px)}
+.nav-tog.is-open .nav-tog-bar:nth-child(1){transform:translateY(0) rotate(45deg)}
+.nav-tog.is-open .nav-tog-bar:nth-child(2){transform:translateY(0) scaleX(0);opacity:0}
+.nav-tog.is-open .nav-tog-bar:nth-child(3){transform:translateY(0) rotate(-45deg)}
+.mnav-backdrop{position:fixed;inset:0;background:rgba(10,10,10,.3);z-index:185;opacity:0;pointer-events:none;visibility:hidden;transition:opacity 300ms ease,visibility 0s linear 300ms}
+.mnav-backdrop.is-open{opacity:1;pointer-events:auto;visibility:visible;transition:opacity 300ms ease,visibility 0s linear 0s}
+.mobile-nav{position:fixed;top:124px;left:0;right:0;bottom:0;background:#fff;z-index:190;overflow-y:auto;overflow-x:hidden;padding:0 0 56px;opacity:0;transform:translateY(-14px);pointer-events:none;visibility:hidden;transition:opacity 300ms cubic-bezier(.25,.1,.25,1),transform 300ms cubic-bezier(.25,.1,.25,1),visibility 0s linear 300ms}
+.mobile-nav.is-open{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible;transition:opacity 300ms cubic-bezier(.25,.1,.25,1),transform 300ms cubic-bezier(.25,.1,.25,1),visibility 0s linear 0s}
+.mnav-item{border-bottom:1px solid var(--g1)}
+.mnav-link{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 24px;min-height:54px;font-family:var(--fh);font-size:15px;font-weight:600;color:var(--black);cursor:pointer;transition:color .18s;-webkit-tap-highlight-color:transparent;user-select:none}
+.mnav-link:hover{color:var(--blue)}
+a.mnav-link{display:flex}
+.mnav-chevron{flex-shrink:0;opacity:.38;transition:transform 280ms cubic-bezier(.4,0,.2,1),opacity 200ms ease}
+.mnav-link.is-open .mnav-chevron{transform:rotate(180deg);opacity:.6}
+.mnav-sub{display:grid;grid-template-rows:0fr;transition:grid-template-rows 280ms cubic-bezier(.4,0,.2,1);background:var(--gray-bg)}
+.mnav-sub.is-open{grid-template-rows:1fr}
+.mnav-sub-inner{overflow:hidden;min-height:0}
+.mnav-sub a{display:flex;align-items:center;min-height:44px;padding:0 24px 0 34px;font-size:13.5px;font-family:var(--fb);color:var(--g3);border-bottom:1px solid rgba(230,234,242,.7);transition:color .18s,background .18s}
+.mnav-sub a:last-child{border-bottom:none}
+.mnav-sub a:hover{color:var(--blue);background:rgba(14,59,170,.04)}
+.mnav-sub a.mnav-svc-row{align-items:flex-start;min-height:auto;padding:10px 24px;gap:10px}
+.mnav-svc-body{display:flex;flex-direction:column;gap:1px}
+.mnav-svc-name{font-family:var(--fh);font-size:13.5px;font-weight:600;color:var(--black);line-height:1.3;transition:color .18s}
+.mnav-svc-desc{font-size:11.5px;color:var(--g3);line-height:1.4}
+.mnav-sub a.mnav-svc-row:hover .mnav-svc-name{color:var(--blue)}
+.mnav-sub-head{padding:6px 24px 4px;font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--g3);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(230,234,242,.5)}
+.mnav-sub-divider{height:1px;background:var(--g2);margin:2px 0}
+.mnav-sub a.mnav-cat-row{min-height:auto;padding:7px 24px;gap:10px}
+.mnav-sub a.mnav-all-link{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--blue);justify-content:center;border-bottom:none;padding:10px 24px}
+.mnav-search{padding:16px 24px}
+.mnav-search-wrap{display:flex;align-items:center;gap:10px;background:var(--gray-bg);border-radius:8px;padding:10px 14px}
+.mnav-search-input{flex:1;font-family:var(--fh);font-size:14px;color:var(--black);border:none;background:transparent;outline:none}
+.mnav-search-input::placeholder{color:var(--g3)}
+.mnav-cta{padding:22px 24px 0}
+.mnav-cta .btn{width:100%;justify-content:center;padding:15px 24px;font-size:14px;border-radius:8px;transition:background .2s,transform .12s;-webkit-tap-highlight-color:transparent}
+.mnav-cta .btn:active{transform:scale(.98)}
+
+/* CART BADGE */
+.cart-badge{position:absolute;top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--orange);color:#fff;font-family:var(--fh);font-size:10px;font-weight:700;line-height:16px;text-align:center;display:none;pointer-events:none}
+.cart-badge.has-items{display:block}
+
+/* SEARCH OVERLAY */
+.search-overlay{position:fixed;inset:0;z-index:600;display:flex;flex-direction:column;align-items:center;opacity:0;pointer-events:none;transition:opacity .22s ease}
+.search-overlay.so-open{opacity:1;pointer-events:auto}
+.so-backdrop{position:absolute;inset:0;background:rgba(4,10,40,.72);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.so-panel{position:relative;z-index:1;width:100%;max-width:780px;padding:0 24px;margin-top:108px;transform:translateY(-12px);transition:transform .22s ease}
+.search-overlay.so-open .so-panel{transform:translateY(0)}
+.so-wrap{display:flex;align-items:center;background:#fff;border-radius:14px;padding:0 16px 0 22px;box-shadow:0 28px 72px rgba(0,0,0,.28);gap:14px}
+.so-search-icon{color:var(--blue);flex-shrink:0}
+.so-input{flex:1;height:66px;font-family:var(--fh);font-size:18px;font-weight:500;color:var(--black);border:none;outline:none;background:transparent}
+.so-input::placeholder{color:var(--g3);font-weight:400}
+.so-close-btn{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--g2);display:flex;align-items:center;justify-content:center;color:var(--g3);flex-shrink:0;cursor:pointer;background:none;transition:border-color .15s,color .15s}
+.so-close-btn:hover{border-color:var(--blue);color:var(--blue)}
+.so-hint{text-align:center;margin-top:16px;font-family:var(--fh);font-size:12px;color:rgba(255,255,255,.42);letter-spacing:.03em}
+
+/* CATALOG MEGA MENU */
+.subnav-divider{height:1px;background:var(--g1);margin:6px 0}
+.cat-mega{position:fixed;top:124px;left:0;right:0;width:100%;padding:0;overflow-x:hidden;overflow-y:auto;max-height:calc(100vh - 130px);border-radius:0 0 14px 14px;background:#fff;border:1px solid var(--g1);border-top:none;box-shadow:0 8px 32px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s ease .18s,transform .2s ease .18s;z-index:300}
+.cat-mega::before{content:'';position:absolute;top:-20px;left:0;right:0;height:20px}
+.nav-item.mega-open .cat-mega{opacity:1;pointer-events:auto;transform:translateY(0);transition-delay:0s}
+.cat-mega-body{display:grid;grid-template-columns:1fr auto 1fr;padding:16px 48px 12px;gap:0}
+.cat-mega-sec-head{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g3);margin-bottom:8px;padding:0 4px}
+.cat-mega-cat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.cat-mega-brand-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2px}
+.cat-mega-item{display:flex;align-items:flex-start;gap:9px;padding:8px 9px;border-radius:7px;transition:background .15s;text-decoration:none}
+.cat-mega-item:hover{background:var(--gray-bg)}
+.cat-mega-item:hover .cat-mega-item-name{color:var(--blue)}
+.cat-mega-item--brand{align-items:center;padding:6px 8px}
+.cat-mega-item-body{display:flex;flex-direction:column;gap:1px;min-width:0}
+.cat-mega-item-name{font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--black);line-height:1.3;transition:color .15s}
+.cat-mega-item-sub{font-size:11px;color:var(--g3);line-height:1.3;margin-top:1px}
+.cat-mega-vsep{width:1px;background:var(--g1);margin:0 16px}
+.cat-mega-footer{border-top:1px solid var(--g1);margin-top:4px;padding:12px 48px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cat-mega-footer-text{font-size:12px;color:var(--g3)}
+.cat-mega-footer-link{font-family:var(--fh);font-size:12.5px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:4px;transition:gap .18s}
+.cat-mega-footer-link:hover{gap:8px}
+
+/* HERO — fix breadcrumb + eyebrow stacking */
+.page-hero-inner .breadcrumb{display:flex}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION BASE
+   ═══════════════════════════════════════════════════════ */
+.section{padding:var(--spy) 0}
+.section-gray{background:#E9EDF7;background-image:linear-gradient(rgba(14,59,170,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(14,59,170,.022) 1px,transparent 1px);background-size:52px 52px}
+.section-blue{background:var(--blue);position:relative;overflow:hidden}
+.section-dark{background:var(--black)}
+.section-bt{border-top:1px solid var(--g1)}
+.section-dark.section-bt,.section-blue.section-bt{border-top:none}
+.section-blue::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.section-dark .sec-title,.section-blue .sec-title{color:#fff}
+.section-dark .sec-intro,.section-blue .sec-intro{color:rgba(255,255,255,.58)}
+.section-dark .eyebrow,.section-blue .eyebrow{color:var(--orange)}
+.section-dark .eyebrow::before,.section-blue .eyebrow::before{background:var(--orange)}
+
+/* ═══════════════════════════════════════════════════════
+   PAGE HERO — compact, no slider
+   ═══════════════════════════════════════════════════════ */
+.page-hero{position:relative;background:var(--blue-xdk);overflow:hidden;min-height:400px;display:flex;align-items:center}
+.page-hero-bg{position:absolute;inset:0}
+.page-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+.page-hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(4,10,38,.95) 0%,rgba(5,14,52,.88) 38%,rgba(5,14,52,.62) 62%,rgba(5,14,52,.22) 100%)}
+.page-hero-inner{position:relative;z-index:2;width:100%;max-width:var(--mw);margin:0 auto;padding:72px 40px 80px}
+.breadcrumb{display:inline-flex;align-items:center;gap:8px;font-family:var(--fh);font-size:11.5px;font-weight:500;color:rgba(255,255,255,.4);margin-bottom:28px}
+.breadcrumb a{color:rgba(255,255,255,.4);transition:color .2s}.breadcrumb a:hover{color:rgba(255,255,255,.75)}
+.breadcrumb-sep{color:rgba(255,255,255,.2)}
+.hero-ey{display:inline-flex;align-items:center;gap:8px;font-family:var(--fh);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.hero-ey::before{content:'';display:block;width:14px;height:2px;background:var(--orange);border-radius:2px}
+.hero-h1{font-family:var(--fh);font-size:clamp(34px,4.2vw,54px);font-weight:700;line-height:1.08;letter-spacing:-1.2px;color:#fff;max-width:640px;margin-bottom:20px;text-wrap:balance}
+.hero-h1 em{font-style:normal;color:var(--orange)}
+.hero-p{font-size:15.5px;line-height:1.8;color:rgba(255,255,255,.68);max-width:500px}
+
+/* ═══════════════════════════════════════════════════════
+   CONTACT CHANNELS
+   ═══════════════════════════════════════════════════════ */
+.ch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.ch-card{background:#fff;border:1px solid var(--g1);border-radius:12px;padding:28px 24px;display:flex;flex-direction:column;gap:12px;transition:border-color .22s,box-shadow .22s,transform .22s}
+.ch-card:hover{border-color:var(--g2);box-shadow:0 6px 28px rgba(14,59,170,.09);transform:translateY(-2px)}
+.ch-icon{width:40px;height:40px;border-radius:9px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ch-icon svg{color:var(--blue)}
+.ch-label{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--g3);margin-bottom:-4px}
+.ch-title{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--black);line-height:1.3}
+.ch-value{font-size:14px;color:var(--g3);line-height:1.65}
+.ch-action{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--orange);display:inline-flex;align-items:center;gap:5px;transition:gap .18s;margin-top:auto}
+.ch-action:hover{gap:8px}
+.ch-action-text{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--g3)}
+
+/* ═══════════════════════════════════════════════════════
+   CONTACT INFO + FORM LAYOUT
+   ═══════════════════════════════════════════════════════ */
+.contact-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:56px;align-items:start}
+
+/* Office info */
+.office-detail-rows{display:flex;flex-direction:column;gap:14px;margin-top:28px;margin-bottom:28px}
+.office-row{display:flex;align-items:flex-start;gap:12px}
+.office-row-icon{width:32px;height:32px;border-radius:7px;background:var(--blue-lt);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.office-row-icon svg{color:var(--blue)}
+.office-row-body{display:flex;flex-direction:column;gap:2px}
+.office-row-lbl{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g3)}
+.office-row-val{font-size:14px;color:var(--black);line-height:1.6}
+.office-row-val a{color:var(--blue);transition:color .2s}.office-row-val a:hover{color:var(--blue-dk)}
+
+.hours-table{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:20px}
+.hours-table tr td{padding:7px 0;border-bottom:1px solid var(--g1)}
+.hours-table tr:last-child td{border-bottom:none}
+.hours-table td:first-child{color:var(--black);font-family:var(--fh);font-weight:600;width:48%}
+.hours-table td:last-child{color:var(--g3)}
+.hours-closed{color:var(--g3) !important;font-style:italic}
+
+.office-note{font-size:13px;color:var(--g3);line-height:1.7;margin-bottom:20px}
+
+.procurement-card{background:var(--blue-lt);border:1px solid rgba(14,59,170,.15);border-radius:10px;padding:20px 22px}
+.procurement-card-title{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px}
+.procurement-card-body{font-size:13.5px;color:var(--black);line-height:1.7}
+.procurement-card-body a{color:var(--blue);font-weight:600;transition:color .2s}.procurement-card-body a:hover{color:var(--blue-dk)}
+
+/* Contact form */
+.cf-form-wrap{background:#fff;border:1px solid var(--g1);border-radius:14px;padding:36px 36px}
+.cf-form-title{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--black);margin-bottom:6px}
+.cf-form-sub{font-size:14px;color:var(--g3);line-height:1.65;margin-bottom:24px}
+.cf-form{display:flex;flex-direction:column;gap:16px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cf-group{display:flex;flex-direction:column;gap:7px}
+.cf-group label{font-family:var(--fh);font-size:12px;font-weight:600;color:var(--black);letter-spacing:.01em}
+.cf-group label .req{color:var(--orange);margin-left:2px}
+.cf-group input,.cf-group select,.cf-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--g2);border-radius:7px;font-family:var(--fb);font-size:14px;color:var(--black);background:#fff;transition:border-color .18s,box-shadow .18s;outline:none;appearance:none;-webkit-appearance:none}
+.cf-group input:focus,.cf-group select:focus,.cf-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(14,59,170,.08)}
+.cf-group input::placeholder,.cf-group textarea::placeholder{color:var(--g3);opacity:.65}
+.cf-group select{background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
+.cf-group textarea{min-height:120px;resize:vertical;line-height:1.6}
+.cf-footer{display:flex;align-items:center;gap:16px;margin-top:4px}
+.cf-success{display:none;padding:20px 24px;background:rgba(14,59,170,.05);border:1px solid rgba(14,59,170,.14);border-radius:8px;font-family:var(--fh);font-size:14.5px;font-weight:600;color:var(--blue);line-height:1.6}
+.cf-success.show{display:block}
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════ */
+#ft-main{background:#071a4f;padding:72px 0 0}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.ft-logo-img{height:34px;width:auto;display:block;border-radius:6px;padding:5px 10px;background:rgba(255,255,255,.95)}
+.ft-desc{font-size:13.5px;color:rgba(255,255,255,.42);line-height:1.75;max-width:240px;margin-bottom:18px}
+.ft-addr{font-size:13px;color:rgba(255,255,255,.38);line-height:1.7}
+.ft-col-ttl{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px}
+.ft-links{display:flex;flex-direction:column;gap:11px}
+.ft-links a{font-size:13.5px;color:rgba(255,255,255,.52);transition:color .2s}.ft-links a:hover{color:#fff}
+.ft-ci{margin-bottom:14px}
+.ft-ci-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:3px}
+.ft-ci-val{font-size:13.5px;color:rgba(255,255,255,.65);line-height:1.55}
+.ft-ci-val a{color:var(--orange);transition:color .2s}.ft-ci-val a:hover{color:#ff7a4a}
+.ft-inquiry{display:inline-flex;align-items:center;gap:5px;font-family:var(--fh);font-size:13px;font-weight:600;color:var(--orange);margin-top:8px;transition:gap .2s}.ft-inquiry:hover{gap:8px}
+.ft-bot{padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-copy{font-size:12.5px;color:rgba(255,255,255,.2)}
+.ft-legal{font-size:12.5px;color:rgba(255,255,255,.18)}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .ft-top{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:960px){
+  :root{--spy:68px}
+  body{padding-top:124px}
+  .tb-right{display:none}
+  .top-bar-inner{justify-content:center}
+  .hdr-nav{display:none}
+  .nav-tog{display:flex}
+  .mobile-nav{top:124px}
+}
+@media(max-width:900px){
+  .ch-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+  .contact-layout{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .wrap{padding:0 22px}
+  .page-hero-inner{padding:48px 22px 56px}
+  .cf-row{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr;gap:32px}
+  .ft-bot{flex-direction:column;text-align:center}
+  .cf-form-wrap{padding:28px 22px}
+}
+@media(max-width:520px){
+  .ch-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════════════════ -->
+<header id="hdr" role="banner">
+
+  <!-- Top info bar -->
+  <div class="top-bar" id="topBar">
+    <div class="wrap">
+      <div class="top-bar-inner">
+        <div class="tb-contact">
+          <a href="tel:+622129704002" class="tb-link">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.4 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +62 21 29704002
+          </a>
+          <span class="tb-sep"></span>
+          <a href="mailto:sales@fortisprima.com" class="tb-link">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            sales@fortisprima.com
+          </a>
+        </div>
+        <div class="tb-right">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="tb-social" aria-label="LinkedIn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="tb-social" aria-label="Instagram">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main nav bar -->
+  <div class="main-bar">
+  <div class="wrap">
+    <div class="hdr-inner">
+
+      <a href="index.html" class="logo" aria-label="PT Fortis Prima Solusi — Home">
+        <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="logo-img">
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hdr-nav" id="hdrNav" aria-label="Primary navigation">
+
+        <div class="nav-item">
+          <a href="index.html" class="nav-link" data-nav="home">Home</a>
+        </div>
+
+        <div class="nav-item">
+          <a href="about.html" class="nav-link" data-nav="about">About</a>
+        </div>
+
+        <div class="nav-item">
+          <span class="nav-link" tabindex="0">
+            Services
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </span>
+          <div class="subnav subnav-svc" role="menu">
+            <div class="svc-grid">
+              <a href="service-procurement.html" class="svc-card" role="menuitem">
+                <div class="svc-body"><span class="svc-name">Global Procurement &amp; Sourcing</span><span class="svc-desc">End-to-end sourcing from global suppliers</span></div>
+              </a>
+              <a href="service-mro.html" class="svc-card" role="menuitem">
+                <div class="svc-body"><span class="svc-name">Industrial MRO Supply</span><span class="svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
+              </a>
+              <a href="service-ppe.html" class="svc-card" role="menuitem">
+                <div class="svc-body"><span class="svc-name">PPE Supply</span><span class="svc-desc">ANSI / EN certified protective equipment</span></div>
+              </a>
+              <a href="service-container.html" class="svc-card" role="menuitem">
+                <div class="svc-body"><span class="svc-name">Container Lease &amp; Sale</span><span class="svc-desc">ISO containers for storage &amp; logistics</span></div>
+              </a>
+              <a href="service-consignment.html" class="svc-card" role="menuitem" style="grid-column:1/-1">
+                <div class="svc-body"><span class="svc-name">Consignment Inventory</span><span class="svc-desc">Pay-as-you-use stocking program for plant operations</span></div>
+              </a>
+            </div>
+            <div class="svc-footer">
+              <span class="svc-footer-text">Need a custom quote for bulk orders?</span>
+              <a href="inquiry.html" class="svc-footer-link">Request Inquiry &#8594;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <span class="nav-link" tabindex="0" data-nav="catalog">
+            Catalog
+            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+          </span>
+          <div class="subnav cat-mega" role="menu">
+            <div class="cat-mega-body">
+              <div>
+                <div class="cat-mega-sec-head">By Category</div>
+                <div class="cat-mega-cat-grid">
+                  <a href="catalog.html?cat=mro" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Maintenance, Repair &amp; Operating Supplies (MRO)</span><span class="cat-mega-item-sub">Bearings, seals, valves, tools</span></div></a>
+                  <a href="catalog.html?cat=ose" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Operating Supplies &amp; Equipment (OS&amp;E)</span><span class="cat-mega-item-sub">Consumables, janitorial, office</span></div></a>
+                  <a href="catalog.html?cat=electrical" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Electrical Parts</span><span class="cat-mega-item-sub">Switchgear, cables, connectors</span></div></a>
+                  <a href="catalog.html?cat=automotive" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Automotive Fleet &amp; Parts</span><span class="cat-mega-item-sub">Filters, lubricants, tires</span></div></a>
+                  <a href="catalog.html?cat=electromech" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Electro Mechanical Systems</span><span class="cat-mega-item-sub">Motors, drives, actuators</span></div></a>
+                  <a href="catalog.html?cat=flow" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Flow Control &amp; Fluid Transfer</span><span class="cat-mega-item-sub">Pumps, pipes, hoses</span></div></a>
+                  <a href="catalog.html?cat=fluid-power" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Fluid &amp; Pneumatic Power</span><span class="cat-mega-item-sub">Hydraulics, compressors, cylinders</span></div></a>
+                  <a href="catalog.html?cat=manufacturing" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Manufacturing &amp; Process Equipment</span><span class="cat-mega-item-sub">Machinery, tools, fixtures</span></div></a>
+                  <a href="catalog.html?cat=material-handling" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Material Handling &amp; Packaging Material</span><span class="cat-mega-item-sub">Conveyors, pallets, packaging</span></div></a>
+                  <a href="catalog.html?cat=safety" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Safety &amp; Security Equipment</span><span class="cat-mega-item-sub">PPE, fire, surveillance</span></div></a>
+                  <a href="catalog.html?cat=specialized" class="cat-mega-item" role="menuitem"><div class="cat-mega-item-body"><span class="cat-mega-item-name">Specialized Industrial Products</span><span class="cat-mega-item-sub">Custom &amp; niche industrial items</span></div></a>
+                </div>
+              </div>
+              <div class="cat-mega-vsep"></div>
+              <div>
+                <div class="cat-mega-sec-head">By Brand</div>
+                <div class="cat-mega-brand-grid">
+                  <a href="catalog.html?brand=SKF" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">SKF</span></a>
+                  <a href="catalog.html?brand=NTN" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">NTN</span></a>
+                  <a href="catalog.html?brand=ABB" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">ABB</span></a>
+                  <a href="catalog.html?brand=ESAB" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">ESAB</span></a>
+                  <a href="catalog.html?brand=Yokogawa" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Yokogawa</span></a>
+                  <a href="catalog.html?brand=Rockwool" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Rockwool</span></a>
+                  <a href="catalog.html?brand=3M" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">3M</span></a>
+                  <a href="catalog.html?brand=Flexovit" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Flexovit</span></a>
+                  <a href="catalog.html?brand=Union" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Union</span></a>
+                  <a href="catalog.html?brand=Sullair" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Sullair</span></a>
+                  <a href="catalog.html?brand=Philips" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Philips</span></a>
+                  <a href="catalog.html?brand=Bando" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Bando</span></a>
+                  <a href="catalog.html?brand=Honeywell" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Honeywell</span></a>
+                  <a href="catalog.html?brand=Schneider" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Schneider</span></a>
+                  <a href="catalog.html?brand=Siemens" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Siemens</span></a>
+                  <a href="catalog.html?brand=Crane" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Crane</span></a>
+                  <a href="catalog.html?brand=Kobelco" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Kobelco</span></a>
+                  <a href="catalog.html?brand=Trelleborg" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Trelleborg</span></a>
+                  <a href="catalog.html?brand=MSA" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">MSA Safety</span></a>
+                  <a href="catalog.html?brand=UVEX" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">UVEX</span></a>
+                  <a href="catalog.html?brand=Ansell" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Ansell</span></a>
+                  <a href="catalog.html?brand=Drager" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Drager</span></a>
+                  <a href="catalog.html?brand=DuPont" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">DuPont</span></a>
+                  <a href="catalog.html?brand=Bosch" class="cat-mega-item cat-mega-item--brand" role="menuitem"><span class="cat-mega-item-name">Bosch</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="cat-mega-footer">
+              <span class="cat-mega-footer-text">Need a specific product or bulk order?</span>
+              <a href="catalog.html" class="cat-mega-footer-link">View All Products &#8594;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="blog.html" class="nav-link">Blog</a>
+        </div>
+
+        <div class="nav-item">
+          <a href="contact.html" class="nav-link active">Contact</a>
+        </div>
+
+        <button class="nav-search-btn" id="navSearchBtn" aria-label="Search catalog">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <div class="cart-icon-wrap">
+          <a href="cart.html" class="cart-icon-btn" id="cartNavIcon" aria-label="View cart">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </a>
+          <span class="cart-badge" id="cartBadge"></span>
+        </div>
+
+        <a href="inquiry.html" class="hdr-cta">Send Inquiry &rarr;</a>
+      </nav>
+
+      <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false">
+        <span class="nav-tog-bar"></span>
+        <span class="nav-tog-bar"></span>
+        <span class="nav-tog-bar"></span>
+      </button>
+
+    </div>
+  </div>
+  </div><!-- /main-bar -->
+</header>
+
+<!-- Mobile nav backdrop -->
+<div class="mnav-backdrop" id="mnavBackdrop" aria-hidden="true"></div>
+
+<!-- Mobile nav panel -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+  <nav>
+    <div class="mnav-item">
+      <a href="index.html" class="mnav-link">Home</a>
+    </div>
+
+    <div class="mnav-item">
+      <a href="about.html" class="mnav-link">About</a>
+    </div>
+
+    <div class="mnav-item">
+      <div class="mnav-link" data-expand="m-svc" tabindex="0" role="button" aria-expanded="false" aria-controls="m-svc">
+        <span>Services</span>
+        <svg class="mnav-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+      </div>
+      <div class="mnav-sub" id="m-svc"><div class="mnav-sub-inner">
+        <a href="service-procurement.html" class="mnav-svc-row">
+          <div class="mnav-svc-body"><span class="mnav-svc-name">Global Procurement &amp; Sourcing</span><span class="mnav-svc-desc">End-to-end sourcing from global suppliers</span></div>
+        </a>
+        <a href="service-mro.html" class="mnav-svc-row">
+          <div class="mnav-svc-body"><span class="mnav-svc-name">Industrial MRO Supply</span><span class="mnav-svc-desc">Bearings, seals, valves &amp; maintenance parts</span></div>
+        </a>
+        <a href="service-ppe.html" class="mnav-svc-row">
+          <div class="mnav-svc-body"><span class="mnav-svc-name">PPE Supply</span><span class="mnav-svc-desc">ANSI / EN certified protective equipment</span></div>
+        </a>
+        <a href="service-container.html" class="mnav-svc-row">
+          <div class="mnav-svc-body"><span class="mnav-svc-name">Container Lease &amp; Sale</span><span class="mnav-svc-desc">ISO containers for storage &amp; logistics</span></div>
+        </a>
+        <a href="service-consignment.html" class="mnav-svc-row">
+          <div class="mnav-svc-body"><span class="mnav-svc-name">Consignment Inventory</span><span class="mnav-svc-desc">Pay-as-you-use stocking program</span></div>
+        </a>
+      </div></div>
+    </div>
+
+    <div class="mnav-item">
+      <div class="mnav-link" data-expand="m-cat" tabindex="0" role="button" aria-expanded="false" aria-controls="m-cat">
+        <span>Catalog</span>
+        <svg class="mnav-chevron" width="14" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+      </div>
+      <div class="mnav-sub" id="m-cat"><div class="mnav-sub-inner">
+        <a href="catalog.html" style="display:flex;align-items:center;min-height:44px;padding:0 24px 0 34px;font-size:13.5px;font-family:var(--fh);font-weight:700;color:var(--blue);border-bottom:1px solid rgba(230,234,242,.7);transition:color .18s">All Products</a>
+        <div class="mnav-sub-head">By Category</div>
+        <a href="catalog.html?cat=mro" class="mnav-cat-row"><span>Maintenance, Repair &amp; Operating Supplies (MRO)</span></a>
+        <a href="catalog.html?cat=ose" class="mnav-cat-row"><span>Operating Supplies &amp; Equipment (OS&amp;E)</span></a>
+        <a href="catalog.html?cat=electrical" class="mnav-cat-row"><span>Electrical Parts</span></a>
+        <a href="catalog.html?cat=automotive" class="mnav-cat-row"><span>Automotive Fleet &amp; Parts</span></a>
+        <a href="catalog.html?cat=electromech" class="mnav-cat-row"><span>Electro Mechanical Systems</span></a>
+        <a href="catalog.html?cat=flow" class="mnav-cat-row"><span>Flow Control &amp; Fluid Transfer</span></a>
+        <a href="catalog.html?cat=fluid-power" class="mnav-cat-row"><span>Fluid &amp; Pneumatic Power</span></a>
+        <a href="catalog.html?cat=manufacturing" class="mnav-cat-row"><span>Manufacturing &amp; Process Equipment</span></a>
+        <a href="catalog.html?cat=material-handling" class="mnav-cat-row"><span>Material Handling &amp; Packaging Material</span></a>
+        <a href="catalog.html?cat=safety" class="mnav-cat-row"><span>Safety &amp; Security Equipment</span></a>
+        <a href="catalog.html?cat=specialized" class="mnav-cat-row"><span>Specialized Industrial Products</span></a>
+        <div class="mnav-sub-divider"></div>
+        <div class="mnav-sub-head">By Brand</div>
+        <a href="catalog.html?brand=SKF" class="mnav-cat-row"><span>SKF</span></a>
+        <a href="catalog.html?brand=NTN" class="mnav-cat-row"><span>NTN</span></a>
+        <a href="catalog.html?brand=ABB" class="mnav-cat-row"><span>ABB</span></a>
+        <a href="catalog.html?brand=Bosch" class="mnav-cat-row"><span>Bosch</span></a>
+        <a href="catalog.html?brand=Siemens" class="mnav-cat-row"><span>Siemens</span></a>
+        <a href="catalog.html?brand=Schneider" class="mnav-cat-row"><span>Schneider</span></a>
+        <a href="catalog.html?brand=3M" class="mnav-cat-row"><span>3M</span></a>
+        <a href="catalog.html?brand=Honeywell" class="mnav-cat-row"><span>Honeywell</span></a>
+        <div class="mnav-sub-divider"></div>
+        <a href="catalog.html" class="mnav-all-link">View All Products &rarr;</a>
+      </div></div>
+    </div>
+
+    <div class="mnav-item">
+      <a href="blog.html" class="mnav-link">Blog</a>
+    </div>
+
+    <div class="mnav-item">
+      <a href="contact.html" class="mnav-link" style="color:var(--blue)">Contact</a>
+    </div>
+  </nav>
+
+  <div class="mnav-search">
+    <div class="mnav-search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" class="mnav-search-input" id="mnavSearch" placeholder="Search catalog..." autocomplete="off">
+    </div>
+  </div>
+  <div class="mnav-cta">
+    <a href="cart.html" class="btn btn-ghost-b" style="margin-bottom:10px">View Cart</a>
+    <a href="inquiry.html" class="btn btn-orange">Send Inquiry</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     1. PAGE HERO
+     ═══════════════════════════════════════════════════════ -->
+<section class="page-hero" aria-label="Contact Fortis">
+  <div class="page-hero-bg">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=75" alt="Modern office interior" loading="eager">
+  </div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span style="color:rgba(255,255,255,.6)">Contact</span>
+    </div>
+    <div class="hero-ey">Get in Touch</div>
+    <h1 class="hero-h1">Contact PT Fortis Prima Solusi</h1>
+    <p class="hero-p">Speak with our procurement team directly — by phone, email, or WhatsApp. We respond within 1 business day.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     2. CONTACT CHANNELS
+     ═══════════════════════════════════════════════════════ -->
+<section aria-label="Contact channels" style="background:#fff;padding:72px 0">
+  <div class="wrap">
+    <div class="ch-grid">
+
+      <!-- Phone -->
+      <div class="ch-card fu">
+        <div class="ch-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.4 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="ch-label">Call Us</div>
+        <div class="ch-title">+62 21 29704002</div>
+        <div class="ch-value">Available Mon–Fri, 08:00–17:00 WIB</div>
+        <a href="tel:+622129704002" class="ch-action">Call Now &rarr;</a>
+      </div>
+
+      <!-- Email -->
+      <div class="ch-card fu">
+        <div class="ch-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </div>
+        <div class="ch-label">Email</div>
+        <div class="ch-title">sales@fortisprima.com</div>
+        <div class="ch-value">For quotes, product specs, and procurement inquiries</div>
+        <a href="mailto:sales@fortisprima.com" class="ch-action">Send Email &rarr;</a>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="ch-card fu">
+        <div class="ch-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="ch-label">WhatsApp</div>
+        <div class="ch-title">Direct Business Chat</div>
+        <div class="ch-value">Fastest response — typically within 2 hours during business hours</div>
+        <a href="https://wa.me/622129704002" target="_blank" rel="noopener" class="ch-action">Chat on WhatsApp &rarr;</a>
+      </div>
+
+      <!-- Office -->
+      <div class="ch-card fu">
+        <div class="ch-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="ch-label">Visit Us</div>
+        <div class="ch-title">Jakarta Pusat Office</div>
+        <div class="ch-value">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta Pusat 10250</div>
+        <span class="ch-action-text">By appointment</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     3. CONTACT FORM + OFFICE INFO
+     ═══════════════════════════════════════════════════════ -->
+<section class="section-gray" aria-labelledby="contact-section-title" style="padding:80px 0">
+  <div class="wrap">
+    <div class="contact-layout">
+
+      <!-- Left: Office Info -->
+      <div class="fu">
+        <p class="eyebrow">Our Office</p>
+        <h2 class="sec-title" id="contact-section-title">Find Us</h2>
+
+        <div class="office-detail-rows">
+          <div class="office-row">
+            <div class="office-row-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="office-row-body">
+              <div class="office-row-lbl">Address</div>
+              <div class="office-row-val">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta Pusat 10250</div>
+            </div>
+          </div>
+          <div class="office-row">
+            <div class="office-row-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.4 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.1 6.1l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="office-row-body">
+              <div class="office-row-lbl">Phone</div>
+              <div class="office-row-val"><a href="tel:+622129704002">+62 21 29704002</a></div>
+            </div>
+          </div>
+          <div class="office-row">
+            <div class="office-row-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div class="office-row-body">
+              <div class="office-row-lbl">Email</div>
+              <div class="office-row-val"><a href="mailto:sales@fortisprima.com">sales@fortisprima.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <table class="hours-table">
+          <tbody>
+            <tr>
+              <td>Mon–Fri</td>
+              <td>08:00–17:00 WIB</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>09:00–13:00 WIB <span style="font-size:12px;color:var(--g3)">(By appointment)</span></td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td class="hours-closed">Closed</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="office-note">For urgent procurement needs outside office hours, WhatsApp is monitored by on-call staff.</p>
+
+        <div class="procurement-card">
+          <div class="procurement-card-title">Procurement Inquiries</div>
+          <div class="procurement-card-body">For product RFQs and bulk order inquiries, use our dedicated <a href="inquiry.html">Inquiry Form &rarr;</a> for faster processing.</div>
+        </div>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div class="fu">
+        <div class="cf-form-wrap">
+          <div class="cf-form-title">Send Us a Message</div>
+          <div class="cf-form-sub">For general questions, partnership inquiries, or to schedule a meeting.</div>
+          <form class="cf-form" id="contactForm" novalidate>
+            <div class="cf-row">
+              <div class="cf-group">
+                <label for="ct-name">Full Name <span class="req">*</span></label>
+                <input type="text" id="ct-name" name="name" placeholder="Your full name" required>
+              </div>
+              <div class="cf-group">
+                <label for="ct-email">Email Address <span class="req">*</span></label>
+                <input type="email" id="ct-email" name="email" placeholder="you@company.com" required>
+              </div>
+            </div>
+            <div class="cf-group">
+              <label for="ct-phone">Phone / WhatsApp</label>
+              <input type="tel" id="ct-phone" name="phone" placeholder="+62 ..." inputmode="numeric" pattern="[0-9+\s]*" oninput="this.value=this.value.replace(/[^0-9+\s]/g,'')">
+            </div>
+            <div class="cf-group">
+              <label for="ct-subject">Subject</label>
+              <select id="ct-subject" name="subject">
+                <option value="" disabled selected>Select a subject</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Partnership">Partnership</option>
+                <option value="Schedule a Meeting">Schedule a Meeting</option>
+                <option value="Media &amp; Press">Media &amp; Press</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="cf-group">
+              <label for="ct-message">Message <span class="req">*</span></label>
+              <textarea id="ct-message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
+            </div>
+            <div class="cf-footer">
+              <button type="submit" class="btn btn-orange">Send Message &rarr;</button>
+            </div>
+            <div class="cf-success" id="contactSuccess">Pesan terkirim — tim kami akan membalas dalam 1 hari kerja.</div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════ -->
+<footer id="ft-main" aria-label="Footer and contact information">
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <div class="ft-logo">
+          <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="ft-logo-img">
+        </div>
+        <p class="ft-desc">PT Fortis Prima Solusi — End-to-End Procurement Partner for Global-Grade Industrial Supply.</p>
+        <p class="ft-addr">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta Pusat</p>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Navigation</div>
+        <div class="ft-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="service-procurement.html">Services</a>
+          <a href="catalog.html">Catalog</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Services</div>
+        <div class="ft-links">
+          <a href="service-procurement.html">Global Procurement &amp; Sourcing</a>
+          <a href="service-mro.html">Industrial MRO Supply</a>
+          <a href="service-ppe.html">PPE Supply</a>
+          <a href="service-container.html">Container Lease &amp; Sale</a>
+          <a href="service-consignment.html">Consignment Inventory</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Categories</div>
+        <div class="ft-links">
+          <a href="catalog.html?cat=mro">Maintenance, Repair &amp; Operating (MRO)</a>
+          <a href="catalog.html?cat=ose">Operating Supplies &amp; Equipment (OS&amp;E)</a>
+          <a href="catalog.html?cat=electrical">Electrical Parts</a>
+          <a href="catalog.html?cat=automotive">Automotive Fleet &amp; Parts</a>
+          <a href="catalog.html?cat=electromech">Electro Mechanical Systems</a>
+          <a href="catalog.html?cat=flow">Flow Control &amp; Fluid Transfer</a>
+          <a href="catalog.html?cat=fluid-power">Fluid &amp; Pneumatic Power</a>
+          <a href="catalog.html?cat=manufacturing">Manufacturing &amp; Process Equipment</a>
+          <a href="catalog.html?cat=material-handling">Material Handling &amp; Packaging</a>
+          <a href="catalog.html?cat=safety">Safety &amp; Security Equipment</a>
+          <a href="catalog.html?cat=specialized">Specialized Industrial Products</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Contact</div>
+        <div class="ft-ci"><div class="ft-ci-lbl">Email</div><div class="ft-ci-val"><a href="mailto:sales@fortisprima.com">sales@fortisprima.com</a></div></div>
+        <div class="ft-ci"><div class="ft-ci-lbl">Phone</div><div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div></div>
+        <a href="inquiry.html" class="ft-inquiry">Send Inquiry &#8594;</a>
+        <a href="cart.html" class="ft-inquiry" style="color:rgba(255,255,255,.52);margin-top:6px">View Cart &#8594;</a>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p class="ft-copy">&copy; 2026 PT Fortis Prima Solusi. All rights reserved.</p>
+      <p class="ft-legal">Privacy Policy &nbsp;&middot;&nbsp; Terms of Use</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════════════ -->
+<script src="assets/js/fortis.js"></script>
+<script>
+/* Scroll reveal */
+(function(){var els=document.querySelectorAll('.fu');var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});els.forEach(function(el){obs.observe(el)})})();
+
+/* Contact form → WhatsApp */
+(function(){
+  var form=document.getElementById('contactForm');
+  var success=document.getElementById('contactSuccess');
+  if(!form)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var valid=true;
+    form.querySelectorAll('[required]').forEach(function(f){
+      if(!f.value.trim()){f.style.borderColor='#e05252';valid=false}
+      else{f.style.borderColor=''}
+    });
+    if(!valid)return;
+    var name=document.getElementById('ct-name').value.trim();
+    var email=document.getElementById('ct-email').value.trim();
+    var phone=document.getElementById('ct-phone').value.trim();
+    var subjectEl=document.getElementById('ct-subject');
+    var subject=subjectEl.selectedIndex>0?subjectEl.options[subjectEl.selectedIndex].text:'';
+    var message=document.getElementById('ct-message').value.trim();
+    var text='Halo Fortis Prima Solusi,\n\nSaya ingin menghubungi tim Anda:\n\nNama: '+name+'\nEmail: '+email+'\n'+(phone?'No. Telepon: '+phone+'\n':'')+(subject?'Subject: '+subject+'\n':'')+'\nPesan:\n'+message+'\n\nTerima kasih.';
+    success.classList.add('show');
+    success.scrollIntoView({behavior:'smooth',block:'nearest'});
+    window.open('https://wa.me/622129704002?text='+encodeURIComponent(text),'_blank');
+  });
+  form.querySelectorAll('input,select,textarea').forEach(function(f){
+    f.addEventListener('input',function(){f.style.borderColor=''});
+  });
+})();
+
+/* Smooth scroll for anchor links */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();var top=t.getBoundingClientRect().top+window.pageYOffset-document.getElementById('hdr').offsetHeight;window.scrollTo({top:top,behavior:'smooth'})}
+  });
+});
+
+/* Mobile nav */
+(function(){
+  var tog=document.getElementById('navTog'),mnav=document.getElementById('mobileNav'),bd=document.getElementById('mnavBackdrop'),open=false;
+  function openMenu(){open=true;tog.classList.add('is-open');mnav.classList.add('is-open');bd.classList.add('is-open');tog.setAttribute('aria-expanded','true');mnav.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+  function closeMenu(){open=false;tog.classList.remove('is-open');mnav.classList.remove('is-open');bd.classList.remove('is-open');tog.setAttribute('aria-expanded','false');mnav.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+  tog.addEventListener('click',function(){open?closeMenu():openMenu()});
+  bd.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&open)closeMenu()});
+  mnav.querySelectorAll('[data-expand]').forEach(function(el){
+    el.addEventListener('click',function(){
+      var t=document.getElementById(el.dataset.expand);
+      if(!t)return;
+      var was=t.classList.contains('is-open');
+      mnav.querySelectorAll('.mnav-sub.is-open').forEach(function(s){s.classList.remove('is-open')});
+      mnav.querySelectorAll('.mnav-link.is-open').forEach(function(l){l.classList.remove('is-open');l.setAttribute('aria-expanded','false')});
+      if(!was){t.classList.add('is-open');el.classList.add('is-open');el.setAttribute('aria-expanded','true')}
+    });
+  });
+  mnav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu)});
+})();
+
+/* Catalog mega menu */
+(function(){
+  document.querySelectorAll('.nav-item').forEach(function(item){
+    var mega=item.querySelector('.cat-mega');
+    if(!mega)return;
+    var t;
+    function open(){clearTimeout(t);item.classList.add('mega-open');}
+    function close(){t=setTimeout(function(){item.classList.remove('mega-open');},150);}
+    item.addEventListener('mouseenter',open);
+    item.addEventListener('mouseleave',close);
+    mega.addEventListener('mouseenter',open);
+    mega.addEventListener('mouseleave',close);
+  });
+})();
+</script>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" aria-hidden="true" role="dialog" aria-label="Search catalog">
+  <div class="so-backdrop" id="soBackdrop"></div>
+  <div class="so-panel">
+    <div class="so-wrap">
+      <svg class="so-search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" class="so-input" id="soInput" placeholder="Search 1,000+ products — bearings, PPE, circuit breakers..." autocomplete="off" spellcheck="false">
+      <button class="so-close-btn" id="soClose" aria-label="Close search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <p class="so-hint">Press Enter to search &nbsp;&middot;&nbsp; Esc to close</p>
+  </div>
+</div>
+<script>
+(function(){
+  var overlay=document.getElementById('searchOverlay');
+  var backdrop=document.getElementById('soBackdrop');
+  var input=document.getElementById('soInput');
+  var closeBtn=document.getElementById('soClose');
+  var openBtn=document.getElementById('navSearchBtn');
+  var mnavInp=document.getElementById('mnavSearch');
+  if(!overlay)return;
+  function openSearch(){overlay.classList.add('so-open');overlay.setAttribute('aria-hidden','false');setTimeout(function(){input.focus();},60);}
+  function closeSearch(){overlay.classList.remove('so-open');overlay.setAttribute('aria-hidden','true');input.value='';}
+  function doSearch(val){if(val.trim())window.location.href='catalog.html?q='+encodeURIComponent(val.trim());}
+  if(openBtn)openBtn.addEventListener('click',openSearch);
+  closeBtn.addEventListener('click',closeSearch);
+  backdrop.addEventListener('click',closeSearch);
+  input.addEventListener('keydown',function(e){if(e.key==='Enter')doSearch(input.value);if(e.key==='Escape')closeSearch();});
+  if(mnavInp)mnavInp.addEventListener('keydown',function(e){if(e.key==='Enter')doSearch(mnavInp.value);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch();});
+})();
+</script>
+</body>
+</html>

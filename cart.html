@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.min.css" rel="stylesheet">
 <style>
 :root{--blue:#0E3BAA;--blue-dk:#0a2e87;--blue-xdk:#060e38;--blue-lt:#E6EAF2;--orange:#F7612A;--orange-dk:#d94e1a;--black:#0A0A0A;--gray-bg:#F7F8FA;--g1:#E6EAF2;--g2:#D9DEE8;--g3:#6B7280;--white:#FFFFFF;--fh:'Manrope',sans-serif;--fb:'IBM Plex Sans',sans-serif;--mw:1180px;--r:10px;--spy:80px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -55,9 +56,9 @@ button{cursor:pointer;font-family:inherit;border:none;background:none;padding:0}
 /* HEADER */
 #hdr{position:fixed;top:0;left:0;right:0;z-index:200}
 .main-bar{background:#fff;border-bottom:1px solid var(--g2)}
-.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;height:88px}
 .logo{display:inline-flex;align-items:center;padding:4px 0;transition:opacity .2s}.logo:hover{opacity:.82}
-.logo-img{height:36px;width:auto;display:block}
+.logo-img{height:56px;width:auto;display:block}
 .hdr-nav{display:flex;align-items:center;gap:4px}
 .nav-item{position:relative}
 .nav-link{display:flex;align-items:center;gap:4px;font-family:var(--fh);font-size:13.5px;font-weight:500;color:var(--g3);padding:8px 12px;border-radius:6px;transition:color .2s,background .2s;letter-spacing:.02em;cursor:pointer;white-space:nowrap}
@@ -200,12 +201,16 @@ a.mnav-link{display:flex}
 .cf-group label{font-family:var(--fh);font-size:12px;font-weight:600;color:var(--black);letter-spacing:.01em}
 .cf-group label .req{color:var(--orange);margin-left:2px}
 .cf-group input,
-.cf-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--g2);border-radius:7px;font-family:var(--fb);font-size:14px;color:var(--black);background:#fff;transition:border-color .18s,box-shadow .18s;outline:none;appearance:none;-webkit-appearance:none}
+.cf-group textarea,
+.cf-group select{width:100%;padding:11px 14px;border:1.5px solid var(--g2);border-radius:7px;font-family:var(--fb);font-size:14px;color:var(--black);background:#fff;transition:border-color .18s,box-shadow .18s;outline:none;appearance:none;-webkit-appearance:none}
 .cf-group input:focus,
-.cf-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(14,59,170,.08)}
+.cf-group textarea:focus,
+.cf-group select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(14,59,170,.08)}
 .cf-group input::placeholder,
 .cf-group textarea::placeholder{color:var(--g3);opacity:.65}
 .cf-group textarea{min-height:90px;resize:vertical;line-height:1.6}
+.cf-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+.cf-group select option[value=""]{color:var(--g3)}
 .field-err{border-color:#e05252 !important}
 
 /* ORDER SUMMARY */
@@ -245,7 +250,7 @@ a.mnav-link{display:flex}
 
 /* FOOTER */
 #ft{background:#071a4f;padding:72px 0 0}
-.ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08)}
 .ft-logo{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .ft-logo-mark{width:28px;height:28px;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
 .ft-logo-name{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;letter-spacing:-.2px;line-height:1}
@@ -276,6 +281,21 @@ a.mnav-link{display:flex}
 .mnav-search-wrap svg{color:var(--g3);flex-shrink:0}
 .mnav-search-input{flex:1;border:none;outline:none;background:transparent;font-family:var(--fh);font-size:13.5px;color:var(--black)}
 .mnav-search-input::placeholder{color:var(--g3)}
+
+/* Tom Select — match site form style */
+.ts-wrapper.single .ts-control{padding:11px 36px 11px 14px;border:1.5px solid var(--g2);border-radius:7px;font-family:var(--fb);font-size:14px;color:var(--black);background:#fff;box-shadow:none;min-height:unset;cursor:pointer;transition:border-color .18s,box-shadow .18s}
+.ts-wrapper.single.focus .ts-control{border-color:var(--blue);box-shadow:0 0 0 3px rgba(14,59,170,.08)}
+.ts-wrapper.single.field-err .ts-control{border-color:#e05252}
+.ts-wrapper.single .ts-control::after{display:none}
+.ts-wrapper.single:not(.no-options):not(.not-full) .ts-control::after{display:none}
+.ts-wrapper .ts-control input{font-family:var(--fb);font-size:14px;color:var(--black)}
+.ts-wrapper .ts-control input::placeholder{color:var(--g3);opacity:.65}
+.ts-dropdown{border:1px solid var(--g1);border-radius:8px;box-shadow:0 8px 28px rgba(0,0,0,.09);margin-top:4px;font-family:var(--fb);font-size:13.5px;overflow:hidden}
+.ts-dropdown .ts-dropdown-content{padding:4px 0}
+.ts-dropdown .option{padding:9px 14px;color:var(--black);cursor:pointer}
+.ts-dropdown .option:hover,.ts-dropdown .option.active{background:var(--blue-lt);color:var(--blue)}
+.ts-dropdown .optgroup-header{font-family:var(--fh);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g3);padding:10px 14px 4px;cursor:default}
+.ts-dropdown input.dropdown-input{border-bottom:1px solid var(--g1);padding:10px 14px;font-family:var(--fb);font-size:13.5px;outline:none;width:100%}
 </style>
 </head>
 <body>
@@ -317,7 +337,7 @@ a.mnav-link{display:flex}
     <div class="hdr-inner">
 
       <a href="index.html" class="logo" aria-label="PT Fortis Prima Solusi — Home">
-        <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="logo-img">
+        <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="logo-img">
       </a>
 
       <!-- Desktop nav -->
@@ -328,7 +348,7 @@ a.mnav-link{display:flex}
         </div>
 
         <div class="nav-item">
-          <a href="index.html#about" class="nav-link" data-nav="about">About</a>
+          <a href="about.html" class="nav-link" data-nav="about">About</a>
         </div>
 
         <div class="nav-item">
@@ -356,7 +376,7 @@ a.mnav-link{display:flex}
             </div>
             <div class="svc-footer">
               <span class="svc-footer-text">Need a custom quote for bulk orders?</span>
-              <a href="index.html#contact-form" class="svc-footer-link">Request Inquiry &#8594;</a>
+              <a href="inquiry.html" class="svc-footer-link">Request Inquiry &#8594;</a>
             </div>
           </div>
         </div>
@@ -462,11 +482,11 @@ a.mnav-link{display:flex}
         </div>
 
         <div class="nav-item">
-          <a href="index.html#blog" class="nav-link">Blog</a>
+          <a href="blog.html" class="nav-link">Blog</a>
         </div>
 
         <div class="nav-item">
-          <a href="index.html#contact" class="nav-link">Contact</a>
+          <a href="contact.html" class="nav-link">Contact</a>
         </div>
 
         <button class="nav-search-btn" id="navSearchBtn" aria-label="Search catalog">
@@ -479,7 +499,7 @@ a.mnav-link{display:flex}
           <span class="cart-badge" id="cartBadge"></span>
         </div>
 
-        <a href="index.html#contact-form" class="hdr-cta">Send Inquiry &rarr;</a>
+        <a href="inquiry.html" class="hdr-cta">Send Inquiry &rarr;</a>
       </nav>
 
       <button class="nav-tog" id="navTog" aria-label="Open menu" aria-expanded="false">
@@ -596,11 +616,11 @@ a.mnav-link{display:flex}
     </div>
 
     <div class="mnav-item">
-      <a href="index.html#blog" class="mnav-link">Blog</a>
+      <a href="blog.html" class="mnav-link">Blog</a>
     </div>
 
     <div class="mnav-item">
-      <a href="index.html#contact" class="mnav-link">Contact</a>
+      <a href="contact.html" class="mnav-link">Contact</a>
     </div>
   </nav>
 
@@ -612,7 +632,7 @@ a.mnav-link{display:flex}
   </div>
   <div class="mnav-cta">
     <a href="cart.html" class="btn btn-ghost-b" style="margin-bottom:10px">View Cart</a>
-    <a href="index.html#contact-form" class="btn btn-orange">Send Inquiry</a>
+    <a href="inquiry.html" class="btn btn-orange">Send Inquiry</a>
   </div>
 </div>
 
@@ -641,7 +661,7 @@ a.mnav-link{display:flex}
     <div class="ft-top">
       <div>
         <div class="ft-logo">
-          <img src="uploads/pasted-1776837295037-0.png" alt="Fortis Prima Solusi" class="ft-logo-img">
+          <img src="uploads/logo.png" alt="Fortis Prima Solusi" class="ft-logo-img">
         </div>
         <p class="ft-desc">PT Fortis Prima Solusi — End-to-End Procurement Partner for Global-Grade Industrial Supply.</p>
         <p class="ft-addr">Cityloft Sudirman, 17th Floor<br>Unit 1730, Jl. KH Mansyur<br>Karet Tengsin, Jakarta Pusat</p>
@@ -653,8 +673,18 @@ a.mnav-link{display:flex}
           <a href="index.html#about">About</a>
           <a href="index.html#services">Services</a>
           <a href="catalog.html">Catalog</a>
-          <a href="index.html#blog">Blog</a>
-          <a href="index.html#contact">Contact</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-ttl">Services</div>
+        <div class="ft-links">
+          <a href="index.html#services">Global Procurement &amp; Sourcing</a>
+          <a href="index.html#services">Industrial MRO Supply</a>
+          <a href="index.html#services">PPE Supply</a>
+          <a href="index.html#services">Container Lease &amp; Sale</a>
+          <a href="index.html#services">Consignment Inventory</a>
         </div>
       </div>
       <div>
@@ -677,7 +707,7 @@ a.mnav-link{display:flex}
         <div class="ft-col-ttl">Contact</div>
         <div class="ft-ci"><div class="ft-ci-lbl">Email</div><div class="ft-ci-val"><a href="mailto:sales@fortisprima.com">sales@fortisprima.com</a></div></div>
         <div class="ft-ci"><div class="ft-ci-lbl">Phone</div><div class="ft-ci-val"><a href="tel:+622129704002">+62 21 29704002</a></div></div>
-        <a href="index.html#contact-form" class="ft-inquiry">Send Inquiry &#8594;</a>
+        <a href="inquiry.html" class="ft-inquiry">Send Inquiry &#8594;</a>
         <a href="cart.html" class="ft-inquiry" style="color:rgba(255,255,255,.52);margin-top:6px">View Cart &#8594;</a>
       </div>
     </div>
@@ -688,6 +718,7 @@ a.mnav-link{display:flex}
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 <script src="assets/js/fortis.js"></script>
 <script>
 (function () {
@@ -744,7 +775,81 @@ a.mnav-link{display:flex}
             '<div class="cf-group"><label for="bf-email">Email Address <span class="req">*</span></label><input type="email" id="bf-email" name="email" placeholder="you@company.com" required></div>' +
             '<div class="cf-group"><label for="bf-phone">Phone / WhatsApp <span class="req">*</span></label><input type="tel" inputmode="numeric" id="bf-phone" name="phone" placeholder="+62 ..." pattern="[0-9+\\s]*" oninput="this.value=this.value.replace(/[^0-9+\\s]/g,\'\')" required></div>' +
           '</div>' +
-          '<div class="cf-group"><label for="bf-address">Delivery Address <span class="req">*</span></label><input type="text" id="bf-address" name="address" placeholder="City, Province, Indonesia" required></div>' +
+          '<div class="cf-group"><label for="bf-address">Delivery City / Region <span class="req">*</span></label>' +
+            '<select id="bf-address" name="address" required>' +
+              '<option value="">— Select city / region —</option>' +
+              '<optgroup label="DKI Jakarta">' +
+                '<option>Jakarta Pusat</option>' +
+                '<option>Jakarta Selatan</option>' +
+                '<option>Jakarta Utara</option>' +
+                '<option>Jakarta Barat</option>' +
+                '<option>Jakarta Timur</option>' +
+              '</optgroup>' +
+              '<optgroup label="Banten">' +
+                '<option>Kota Tangerang</option>' +
+                '<option>Kota Tangerang Selatan</option>' +
+                '<option>Kota Cilegon</option>' +
+                '<option>Kota Serang</option>' +
+              '</optgroup>' +
+              '<optgroup label="Jawa Barat">' +
+                '<option>Kota Bekasi</option>' +
+                '<option>Kota Depok</option>' +
+                '<option>Kota Bogor</option>' +
+                '<option>Kota Bandung</option>' +
+                '<option>Kota Cirebon</option>' +
+                '<option>Karawang</option>' +
+                '<option>Cikarang</option>' +
+                '<option>Purwakarta</option>' +
+              '</optgroup>' +
+              '<optgroup label="Jawa Tengah">' +
+                '<option>Kota Semarang</option>' +
+                '<option>Kota Solo (Surakarta)</option>' +
+                '<option>Kota Yogyakarta</option>' +
+                '<option>Cilacap</option>' +
+              '</optgroup>' +
+              '<optgroup label="Jawa Timur">' +
+                '<option>Kota Surabaya</option>' +
+                '<option>Kota Malang</option>' +
+                '<option>Kota Gresik</option>' +
+                '<option>Sidoarjo</option>' +
+                '<option>Pasuruan</option>' +
+                '<option>Mojokerto</option>' +
+              '</optgroup>' +
+              '<optgroup label="Sumatera">' +
+                '<option>Kota Medan</option>' +
+                '<option>Kota Palembang</option>' +
+                '<option>Kota Pekanbaru</option>' +
+                '<option>Kota Batam</option>' +
+                '<option>Kota Padang</option>' +
+                '<option>Kota Lampung (Bandar Lampung)</option>' +
+                '<option>Kota Jambi</option>' +
+                '<option>Dumai</option>' +
+              '</optgroup>' +
+              '<optgroup label="Kalimantan">' +
+                '<option>Kota Balikpapan</option>' +
+                '<option>Kota Samarinda</option>' +
+                '<option>Kota Banjarmasin</option>' +
+                '<option>Kota Pontianak</option>' +
+                '<option>Bontang</option>' +
+                '<option>Tarakan</option>' +
+              '</optgroup>' +
+              '<optgroup label="Sulawesi">' +
+                '<option>Kota Makassar</option>' +
+                '<option>Kota Manado</option>' +
+                '<option>Kota Palu</option>' +
+                '<option>Kota Kendari</option>' +
+              '</optgroup>' +
+              '<optgroup label="Bali & Nusa Tenggara">' +
+                '<option>Kota Denpasar</option>' +
+                '<option>Kota Mataram</option>' +
+              '</optgroup>' +
+              '<optgroup label="Papua & Maluku">' +
+                '<option>Kota Jayapura</option>' +
+                '<option>Kota Ambon</option>' +
+                '<option>Timika</option>' +
+                '<option>Sorong</option>' +
+              '</optgroup>' +
+            '</select></div>' +
           '<div class="cf-group"><label for="bf-notes">Additional Notes</label><textarea id="bf-notes" name="notes" placeholder="Delivery timeline, special requirements, or any notes for our team…"></textarea></div>' +
           '<div class="form-error-msg" id="formErrMsg">Please fill in all required fields before placing your order.</div>' +
         '</form>' +
@@ -762,10 +867,19 @@ a.mnav-link{display:flex}
           '<span class="os-total-val" id="osTotalQty">' + totalQty + ' <span class="os-total-unit">units</span></span>' +
         '</div>' +
         '<div class="wa-btn-wrap">' +
-          '<button class="btn btn-wa" id="placeOrderBtn">Place Order</button>' +
+          '<button class="btn btn-wa" id="placeOrderBtn">Send Inquiry</button>' +
         '</div>' +
-        '<p class="wa-note">Your order details will be sent to our sales team via WhatsApp. We\'ll follow up within 1 business day with a quotation.</p>' +
       '</div>';
+
+    /* Searchable city dropdown */
+    var tsAddress = new TomSelect('#bf-address', {
+      create: false,
+      sortField: false,
+      placeholder: '— Search or select city / region —',
+      onFocus: function () {
+        this.wrapper.classList.remove('field-err');
+      }
+    });
 
     /* Qty controls and remove */
     document.getElementById('cartItemsList').querySelectorAll('.cart-item').forEach(function (itemEl) {
@@ -812,11 +926,12 @@ a.mnav-link{display:flex}
       var valid   = true;
 
       form.querySelectorAll('[required]').forEach(function (f) {
+        var target = f.id === 'bf-address' ? tsAddress.wrapper : f;
         if (!f.value.trim()) {
-          f.classList.add('field-err');
+          target.classList.add('field-err');
           valid = false;
         } else {
-          f.classList.remove('field-err');
+          target.classList.remove('field-err');
         }
       });
 
@@ -864,6 +979,7 @@ a.mnav-link{display:flex}
     document.getElementById('buyerForm').querySelectorAll('input,textarea').forEach(function (f) {
       f.addEventListener('input', function () { f.classList.remove('field-err'); });
     });
+    tsAddress.on('change', function () { tsAddress.wrapper.classList.remove('field-err'); });
   }
 
   renderCart();
